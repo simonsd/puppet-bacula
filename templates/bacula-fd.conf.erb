@@ -1,0 +1,34 @@
+#
+# Managed by puppet
+#
+# /etc/bacula/bacula-fd.conf
+
+#
+# Storage Daemon configuration
+#
+
+FileDaemon {
+  Name = <%= hostname %>-fd
+  FDport = 9102
+  WorkingDirectory = /var/lib/bacula
+  Pid Directory = /var/run/bacula
+  Maximum Concurrent Jobs = 20
+}
+
+#
+# List Directors who are permitted to contact the File Daemon
+#
+
+Director {
+  Name = <%= scope.lookupvar('bacula::config::director_label') %>
+  Password = "<%= scope.lookupvar('bacula::config::director_password') %>"
+}
+
+# 
+# Send all messages to the Director, 
+#
+
+Messages {
+  Name = Standard
+  director = <%= scope.lookupvar('bacula::config::director_label') %> = all, !skipped, !restored
+}

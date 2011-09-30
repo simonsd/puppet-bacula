@@ -1,0 +1,10 @@
+# Managed by puppet
+
+# Bacula logrotate script
+
+/var/log/bacula/*.log /var/spool/bacula/log /var/log/bacula.log {
+  daily
+  rotate 4
+  notifempty
+  missingok
+}

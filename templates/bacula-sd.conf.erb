@@ -1,0 +1,53 @@
+#
+# Managed by puppet
+#
+# Default Bacula Storage Daemon Configuration file
+#
+# For Bacula release 2.0.3 (06 March 2007) -- redhat Enterprise release
+#
+
+#
+# Storage Daemon configuration
+#
+
+Storage {
+  Name = <%= scope.lookupvar('bacula::config::storage_label') %>
+  SDPort = 9103                                                             # Director's port
+  WorkingDirectory = "/var/spool/bacula"
+  Pid Directory = "/var/run"
+  Maximum Concurrent Jobs = 20
+}
+
+#
+# List Directors who are permitted to contact Storage Daemon
+#
+
+Director {
+  Name = <%= scope.lookupvar('bacula::config::director_label') %>
+  Password = "<%= scope.lookupvar('bacula::config::director_password') %>"
+}
+
+#
+# List Storage Devices 
+#
+
+Device {
+  Name = FileStorage
+  Media Type = File
+  Archive Device = /bacula01
+  LabelMedia = yes;                                                           # lets Bacula label unlabeled media
+  Random Access = Yes;
+  AutomaticMount = yes;                                                       # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+}
+
+# 
+# Send all messages to the Director, 
+# mount messages also are sent to the email address
+#
+
+Messages {
+  Name = Standard
+  director = <%= scope.lookupvar('bacula::config::director_label') %> = all
+}

@@ -1,0 +1,24 @@
+#
+# Define the main nightly save backup job
+# By default, this job will back up to disk in /tmp
+Job {
+	Name = "<%= hostname %>"
+  	Client = <%= hostname %>-fd
+	JobDefs = "DefaultJob"
+	Write Bootstrap = "/var/spool/bacula/Client1.bsr"
+}
+
+#
+# Standard Restore template, to be changed by Console program
+#  Only one such job is needed for all Jobs/Clients/Storage ...
+#
+Job {
+	Name = "<%= hostname %>-res"
+	Type = Restore
+	Client = <%= hostname %>-fd
+	FileSet = "Full Set"
+	Storage = File
+	Pool = Default
+	Messages = Standard
+	Where = /tmp/bacula-restores
+}

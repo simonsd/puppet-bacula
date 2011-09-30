@@ -1,0 +1,37 @@
+$VAR1 = bless( {
+  'graph_font' => '/usr/share/fonts/truetype/ttf-bitstream-vera/Vera.ttf',
+  'name' => undef,
+  'config_file' => '/etc/bacula/bweb.conf',
+  'bconsole' => '/usr/sbin/bconsole -n -c /etc/bacula/bconsole.conf',
+  'ach_list' => {
+     'S1_L80' => bless( {
+         'info' => {
+                     'drive' => 0,
+                     'io' => 0,
+                     'slot' => 0
+                   },
+         'name' => 'S1_L80',
+         'bweb' => undef,
+         'device' => '/dev/changer',
+         'drive' => [],
+         'debug' => 0,
+         'label' => {},
+         'precmd' => 'sudo',
+         'io' => [],
+         'mtxcmd' => '/sbin/mtx',
+         'drive_name' => [
+                           'S1_L80_SDLT0',
+                           'S1_L80_SDLT1'
+                         ],
+         'slot' => []
+       }, 'Bweb::Autochanger' )
+   },
+  'password' => '<%= scope.lookupvar('bacula::config::dbpassword') %>',
+  'template_dir' => '/usr/share/bweb/tpl',
+  'lang' => 'en',
+  'dbi' => 'DBI:mysql:database=<%= scope.lookupvar('bacula::config::dbname') %>',
+  'error' => '',
+  'debug' => 0,
+  'user' => '<%= scope.lookupvar('bacula::config::dbuser') %>',
+  'email_media' => 'xxx@localhost'
+}, 'Bweb::Config' );
