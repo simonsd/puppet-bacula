@@ -13,5 +13,5 @@ class bacula (
 	$bweb_user = 'bacula',
 	$bweb_passwd = 'bacula'
 ) {
-  include bacula::config
+  include bacula::director
 }
