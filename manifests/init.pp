@@ -10,7 +10,7 @@ class bacula (
 	$dbuser = 'bacula',
 	$dbpassword = 'bacula',
 	$bweb_user = 'bacula',
-	$bweb_passwd = 'bacula',
+	$bweb_passwd = 'bacula'
 ) {
   include bacula::config
 }
