@@ -1,4 +1,7 @@
-define baculaclient($fqdn,$hostname) {
+define baculaclient (
+	$fqdn,
+	$hostname
+) {
   concat::fragment { "$hostname-job":
     target  => "/etc/bacula/bacula-dir.conf",
     content => template("bacula/bacula-dir.conf.job.erb"),
