@@ -1,4 +1,5 @@
-# /etc/puppet/modules/bacula/manifests/init.pp
+import 'classes/*'
+import 'definitions/*'
 
 class bacula (
 	$admin_email,
