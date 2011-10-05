@@ -1,8 +1,6 @@
 # /etc/puppet/modules/bacula/manifests/director.pp
 
 class bacula::director {
-  include bacula::config
-
   include concat::setup
   include mysql::server 
   include bacula::console 

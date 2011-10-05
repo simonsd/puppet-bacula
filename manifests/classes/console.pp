@@ -1,8 +1,6 @@
 # /etc/puppet/modules/bacula/manifests/console.pp
 
 class bacula::console {
-  include bacula::config
-
   package { bacula-console:
     ensure => latest;
   }

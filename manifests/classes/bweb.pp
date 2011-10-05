@@ -1,8 +1,6 @@
 # /etc/puppet/modules/bacula/manifests/init.pp
 
 class bacula::bweb {
-  include bacula::config
-
   include apache
   include repo::epel
   include repo::rpmforge

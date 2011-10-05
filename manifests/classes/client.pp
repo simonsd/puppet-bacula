@@ -1,7 +1,6 @@
 # /etc/puppet/modules/bacula/manifests/init.pp
 
 class bacula::client {
-  include bacula::config
   include bacula::console
 
   package { bacula-client: 
