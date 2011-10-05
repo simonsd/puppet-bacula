@@ -88,7 +88,7 @@ class bacula::director {
       environment => "db_name=$bacula::dbname",
       subscribe   => Package["bacula-director-mysql"],
       require     => Service["mysqld"],
-      unless      => "/usr/bin/mysqlshow $bacula::dbname | grep Version",
+      unless      => "/usr/bin/mysqlshow -uroot -p$mysql_password $bacula::dbname | grep Version",
       before      => Service["bacula-dir"];
   }
 
