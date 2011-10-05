@@ -77,14 +77,14 @@ class bacula::director {
     #   before    => Exec["/usr/libexec/bacula/grant_bacula_privileges","bweb-mysql"];
 
     "bacula-db-privileges":
-      command   => "/usr/libexec/bacula/grant_bacula_privileges",
+      command   => "/usr/libexec/bacula/grant_bacula_privileges -uroot -p$mysql_password",
       subscribe => Package["bacula-director-mysql"],
       require   => Service["mysqld"],
       unless    => "/usr/bin/mysql -uroot -p$mysql_password -e \"select * from information_schema.user_privileges\" | grep $bacula::dbname",
       before    => Mysqldb["$bacula::dbname"];
 
     "bacula-db-tables":
-      command     => "/usr/libexec/bacula/make_bacula_tables",
+      command     => "/usr/libexec/bacula/make_bacula_tables -uroot -p$mysql_password",
       environment => "db_name=$bacula::dbname",
       subscribe   => Package["bacula-director-mysql"],
       require     => Service["mysqld"],
