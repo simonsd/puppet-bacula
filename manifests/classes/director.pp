@@ -67,7 +67,7 @@ class bacula::director {
     password  => "$bacula::dbpassword",
     require   => Class["mysql::server::service"];
   }
-	
+
   exec {
     ## mysql		
     #"/usr/libexec/bacula/create_bacula_database":
@@ -80,7 +80,7 @@ class bacula::director {
       command   => "/usr/libexec/bacula/grant_bacula_privileges",
       subscribe => Package["bacula-director-mysql"],
       require   => Service["mysqld"],
-      unless    => "/usr/bin/mysql -e \"select * from information_schema.user_privileges\" | grep $bacula::dbname",
+      unless    => "/usr/bin/mysql -uroot -p$mysql_password -e \"select * from information_schema.user_privileges\" | grep $bacula::dbname",
       before    => Mysqldb["$bacula::dbname"];
 
     "bacula-db-tables":
