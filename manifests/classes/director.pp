@@ -62,9 +62,9 @@ class bacula::director {
     order	=> 200,
   }
 
-  mysqldb { "$bacula::config::dbname":
-    user      => "$bacula::config::dbname",
-    password  => "$bacula::config::dbpassword",
+  mysqldb { "$bacula::dbname":
+    user      => "$bacula::dbname",
+    password  => "$bacula::dbpassword",
     require   => Class["mysql::server::service"];
   }
 	
@@ -80,15 +80,15 @@ class bacula::director {
       command   => "/usr/libexec/bacula/grant_bacula_privileges",
       subscribe => Package["bacula-director-mysql"],
       require   => Service["mysqld"],
-      unless    => "/usr/bin/mysql -e \"select * from information_schema.user_privileges\" | grep $bacula::config::dbname",
-      before    => Mysqldb["$bacula::config::dbname"];
+      unless    => "/usr/bin/mysql -e \"select * from information_schema.user_privileges\" | grep $bacula::dbname",
+      before    => Mysqldb["$bacula::dbname"];
 
     "bacula-db-tables":
       command     => "/usr/libexec/bacula/make_bacula_tables",
-      environment => "db_name=$bacula::config::dbname",
+      environment => "db_name=$bacula::dbname",
       subscribe   => Package["bacula-director-mysql"],
       require     => Service["mysqld"],
-      unless      => "/usr/bin/mysqlshow $bacula::config::dbname | grep Version",
+      unless      => "/usr/bin/mysqlshow $bacula::dbname | grep Version",
       before      => Service["bacula-dir"];
   }
 

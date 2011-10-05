@@ -49,10 +49,10 @@ class bacula::bweb {
       require   => Exec["bweb-tar"];
 
     "bweb-mysql":
-      command   => "/usr/bin/mysql $bacula::config::dbname < /usr/src/bacula-gui-5.0.2/bweb/script/bweb-mysql.sql",
+      command   => "/usr/bin/mysql $bacula::dbname < /usr/src/bacula-gui-5.0.2/bweb/script/bweb-mysql.sql",
       subscribe => Exec["bweb-src"],
       require   => [ Exec["bweb-tar"], Class["mysql::server::service"] ],
-      unless    => "/usr/bin/mysqlshow $bacula::config::dbname | grep bweb_user",
+      unless    => "/usr/bin/mysqlshow $bacula::dbname | grep bweb_user",
       before    => Exec["bacula-db-tables"];
 
     "bweb-inst":
@@ -62,8 +62,8 @@ class bacula::bweb {
       subscribe => File["/usr/src/bacula-gui-5.0.2/bweb/install_bweb"];
 
     "bweb_htpasswd":
-      unless  => "/bin/grep $bacula::config::bweb_user /etc/bacula/htpasswd.users",
-      command => "/usr/bin/htpasswd -bc /etc/bacula/htpasswd.users $bacula::config::bweb_user $bacula::config::bweb_passwd",
+      unless  => "/bin/grep $bacula::bweb_user /etc/bacula/htpasswd.users",
+      command => "/usr/bin/htpasswd -bc /etc/bacula/htpasswd.users $bacula::bweb_user $bacula::bweb_passwd",
       require => Class["apache::install"],
       notify  => Class["apache::service"];
   }

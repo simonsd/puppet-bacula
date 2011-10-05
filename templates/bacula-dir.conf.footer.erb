@@ -7,9 +7,9 @@
 
 Catalog {
   Name = MyCatalog
-  dbname = <%= scope.lookupvar('bacula::config::dbname') %>; 
-  user = <%= scope.lookupvar('bacula::config::dbuser') %>; 
-  password = "<%= scope.lookupvar('bacula::config::dbpassword') %>";
+  dbname = <%= scope.lookupvar('bacula::dbname') %>; 
+  user = <%= scope.lookupvar('bacula::dbuser') %>; 
+  password = "<%= scope.lookupvar('bacula::dbpassword') %>";
 }
 
 
@@ -21,9 +21,9 @@ Catalog {
 Storage {
   Name = File
   # N.B. Use a fully qualified name here
-  Address = <%= scope.lookupvar('bacula::config::storage_server') %>.<%= domain %>
+  Address = <%= scope.lookupvar('bacula::storage_server') %>.<%= domain %>
   SDPort = 9103
-  Password = "<%= scope.lookupvar('bacula::config::storage_password') %>"
+  Password = "<%= scope.lookupvar('bacula::storage_password') %>"
   Device = FileStorage
   Media Type = File
 }
@@ -61,8 +61,8 @@ Messages {
 #
   mailcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) %r\" -s \"Bacula: %t %e of %c %l\" %r"
   operatorcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) %r\" -s \"Bacula: Intervention needed for %j\" %r"
-  mail = <%= scope.lookupvar('bacula::config::admin_email') %> = all, !skipped            
-  operator = <%= scope.lookupvar('bacula::config::operator_email') %> = mount
+  mail = <%= scope.lookupvar('bacula::admin_email') %> = all, !skipped            
+  operator = <%= scope.lookupvar('bacula::operator_email') %> = mount
   console = all, !skipped, !saved
 #
 # WARNING! the following will create a file that you must cycle from
@@ -92,6 +92,6 @@ Messages {
 #
 #Console {
 #	Name = bacula-mon
-#	Password = "<%= scope.lookupvar('bacula::config::director_password') %>"
+#	Password = "<%= scope.lookupvar('bacula::director_password') %>"
 #	CommandACL = status, .status
 #}

@@ -9,8 +9,8 @@
 #
 
 Director {
-  Name = <%= scope.lookupvar('bacula::config::director_label') %>
+  Name = <%= scope.lookupvar('bacula::director_label') %>
   DIRport = 9101
-  address = <%= scope.lookupvar('bacula::config::director_server') %>.<%= domain %>
-  Password = "<%= scope.lookupvar('bacula::config::director_password') %>"
+  address = <%= scope.lookupvar('bacula::director_server') %>.<%= domain %>
+  Password = "<%= scope.lookupvar('bacula::director_password') %>"
 }

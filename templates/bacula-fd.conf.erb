@@ -20,8 +20,8 @@ FileDaemon {
 #
 
 Director {
-  Name = <%= scope.lookupvar('bacula::config::director_label') %>
-  Password = "<%= scope.lookupvar('bacula::config::director_password') %>"
+  Name = <%= scope.lookupvar('bacula::director_label') %>
+  Password = "<%= scope.lookupvar('bacula::director_password') %>"
 }
 
 # 
@@ -30,5 +30,5 @@ Director {
 
 Messages {
   Name = Standard
-  director = <%= scope.lookupvar('bacula::config::director_label') %> = all, !skipped, !restored
+  director = <%= scope.lookupvar('bacula::director_label') %> = all, !skipped, !restored
 }

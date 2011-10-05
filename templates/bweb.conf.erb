@@ -26,12 +26,12 @@ $VAR1 = bless( {
          'slot' => []
        }, 'Bweb::Autochanger' )
    },
-  'password' => '<%= scope.lookupvar('bacula::config::dbpassword') %>',
+  'password' => '<%= scope.lookupvar('bacula::dbpassword') %>',
   'template_dir' => '/usr/share/bweb/tpl',
   'lang' => 'en',
-  'dbi' => 'DBI:mysql:database=<%= scope.lookupvar('bacula::config::dbname') %>',
+  'dbi' => 'DBI:mysql:database=<%= scope.lookupvar('bacula::dbname') %>',
   'error' => '',
   'debug' => 0,
-  'user' => '<%= scope.lookupvar('bacula::config::dbuser') %>',
+  'user' => '<%= scope.lookupvar('bacula::dbuser') %>',
   'email_media' => 'xxx@localhost'
 }, 'Bweb::Config' );
