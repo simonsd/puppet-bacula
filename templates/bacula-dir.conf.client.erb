@@ -5,7 +5,7 @@ Client {
 	Address = <%= fqdn %>
 	FDPort = 9102
 	Catalog = MyCatalog
-	Password = "<%= scope.lookupvar('bacula::storage_password') %>>"	# password for FileDaemon
+	Password = "<%= scope.lookupvar('bacula::storage_password') %>"	# password for FileDaemon
 	File Retention = 30 days				# 30 days
 	Job Retention = 6 months				# six months
 	AutoPrune = yes							# Prune expired Jobs/Files
