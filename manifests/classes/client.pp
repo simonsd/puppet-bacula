@@ -1,8 +1,6 @@
 # /etc/puppet/modules/bacula/manifests/init.pp
 
 class bacula::client {
-  include bacula::console
-
   package { bacula-client: 
     ensure => latest
   }

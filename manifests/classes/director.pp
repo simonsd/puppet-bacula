@@ -3,7 +3,6 @@
 class bacula::director {
   include concat::setup
   include mysql::server 
-  include bacula::console 
 
   package { bacula-director-mysql:
     ensure   => latest,
