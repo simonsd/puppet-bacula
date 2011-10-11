@@ -12,7 +12,15 @@ class bacula (
 	$dbuser = 'bacula',
 	$dbpassword = 'bacula',
 	$bweb_user = 'bacula',
-	$bweb_passwd = 'bacula'
+	$bweb_passwd = 'bacula',
+	$client = 'yes',
+	$server = 'no'
 ) {
-  include bacula::director
+	if $server == 'yes' {
+		include bacula::director
+	}
+
+	if $client == 'yes' {
+		include bacula::client
+	}
 }
