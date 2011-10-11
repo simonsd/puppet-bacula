@@ -18,6 +18,7 @@ class bacula (
 ) {
 	if $server == 'yes' {
 		include bacula::director
+		include bacula::storage
 	}
 
 	if $client == 'yes' {
