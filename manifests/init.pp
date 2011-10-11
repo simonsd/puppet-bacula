@@ -4,7 +4,7 @@ import 'definitions/*'
 class bacula (
 	$admin_email,
 	$operator_email,
-	$director_server,
+	$director_server = 'bacula',
 	$director_label = 'bacula-dir',
 	$director_password = 'bacula',
 	$storage_password = 'bacula',
