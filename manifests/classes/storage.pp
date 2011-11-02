@@ -24,7 +24,7 @@ class bacula::storage::config {
       content => template("bacula/bacula-sd.conf.erb"),
       require => Package["bacula-storage-mysql"];
 
-    "/bacula01":
+    "${storage_dir}":
       ensure  => directory,
       owner   => "root",
       group   => "root",
