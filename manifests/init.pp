@@ -7,6 +7,7 @@ class bacula (
 	$director_server = 'bacula',
 	$director_label = 'bacula-dir',
 	$director_password = 'bacula',
+	$storage_server = 'bacula',
 	$storage_password = 'bacula',
 	$dbname = 'bacula',
 	$dbuser = 'bacula',
