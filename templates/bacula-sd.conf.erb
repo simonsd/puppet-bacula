@@ -34,7 +34,7 @@ Director {
 Device {
   Name = FileStorage
   Media Type = File
-  Archive Device = /bacula01
+  Archive Device = <%= scope.lookupvar('bacula::storage_dir') %>
   LabelMedia = yes;                                                           # lets Bacula label unlabeled media
   Random Access = Yes;
   AutomaticMount = yes;                                                       # when device opened, read it
