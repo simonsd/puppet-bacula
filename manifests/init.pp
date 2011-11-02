@@ -14,6 +14,7 @@ class bacula (
 	$dbname = 'bacula',
 	$dbuser = 'bacula',
 	$dbpassword = 'bacula',
+	$dbhost = 'localhost',
 	$bweb_user = 'bacula',
 	$bweb_passwd = 'bacula',
 	$client = 'yes',
