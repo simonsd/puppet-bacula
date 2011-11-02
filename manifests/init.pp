@@ -8,6 +8,7 @@ class bacula (
 	$director_label = 'bacula-dir',
 	$director_password = 'bacula',
 	$storage_server = 'bacula',
+	$storage_label = 'bacula-sd',
 	$storage_password = 'bacula',
 	$storage_dir = '/mnt/backup',
 	$dbname = 'bacula',
