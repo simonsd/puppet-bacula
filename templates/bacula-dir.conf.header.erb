@@ -134,7 +134,7 @@ Job {
   FileSet = "Catalog"
   Schedule = "WeeklyCycleAfterBackup"
   # This creates an ASCII copy of the catalog
-  RunBeforeJob = "/usr/libexec/bacula/make_catalog_backup bacula bacula"
+  RunBeforeJob = "/usr/libexec/bacula/make_catalog_backup <%= scope.lookupvar('bacula::dbname') %> <%= scope.lookupvar('bacula::dbuser') %> <%= scope.lookupvar('bacula::dbpass') %> <%= scope.lookupvar('bacula::dbhost') %>"
   # This deletes the copy of the catalog
   RunAfterJob  = "/usr/libexec/bacula/delete_catalog_backup"
   Write Bootstrap = "/var/spool/bacula/BackupCatalog.bsr"
