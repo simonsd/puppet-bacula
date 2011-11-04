@@ -1,0 +1,18 @@
+Fileset {
+  Name = "<%= name %>"
+  Include {
+    Options {
+      signature = MD5
+    }
+<% include.each do |incl| -%>
+    File = <%= incl %>
+<% end -%>
+  }
+<% if !exclude.empty? -%>
+  Exclude {
+<% exclude.each do |excl| -%>
+    File = <%= excl %>
+<% end -%>
+  }
+<% end -%>
+}

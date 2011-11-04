@@ -19,7 +19,8 @@ class bacula (
 	$bweb_passwd = 'bacula',
 	$client = 'yes',
 	$server = 'no',
-    $schedules = ['FullDaily', 'FullWeekly', 'IncDaily', 'IncWeekly', 'DiffDaily', 'DiffWeekly']
+    $schedules = ['FullDaily', 'FullWeekly', 'IncDaily', 'IncWeekly', 'DiffDaily', 'DiffWeekly'],
+    $filesets = ['Catalog', 'Full Set']
 ) {
 	if $server == 'yes' {
 		include bacula::director
