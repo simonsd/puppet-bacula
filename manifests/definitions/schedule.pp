@@ -3,7 +3,7 @@ define bacula::schedule (
   $description
 ){
   file {
-    "/etc/bacula/schedules/${name}.conf":
+    "/etc/bacula/schedules.d/${name}.conf":
       ensure => present,
       owner => root,
       group => root,
