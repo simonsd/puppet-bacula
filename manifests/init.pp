@@ -31,7 +31,7 @@ class bacula (
 	}
 
 	if $client == 'yes' {
-		include bacula::client
+		include bacula::fd
 	}
 
 	include bacula::console

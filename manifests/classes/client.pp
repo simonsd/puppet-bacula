@@ -1,6 +1,6 @@
 # /etc/puppet/modules/bacula/manifests/init.pp
 
-class bacula::client {
+class bacula::fd {
   package { bacula-client: 
     ensure => latest
   }
@@ -62,7 +62,7 @@ class bacula::client {
   }
 }
 
-class bacula::client::xtrabackup {
+class bacula::fd::xtrabackup {
   include repo::percona
 
   package { xtrabackup: 
