@@ -46,41 +46,6 @@ Schedule {
   Run = Full sun-sat at 12:25
 }
 
-FileSet {
-  Name = "Full Set"
-  Include {
-    File = /
-    File = /boot
-    File = /home
-    File = /opt
-    File = /usr
-    File = /var
-    File = /var/log
-
-    Options {
-      signature = MD5
-    }
-  }
-
-  Exclude {
-    File = /proc
-    File = /tmp
-    File = /.journal
-    File = /.fsck
-  }
-}
-
-# This is the backup of the catalog
-FileSet {
-  Name = "Catalog"
-  Include {
-    Options {
-      signature = MD5
-    }
-    File = /var/spool/bacula/bacula.sql
-  }
-}
-
 # Backup the catalog database (after the nightly save)
 Job {
   Name = "BackupCatalog"
