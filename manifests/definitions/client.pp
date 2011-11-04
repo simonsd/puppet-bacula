@@ -1,4 +1,4 @@
-define baculaclient (
+define bacula::client (
 	$fqdn,
 	$hostname
 ) {
