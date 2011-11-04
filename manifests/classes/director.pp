@@ -26,32 +26,14 @@ class bacula::director {
       mode    => 755,
       source  => 'puppet:///modules/bacula/label_storage.sh',
       require => File["/root/bin"];
-  }
 
-  concat { "/etc/bacula/bacula-dir.conf":
-    owner   => root,
-    group   => root,
-    mode    => 640,
-    require => Package["bacula-director-mysql"],
-    notify  => Service["bacula-dir"];
-  }
-
-  concat::fragment { "bacula-dir.conf.header":
-    target	=> "/etc/bacula/bacula-dir.conf",
-    content => template("bacula/bacula-dir.conf.header.erb"),
-    order   => 100,
-  }
-
-  concat::fragment { "bacula-dir.conf.jobdefs":
-    target	=> "/etc/bacula/bacula-dir.conf",
-    content => template("bacula/bacula-dir.conf.jobdefs.erb"),
-    order   => 150,
-  }
-
-  concat::fragment { "bacula-dir.conf.footer":
-    target	=> "/etc/bacula/bacula-dir.conf",
-    content => template("bacula/bacula-dir.conf.footer.erb"),
-    order   => 300,
+    "/etc/bacula/bacula-dir.conf":
+      owner   => root,
+      group   => root,
+      mode    => 640,
+      require => Package["bacula-director-mysql"],
+      notify  => Service["bacula-dir"],
+      content => template('bacula/bacula-dir.conf.erb');
   }
 
   concat::fragment { "/etc/sysconfig/iptables.bacula.director":
