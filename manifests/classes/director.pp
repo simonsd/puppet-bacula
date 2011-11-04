@@ -72,5 +72,5 @@ class bacula::director {
     require => [ Package[bacula-director-mysql], Service['mysqld'] ];
   }
 
-  Baculaclient <<| |>>
+  Bacula::Client <<| |>>
 }
