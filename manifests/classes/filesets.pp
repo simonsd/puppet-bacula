@@ -31,7 +31,7 @@ class bacula::filesets {
       ];
   }
 
-  if ${bacula::filesets} != [] {
+  if "${bacula::filesets}" != [] {
     realize(Bacula::Fileset["${bacula::filesets}"])
   }
 }

@@ -33,7 +33,7 @@ class bacula::schedules {
       description => 'Differential sun at 05:00';
   }
 
-  if ${bacula::schedules} != [] {
+  if "${bacula::schedules}" != [] {
     realize(Bacula::Schedule["${bacula::schedules}"])
   }
 }
