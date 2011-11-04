@@ -12,8 +12,8 @@ class bacula::filesets {
       name => 'Catalog',
       include => '/var/spool/bacula/bacula.sql';
 
-    'Full Set':
-      name => 'Full Set',
+    'FullSet':
+      name => 'FullSet',
       include => [
         '/',
         '/boot',
