@@ -1,0 +1,6 @@
+Schedule {
+  Name = "<%= name %>"
+<% description.each do |desc| -%>
+  Run = <%= desc %>
+<% end -%>
+}

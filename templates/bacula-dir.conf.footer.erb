@@ -72,3 +72,5 @@ Messages {
   console = all, !skipped, !saved
   append = "/var/log/bacula.log" = all, !skipped
 }
+
+@|"sh -c 'for f in /etc/bacula/filesets.d/*.conf ; do echo @${f} ; done'"
