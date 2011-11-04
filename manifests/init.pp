@@ -34,4 +34,5 @@ class bacula (
 	include bacula::console
 	include bacula::filesets
 	include bacula::schedules
+    include bacula::clients
 }
