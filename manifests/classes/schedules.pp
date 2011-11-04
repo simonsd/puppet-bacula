@@ -34,6 +34,6 @@ class bacula::schedules {
   }
 
   if "${bacula::schedules}" != [] {
-    realize(Bacula::Schedule["${bacula::schedules}"])
+    realize(Bacula::Schedule[$bacula::schedules])
   }
 }
