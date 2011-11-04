@@ -25,6 +25,9 @@ class bacula (
 	if $server == 'yes' {
 		include bacula::director
 		include bacula::storage
+		include bacula::filesets
+		include bacula::schedules
+    	include bacula::clients
 	}
 
 	if $client == 'yes' {
@@ -32,7 +35,4 @@ class bacula (
 	}
 
 	include bacula::console
-	include bacula::filesets
-	include bacula::schedules
-    include bacula::clients
 }
