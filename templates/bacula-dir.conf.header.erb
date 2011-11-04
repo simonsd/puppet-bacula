@@ -2,14 +2,6 @@
 # Managed by puppet
 #
 
-#
-# Default Bacula Director Configuration file
-#
-
-#
-# Bacula Director configuration
-#
-
 Director {
   Name = <%= scope.lookupvar('bacula::director_label') %>
   DIRport = 9101                                                            # where we listen for UA connections
@@ -20,15 +12,6 @@ Director {
   Password = "<%= scope.lookupvar('bacula::director_password') %>"  # console password
   Messages = Daemon
 }
-
-
-#
-# Definition of when this Job will run, 
-# and if it is a full or incremental backup
-
-# When to do the backups, full backup on first sunday of the month,
-#  differential (i.e. incremental since full) every other sunday,
-#  and incremental backups other days
 
 Schedule {
   Name = "LinuxOSCycle"
@@ -63,31 +46,9 @@ Schedule {
   Run = Full sun-sat at 12:25
 }
 
-
-#
-# Definitions of paths to the files we want to back-up,
-# with rules to exclude certain files
-#
-
 FileSet {
   Name = "Full Set"
   Include {
-    Options {
-      signature = MD5
-    }
-#    
-#  Put your list of files here, preceded by 'File =', one per line
-#    or include an external list with:
-#
-#    File = <file-name>
-#
-#  Note: / backs up everything on the root partition.
-#    if you have other partitons such as /usr or /home
-#    you will probably want to add them too.
-#
-#  This File-directive would backup your whole filesystem.
-#    It is disabled by default
-#
     File = /
     File = /boot
     File = /home
@@ -95,12 +56,11 @@ FileSet {
     File = /usr
     File = /var
     File = /var/log
-  }
 
-#
-# If you backup the root directory, the following excluded
-# files can be useful
-#
+    Options {
+      signature = MD5
+    }
+  }
 
   Exclude {
     File = /proc
@@ -121,7 +81,6 @@ FileSet {
   }
 }
 
-
 # Backup the catalog database (after the nightly save)
 Job {
   Name = "BackupCatalog"
@@ -141,7 +100,6 @@ Job {
   Priority = 11                                                               # run after main backup
 }
 
-
 #
 # <%= scope.lookupvar('bacula::director_server') %>.<%= domain %> - Client (File Services) to backup
 #
@@ -156,5 +114,3 @@ Client {
   Job Retention = 6 months                                                    # six months
   AutoPrune = yes                                                             # Prune expired Jobs/Files
 }
-
-

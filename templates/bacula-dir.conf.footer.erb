@@ -1,5 +1,3 @@
-
-
 #
 # Details of the SQL Dtabase which stores the catalogue
 # (Index to contents of backup)
@@ -11,7 +9,6 @@ Catalog {
   user = <%= scope.lookupvar('bacula::dbuser') %>; 
   password = "<%= scope.lookupvar('bacula::dbpassword') %>";
 }
-
 
 #
 # Pointer to the backup device
@@ -28,7 +25,6 @@ Storage {
   Media Type = File
 }
 
-
 #
 # Collection of tapes or disk files which make up your storage.
 # You may have multiple pools in different rotations.
@@ -41,7 +37,6 @@ Pool {
   AutoPrune = yes                     # Prune expired volumes
   Volume Retention = 365 days         # one year
 }
-
 
 # Reasonable message delivery -- send most everything to email address
 #  and to the console
@@ -58,20 +53,13 @@ Messages {
 #  for example, a 'no-reply@mydomain.com', is better since that tends to
 #  tell (most) people that its coming from an automated source.
 
-#
   mailcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) %r\" -s \"Bacula: %t %e of %c %l\" %r"
   operatorcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) %r\" -s \"Bacula: Intervention needed for %j\" %r"
   mail = <%= scope.lookupvar('bacula::admin_email') %> = all, !skipped            
   operator = <%= scope.lookupvar('bacula::operator_email') %> = mount
   console = all, !skipped, !saved
-#
-# WARNING! the following will create a file that you must cycle from
-#          time to time as it will grow indefinitely. However, it will
-#          also keep all your messages if they scroll off the console.
-#
   append = "/var/spool/bacula/log" = all, !skipped
 }
-
 
 #
 # Message delivery for daemon messages (no job).
@@ -84,14 +72,3 @@ Messages {
   console = all, !skipped, !saved
   append = "/var/log/bacula.log" = all, !skipped
 }
-
-
-#
-# Restricted console used by tray-monitor to get the status of the director
-#
-#
-#Console {
-#	Name = bacula-mon
-#	Password = "<%= scope.lookupvar('bacula::director_password') %>"
-#	CommandACL = status, .status
-#}
