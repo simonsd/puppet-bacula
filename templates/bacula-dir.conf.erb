@@ -67,38 +67,6 @@ Messages {
   append = "/var/log/bacula.log" = all, !skipped
 }
 
-Schedule {
-  Name = "LinuxOSCycle"
-  Run = Full 1st sun at 12:20
-  Run = Full sun-sat at 14:00
-  #Run = Full 1st sun at 23:05
-  #Run = Differential 2nd-5th sun at 23:05
-  #Run = Incremental mon-sat at 23:05
-}
-
-Schedule {
-  Name = "LinuxDataCycle"
-  Run = Full 1st sun at 12:20
-  Run = Full sun-sat at 14:00
-  #Run = Full 1st sun at 23:05
-  #Run = Differential 2nd-5th sun at 23:05
-  #Run = Incremental mon-sat at 23:05
-}
-
-Schedule {
-  Name = "WeeklyCycle"
-  Run = Full sun-sat at 12:20
-  Run = Full sun-sat at 14:00
-  #Run = Full 1st sun at 23:05
-  #Run = Differential 2nd-5th sun at 23:05
-  #Run = Incremental mon-sat at 23:05
-}
-
-Schedule {
-  Name = "WeeklyCycleAfterBackup"
-  Run = Full sun-sat at 12:25
-}
-
 Job {
   Name = "BackupCatalog"
   Type = Backup
@@ -108,7 +76,7 @@ Job {
   Pool = Default
   Level = Full
   FileSet = "Catalog"
-  Schedule = "WeeklyCycleAfterBackup"
+  Schedule = "FullDaily"
   # This creates an ASCII copy of the catalog
   RunBeforeJob = "/usr/libexec/bacula/make_catalog_backup <%= scope.lookupvar('bacula::dbname') %> <%= scope.lookupvar('bacula::dbuser') %> <%= scope.lookupvar('bacula::dbpassword') %> <%= scope.lookupvar('bacula::dbhost') %>"
   # This deletes the copy of the catalog
@@ -122,7 +90,7 @@ JobDefs {
 	Type = Backup
 	Level = Incremental
 	FileSet = "FullSet"
-	Schedule = "WeeklyCycle"
+	Schedule = "FullWeeklyIncDaily"
 	Storage = File
 	Messages = Standard
 	Pool = Default
