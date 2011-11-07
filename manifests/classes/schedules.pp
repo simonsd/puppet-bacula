@@ -10,7 +10,7 @@ class bacula::schedules {
   @bacula::schedule {
     'FullDaily':
       name => 'FullDaily',
-      description => 'Full mon-sun at 03:00';
+      description => 'Full Daily at 03:00';
 
     'FullWeekly':
       name => 'FullWeekly',
@@ -18,7 +18,7 @@ class bacula::schedules {
 
     'IncDaily':
       name => 'IncDaily',
-      description => 'Incremental mon-sun at 01:00';
+      description => 'Incremental Daily at 01:00';
 
     'IncWeekly':
       name => 'IncWeekly',
@@ -26,7 +26,7 @@ class bacula::schedules {
 
     'DiffDaily':
       name => 'DiffDaily',
-      description => 'Differential mon-sun at 02:00';
+      description => 'Differential Daily at 02:00';
 
     'DiffWeekly':
       name => 'DiffWeekly',
