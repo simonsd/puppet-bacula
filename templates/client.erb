@@ -1,8 +1,8 @@
-# <%= scope.lookupvar('::fqdn') %> - Client (File Services) to backup / restore
+# <%= fqdn %> - Client (File Services) to backup / restore
 
 Client {
-	Name = <%= scope.lookupvar('::hostname') %>-fd
-	Address = <%= scope.lookupvar('::fqdn') %>
+	Name = <%= hostname %>-fd
+	Address = <%= fqdn %>
 	FDPort = 9102
 	Catalog = MyCatalog
 	Password = "<%= scope.lookupvar('bacula::storage_password') %>"	# password for FileDaemon
