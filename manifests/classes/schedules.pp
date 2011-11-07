@@ -34,15 +34,15 @@ class bacula::schedules {
 
     'FullMonthlyDiffWeeklyIncDaily':
       name => 'FullMonthlyDiffWeeklyIncDaily',
-      description => ['Full 1st sun at 04:00', 'Diff 2nd-5th sun at 04:00', 'Inc Daily at 04:00'];
+      description => ['Full 1st sun at 04:00', 'Differential 2nd-5th sun at 04:00', 'Incremental Daily at 04:00'];
 
     'FullWeeklyDiffDailyIncHourly':
       name => 'FullWeeklyDiffDailyIncHourly',
-      description => ['Full sun at 04:00', 'Diff mon-sat at 04:00', 'Inc Hourly'];
+      description => ['Full sun at 04:00', 'Differential mon-sat at 04:00', 'Incremental Hourly'];
 
     'FullWeeklyIncDaily':
       name => 'FullWeeklyIncDaily',
-      description => ['Full sun at 04:00', 'Inc Daily at 04:00'];
+      description => ['Full sun at 04:00', 'Incremental Daily at 04:00'];
   }
 
   if "${bacula::schedules}" != [] {
