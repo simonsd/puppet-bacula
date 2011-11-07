@@ -38,8 +38,6 @@ Pool {
   Volume Retention = 365 days         # one year
 }
 
-# Reasonable message delivery -- send most everything to email address
-#  and to the console
 Messages {
   Name = Standard
 #
@@ -60,10 +58,6 @@ Messages {
   console = all, !skipped, !saved
   append = "/var/spool/bacula/log" = all, !skipped
 }
-
-#
-# Message delivery for daemon messages (no job).
-#
 
 Messages {
   Name = Daemon
@@ -100,13 +94,11 @@ Schedule {
   #Run = Incremental mon-sat at 23:05
 }
 
-# This schedule does the catalog. It starts after the WeeklyCycle
 Schedule {
   Name = "WeeklyCycleAfterBackup"
   Run = Full sun-sat at 12:25
 }
 
-# Backup the catalog database (after the nightly save)
 Job {
   Name = "BackupCatalog"
   Type = Backup
