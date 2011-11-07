@@ -103,7 +103,7 @@ Job {
   Name = "BackupCatalog"
   Type = Backup
   Storage = File
-  Client = <%= scope.lookupvar('bacula::director_label') %>-fd
+  Client = <%= scope.lookupvar('bacula::director_server') %>-fd
   Messages = Standard
   Pool = Default
   Level = Full
