@@ -20,7 +20,7 @@ class bacula (
 	$client = 'yes',
 	$server = 'no',
     $schedules = ['FullDaily', 'FullWeekly', 'IncDaily', 'IncWeekly', 'DiffDaily', 'DiffWeekly', 'FullMonthlyDiffWeeklyIncDaily', 'FullWeeklyDiffDailyIncHourly', 'FullWeeklyIncDaily'],
-    $filesets = ['Catalog', 'FullSet'],
+    $filesets = ['Catalog', 'FullSet', 'MysqlData', 'Config'],
     $jobdefs = ['DefaultJob', 'Mysql', 'Config']
 ) {
 	if $server == 'yes' {
