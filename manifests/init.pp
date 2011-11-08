@@ -21,7 +21,7 @@ class bacula (
 	$server = 'no',
     $schedules = ['FullDaily', 'FullWeekly', 'IncDaily', 'IncWeekly', 'DiffDaily', 'DiffWeekly', 'FullMonthlyDiffWeeklyIncDaily', 'FullWeeklyDiffDailyIncHourly', 'FullWeeklyIncDaily'],
     $filesets = ['Catalog', 'FullSet'],
-    $jobdefs = ['DefaultJob']
+    $jobdefs = ['DefaultJob', 'Mysql', 'Config']
 ) {
 	if $server == 'yes' {
 		include bacula::director
