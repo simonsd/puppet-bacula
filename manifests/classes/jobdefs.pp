@@ -10,6 +10,14 @@ class bacula::jobdefs {
   @bacula::jobdef {
     'DefaultJob':
       name => 'DefaultJob';
+
+    'Mysql':
+      name => 'Mysql',
+      fileset => 'MysqlData';
+
+    'Config':
+      name => 'Config',
+      fileset => 'Config';
   }
 
   if $bacula::jobdefs != [] {
