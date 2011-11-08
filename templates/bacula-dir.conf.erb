@@ -72,18 +72,6 @@ Job {
   Priority = 11                                                               # run after main backup
 }
 
-JobDefs {
-	Name = "DefaultJob"
-	Type = Backup
-	Level = Incremental
-	FileSet = "FullSet"
-	Schedule = "FullWeeklyIncDaily"
-	Storage = File
-	Messages = Standard
-	Pool = Default
-	Priority = 10
-}
-
 @|"sh -c 'for f in /etc/bacula/clients.d/*.conf ; do echo @${f} ; done'"
 @|"sh -c 'for f in /etc/bacula/filesets.d/*.conf ; do echo @${f} ; done'"
 @|"sh -c 'for f in /etc/bacula/jobdefs.d/*.conf ; do echo @${f} ; done'"
