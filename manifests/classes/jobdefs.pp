@@ -13,6 +13,6 @@ class bacula::jobdefs {
   }
 
   if $bacula::jobdefs != [] {
-    realize(Bacula::Jobdefs[$bacula::jobdefs])
+    realize(Bacula::Jobdef[$bacula::jobdefs])
   }
 }
