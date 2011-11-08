@@ -2,8 +2,10 @@ define bacula::job (
   $client,
   $hostname = "${::hostname}"
 ){
-  File {
+  concat::fragment {
     "/etc/bacula/clients.d/${client}.conf":
-      content +> template('job.erb');
+      target => "/etc/bacula/clients.d/${client}.conf",
+      content => template('bacula/job.erb'),
+      order => '100';
   }
 }
