@@ -20,7 +20,8 @@ class bacula (
 	$client = 'yes',
 	$server = 'no',
     $schedules = ['FullDaily', 'FullWeekly', 'IncDaily', 'IncWeekly', 'DiffDaily', 'DiffWeekly', 'FullMonthlyDiffWeeklyIncDaily', 'FullWeeklyDiffDailyIncHourly', 'FullWeeklyIncDaily'],
-    $filesets = ['Catalog', 'FullSet']
+    $filesets = ['Catalog', 'FullSet'],
+    $jobdefs = ['DefaultJob']
 ) {
 	if $server == 'yes' {
 		include bacula::director
