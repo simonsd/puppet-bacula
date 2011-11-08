@@ -1,13 +1,13 @@
 
 Job {
-	Name = "<%= hostname %>"
+	Name = "<%= name %>"
   	Client = <%= hostname %>-fd
 	JobDefs = "<%= jobdefs %>"
 	Write Bootstrap = "/var/spool/bacula/Client1.bsr"
 }
 
 Job {
-	Name = "<%= hostname %>-res"
+	Name = "<%= name %>-res"
 	Type = Restore
 	Client = <%= hostname %>-fd
 	FileSet = "FullSet"
