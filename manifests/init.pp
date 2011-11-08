@@ -29,6 +29,7 @@ class bacula (
 		include bacula::filesets
 		include bacula::schedules
     	include bacula::clients
+    	include bacula::jobdefs
 	}
 
 	if $client == 'yes' {
