@@ -1,6 +1,5 @@
 define bacula::jobdef (
   $name,
-  $type = 'Backup',
   $level = 'Incremental',
   $fileset = 'FullSet',
   $schedule = 'FullWeeklyIncDaily',
