@@ -7,7 +7,7 @@ class bacula::jobdefs {
       mode => '0640';
   }
 
-  @bacula::jobdefs {
+  @bacula::jobdef {
     'DefaultJob':
       name => 'DefaultJob';
   }

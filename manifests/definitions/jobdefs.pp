@@ -1,4 +1,4 @@
-define bacula::jobdefs (
+define bacula::jobdef (
   $name,
   $type = 'Backup',
   $level = 'Incremental',
