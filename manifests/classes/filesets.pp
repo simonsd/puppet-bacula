@@ -29,6 +29,14 @@ class bacula::filesets {
         '/.journal',
         '/.fsck'
       ];
+
+    'MysqlData':
+      name => 'MysqlData',
+      include => '/var/lib/mysql';
+
+    'Config':
+      name => 'Config',
+      include => '/etc';
   }
 
   if "${bacula::filesets}" != [] {
