@@ -1,6 +1,7 @@
 define bacula::job (
   $client,
-  $hostname = "${::hostname}"
+  $hostname = "${::hostname}",
+  $jobdefs = 'DefaultJob'
 ){
   concat::fragment {
     "/etc/bacula/clients.d/${client}.conf-${name}":

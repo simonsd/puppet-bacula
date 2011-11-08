@@ -1,7 +1,8 @@
+
 Job {
 	Name = "<%= hostname %>"
   	Client = <%= hostname %>-fd
-	JobDefs = "DefaultJob"
+	JobDefs = "<%= jobdefs %>"
 	Write Bootstrap = "/var/spool/bacula/Client1.bsr"
 }
 
