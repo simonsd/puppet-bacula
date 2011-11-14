@@ -11,7 +11,7 @@ Job {
 	Type = Restore
 	Client = <%= hostname %>-fd
 	FileSet = "FullSet"
-	Storage = File
+	Storage = <%= hostname %>-storage
 	Pool = Default
 	Messages = Standard
 	Where = /tmp/bacula-restores

@@ -10,3 +10,12 @@ Client {
 	Job Retention = 6 months				# six months
 	AutoPrune = yes							# Prune expired Jobs/Files
 }
+
+Storage {
+	Name = <%= hostname %>-storage
+	Address = <%= scope.lookupvar('bacula::storage_server') %>.<%= domain %>
+	SDPort = 9103
+	Password = "<%= scope.lookupvar('bacula::storage_password') %>"
+	Device = <%= hostname %>-sd
+	Media Type = File
+}
