@@ -1,0 +1,10 @@
+Device {
+  Name = <%= name %>
+  Media Type = File
+  Archive Device = <%= path %>
+  LabelMedia = yes;                                                           # lets Bacula label unlabeled media
+  Random Access = Yes;
+  AutomaticMount = yes;                                                       # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+}
