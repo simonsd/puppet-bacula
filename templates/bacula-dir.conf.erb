@@ -21,18 +21,8 @@ Catalog {
 }
 
 Pool {
-  Name = Full
-  Label Format = "Full"
-  Pool Type = Backup
-  Recycle = yes                       # Bacula can automatically recycle Volumes
-  AutoPrune = yes                     # Prune expired volumes
-  Volume Retention = 365 days         # one year
-  Maximum Volume jobs = 1
-}
-
-Pool {
-  Name = Incremental
-  Label Format = "Inc"
+  Name = Default
+  Label Format = "Vol"
   Pool Type = Backup
   Recycle = yes                       # Bacula can automatically recycle Volumes
   AutoPrune = yes                     # Prune expired volumes
