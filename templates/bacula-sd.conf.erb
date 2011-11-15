@@ -23,21 +23,6 @@ Director {
   Password = "<%= scope.lookupvar('bacula::director_password') %>"
 }
 
-#
-# List Storage Devices 
-#
-
-Device {
-  Name = FileStorage
-  Media Type = File
-  Archive Device = <%= scope.lookupvar('bacula::storage_dir') %>
-  LabelMedia = yes;                                                           # lets Bacula label unlabeled media
-  Random Access = Yes;
-  AutomaticMount = yes;                                                       # when device opened, read it
-  RemovableMedia = no;
-  AlwaysOpen = no;
-}
-
 # 
 # Send all messages to the Director, 
 # mount messages also are sent to the email address
@@ -47,3 +32,5 @@ Messages {
   Name = Standard
   director = <%= scope.lookupvar('bacula::director_label') %> = all
 }
+
+@|"sh -c 'for f in /etc/bacula/devices.d/*.conf; do echo @${f}; done'"
