@@ -10,7 +10,7 @@ Director {
   PidDirectory = "/var/run"
   Maximum Concurrent Jobs = 1
   Password = "<%= scope.lookupvar('bacula::director_password') %>"  # console password
-  Messages = Daemon
+  Messages = Standard
 }
 
 Catalog {
@@ -46,14 +46,6 @@ Messages {
   operatorcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: Intervention needed for %j\" %r"
   mail = <%= scope.lookupvar('bacula::admin_email') %> = all, !skipped            
   operator = <%= scope.lookupvar('bacula::operator_email') %> = mount
-  console = all, !skipped, !saved
-  append = "/var/spool/bacula/log" = all, !skipped
-}
-
-Messages {
-  Name = Daemon
-  mailcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) %r\" -s \"Bacula daemon message\" %r"
-  mail = root@localhost = all, !skipped            
   console = all, !skipped, !saved
   append = "/var/log/bacula.log" = all, !skipped
 }
