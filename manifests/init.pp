@@ -30,6 +30,7 @@ class bacula (
 		include bacula::schedules
     	include bacula::clients
     	include bacula::jobdefs
+    	include bacula::devices
 	}
 
 	if $client == 'yes' {
