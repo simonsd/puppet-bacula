@@ -1,0 +1,10 @@
+#
+# Bacula Administration Tool (bat) configuration file
+#
+
+Director {
+  Name = <%= scope.lookupvar('bacula::director_label') %>
+  DIRport = 9101
+  address = localhost
+  Password = "<%= scope.lookupvar('bacula::director_password') %>"
+}
