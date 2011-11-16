@@ -7,5 +7,7 @@ class bacula::devices {
   bacula::device {
     'catalog':
       path => '/mnt/backup/catalog';
+    "${bacula::director_server}":
+      path => "/mnt/backup/${bacula::director_server}";
   }
 }
