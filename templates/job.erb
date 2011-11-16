@@ -5,6 +5,8 @@ Job {
 	JobDefs = "<%= jobdefs %>"
 	Write Bootstrap = "/var/spool/bacula/Client1.bsr"
 	Storage = <%= hostname %>-storage
+	Full Backup Pool = <%= hostname %>FullPool
+	Incremental Backup Pool = <%= hostname %>IncPool
 }
 
 Job {

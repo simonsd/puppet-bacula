@@ -19,3 +19,23 @@ Storage {
 	Device = <%= hostname %>-sd
 	Media Type = File
 }
+
+Pool {
+	Name = <%= hostname %>FullPool
+	Label Format = <%= hostname %>-Full
+	Pool Type = Backup
+	Recycle = yes
+	Autoprune = yes
+	Volume Retention = 365 days
+	Maximum Volume Jobs = 1
+}
+
+Pool {
+	Name = <%= hostname %>IncPool
+	Label Format = <%= hostname %>-Inc
+	Pool Type = Backup
+	Recycle = yes
+	Autoprune = yes
+	Volume Retention = 365 days
+	Maximum Volume Jobs = 1
+}
