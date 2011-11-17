@@ -43,15 +43,10 @@ class bacula::fd {
     order   => 200,
   }
 
-  exec { "/etc/init.d/bacula-fd restart":
-    subscribe   => File["/etc/bacula/bacula-fd.conf"],
-    require     => File["/etc/bacula/bacula-fd.conf", "/var/lib/bacula", "/var/run/bacula"],
-    refreshonly => true;
-  }
-
   service { "bacula-fd":
     ensure  => running,
     enable  => true,
+    subscribe   => File["/etc/bacula/bacula-fd.conf"],
     require => File["/etc/bacula/bacula-fd.conf", "/var/lib/bacula", "/var/run/bacula"];
   }
 
