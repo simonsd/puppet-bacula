@@ -17,19 +17,23 @@ class bacula (
 	$dbhost = 'localhost',
 	$bweb_user = 'bacula',
 	$bweb_passwd = 'bacula',
+	$director = 'no',
+	$storage = 'no',
 	$client = 'yes',
-	$server = 'no',
     $schedules = ['FullDaily', 'FullWeekly', 'IncDaily', 'IncWeekly', 'DiffDaily', 'DiffWeekly', 'FullMonthlyDiffWeeklyIncDaily', 'FullWeeklyDiffDailyIncHourly', 'FullWeeklyIncDaily'],
     $filesets = ['Catalog', 'FullSet', 'MysqlData', 'Config'],
     $jobdefs = ['DefaultJob', 'Mysql', 'Config']
 ) {
-	if $server == 'yes' {
+	if $director == 'yes' {
 		include bacula::director
-		include bacula::storage
 		include bacula::filesets
 		include bacula::schedules
     	include bacula::clients
     	include bacula::jobdefs
+	}
+
+	if $storage == 'yes' {
+		include bacula::storage
     	include bacula::devices
 	}
 
