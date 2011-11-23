@@ -22,6 +22,7 @@ class bacula::storage::config {
       group   => "root",
       mode    => 640,
       content => template("bacula/bacula-sd.conf.erb"),
+      notify  => Service['bacula-sd'],
       require => Package["bacula-storage-mysql"];
 
     "${storage_dir}":
@@ -35,11 +36,6 @@ class bacula::storage::config {
     target  => "/etc/sysconfig/iptables",
     source  => 'puppet:///modules/bacula/iptables.storage',
     order   => 200,
-  }
-
-  exec { "/etc/init.d/bacula-sd restart":
-    subscribe   => File["/etc/bacula/bacula-sd.conf"],
-    refreshonly => true;
   }
 }
 
