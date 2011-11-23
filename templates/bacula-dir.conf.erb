@@ -58,9 +58,9 @@ Job {
 
 Storage {
   Name = catalog-storage
-  Address = <%= scope.lookupvar('bacula::storage_server') %>.<%= domain %>
+  Address = <%= scope.lookupvar('bacula::default_storage_server') %>.<%= domain %>
   SDPort = 9103
-  Password = "<%= scope.lookupvar('bacula::storage_password') %>"
+  Password = "<%= scope.lookupvar('bacula::default_storage_password') %>"
   Device = catalog-sd
   Media Type = File
 }
