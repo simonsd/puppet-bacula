@@ -13,9 +13,9 @@ Client {
 
 Storage {
 	Name = <%= hostname %>-storage
-	Address = <%= scope.lookupvar('bacula::storage_server') %>.<%= domain %>
+	Address = <%= storage_server %>
 	SDPort = 9103
-	Password = "<%= scope.lookupvar('bacula::storage_password') %>"
+	Password = "<%= storage_password %>"
 	Device = <%= hostname %>-sd
 	Media Type = File
 }

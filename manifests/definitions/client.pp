@@ -1,6 +1,8 @@
 define bacula::client (
 	$fqdn,
-	$hostname
+	$hostname,
+	$storage_server = "${bacula::storage_server}.${domain}"
+	$storage_password = "${bacula::storage_password}"
 ) {
   concat {
     "/etc/bacula/clients.d/${hostname}.conf":
