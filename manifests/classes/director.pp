@@ -45,7 +45,8 @@ class bacula::director {
   mysql_db {
 	"$bacula::dbname":
 		user => "$bacula::dbuser",
-		pass => "$bacula::dbpassword";
+		pass => "$bacula::dbpassword",
+		host => "$bacula::dbhost";
   }
 
   exec {
