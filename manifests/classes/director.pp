@@ -49,19 +49,11 @@ class bacula::director {
   }
 
   exec {
-/*
-    "bacula-db-privileges":
-      command   => "/usr/libexec/bacula/grant_bacula_privileges -uroot -p$bacula::dbpassword",
-      subscribe => Package["bacula-director-mysql"],
-      unless    => "/usr/bin/mysql -uroot -p$mysql_password -e \"select * from information_schema.user_privileges\" | grep $bacula::dbname",
-      before    => Mysql_db["$bacula::dbname"];
-*/
-
     "bacula-db-tables":
       command     => "/usr/libexec/bacula/make_bacula_tables -u$bacula::dbuser -p$bacula::dbpassword",
       environment => "db_name=$bacula::dbname",
       subscribe   => Package["bacula-director-mysql"],
-#      require     => Exec['bacula-db-privileges'],
+      require     => Mysql_db["${bacula::dbname}"],
       unless      => "/usr/bin/mysqlshow -uroot -p$bacula::dbpassword $bacula::dbname | grep Version",
       before      => Service["bacula-dir"];
   }
