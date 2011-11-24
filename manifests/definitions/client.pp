@@ -19,4 +19,9 @@ define bacula::client (
       content => template('bacula/client.erb'),
       order => 01;
   }
+
+  @@bacula::device {
+    "${hostname}":
+      path => "/mnt/backup/${hostname}";
+  }
 }
