@@ -32,10 +32,9 @@ class bacula::storage::config {
       mode    => 700;
   }
 
-  concat::fragment { "/etc/sysconfig/iptables.bacula.storage":
-    target  => "/etc/sysconfig/iptables",
-    source  => 'puppet:///modules/bacula/iptables.storage',
-    order   => 200,
+  iptables::rule {
+    'bacula-sd':
+      dport => '9103';
   }
 }
 

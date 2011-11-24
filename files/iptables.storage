@@ -1,2 +1,0 @@
-# Open port for bacula storage daemon
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 9103 -j ACCEPT

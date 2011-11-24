@@ -37,10 +37,9 @@ class bacula::fd {
       mode    => 644;
   }
 
-  concat::fragment { "/etc/sysconfig/iptables.bacula.client":
-    target  => "/etc/sysconfig/iptables",
-    source  => 'puppet:///modules/bacula/iptables.client',
-    order   => 200,
+  iptables::rule {
+    'bacula-fd':
+      dport => '9102';
   }
 
   service { "bacula-fd":

@@ -36,10 +36,9 @@ class bacula::director {
       content => template('bacula/bacula-dir.conf.erb');
   }
 
-  concat::fragment { "/etc/sysconfig/iptables.bacula.director":
-    target	=> "/etc/sysconfig/iptables",
-    source 	=> 'puppet:///modules/bacula/iptables.director',
-    order	=> 200,
+  iptables::rule {
+    'bacula-dir':
+      dport => '9101';
   }
 
   mysql_db {
