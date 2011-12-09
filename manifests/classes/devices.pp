@@ -4,10 +4,8 @@ class bacula::devices {
       ensure => directory;
   }
 
-  bacula::device {
+  @@bacula::device {
     'catalog':
       path => '/mnt/backup/catalog';
-    "${bacula::director_server}":
-      path => "/mnt/backup/${bacula::director_server}";
   }
 }
