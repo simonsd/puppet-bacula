@@ -24,6 +24,8 @@ class bacula (
     $filesets = ['Catalog', 'FullSet', 'MysqlData', 'Config'],
     $jobdefs = ['DefaultJob', 'Mysql', 'Config']
 ) {
+	include iptables
+
 	if $director == 'yes' {
 		include bacula::director
 		include bacula::filesets
