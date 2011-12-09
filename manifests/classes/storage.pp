@@ -37,6 +37,8 @@ class bacula::storage::config {
     'bacula-sd':
       dport => '9103';
   }
+
+  Bacula::Device <<| |>>
 }
 
 class bacula::storage::service {
