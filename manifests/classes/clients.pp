@@ -6,10 +6,4 @@ class bacula::clients {
       group => root,
       mode => 0640;
   }
-
-  bacula::client {
-    'bacula':
-      fqdn => "${bacula::director_server}.${domain}",
-      hostname => "${bacula::director_server}";
-  }
 }
