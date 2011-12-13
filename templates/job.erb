@@ -4,18 +4,25 @@ Job {
   	Client = <%= hostname %>-fd
 	JobDefs = "<%= jobdefs %>"
 	Write Bootstrap = "/var/spool/bacula/Client1.bsr"
-	Storage = <%= hostname %>-storage
-	Full Backup Pool = <%= hostname %>FullPool
-	Incremental Backup Pool = <%= hostname %>IncPool
+<% if has_variable('fileset') -%>
+	Fileset = <%= fileset %>
+<% end -%>
+	Storage = <%= storage %>
+	Full Backup Pool = <%= full_pool %>
+	Incremental Backup Pool = <%= incremental_pool %>
+<% if has_variable('schedule') -%>
+	Schedule = <%= schedule %>
+<% end -%>
 }
 
 Job {
 	Name = "<%= name %>-res"
-	Type = Restore
 	Client = <%= hostname %>-fd
+	Type = Restore
 	FileSet = "FullSet"
-	Storage = <%= hostname %>-storage
-	Pool = Default
+	Storage = <%= storage %>
+	Full Backup Pool = <%= hostname %>FullPool
+	Incremental Backup Pool = <%= hostname %>IncPool
 	Messages = Standard
 	Where = /tmp/bacula-restores
 }
