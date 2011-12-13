@@ -13,6 +13,18 @@ Job {
 <% if has_variable('schedule') -%>
 	Schedule = <%= schedule %>
 <% end -%>
+<% if has_variable('client_run_before_job') -%>
+    Client Run Before Job = "<%= client_run_before_job %>"
+<% end -%>
+<% if has_variable('client_run_after_job') -%>
+    Client Run After Job = "<%= client_run_after_job %>"
+<% end -%>
+<% if has_variable('server_run_before_job') -%>
+    Client Run Before Job = "<%= server_run_before_job %>"
+<% end -%>
+<% if has_variable('server_run_after_job') -%>
+    Client Run Before Job = "<%= server_run_after_job %>"
+<% end -%>
 }
 
 Job {
