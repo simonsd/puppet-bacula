@@ -33,8 +33,7 @@ Job {
 	Type = Restore
 	FileSet = "FullSet"
 	Storage = <%= storage %>
-	Full Backup Pool = <%= hostname %>FullPool
-	Incremental Backup Pool = <%= hostname %>IncPool
+	Pool = <%= full_pool %>
 	Messages = Standard
 	Where = /tmp/bacula-restores
 }
