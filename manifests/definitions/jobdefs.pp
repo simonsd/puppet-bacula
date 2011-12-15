@@ -2,7 +2,7 @@ define bacula::jobdef (
   $name,
   $level = 'Incremental',
   $fileset = 'FullSet',
-  $schedule = 'FullWeeklyIncDaily',
+  $schedule = 'FullWeekly',
   $messages = 'Standard',
   $pool = 'Default',
   $priority = '10'
