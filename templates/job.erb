@@ -10,8 +10,8 @@ Job {
 	Storage = <%= storage %>
 	Full Backup Pool = <%= full_pool %>
 	Incremental Backup Pool = <%= incremental_pool %>
-<% if has_variable?('schedule') -%>
-	Schedule = <%= schedule %>
+<% if has_variable?('bschedule') -%>
+	Schedule = <%= bschedule %>
 <% end -%>
 <% if has_variable?('client_run_before_job') -%>
     Client Run Before Job = "<%= client_run_before_job %>"
