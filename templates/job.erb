@@ -4,25 +4,25 @@ Job {
   	Client = <%= hostname %>-fd
 	JobDefs = "<%= jobdefs %>"
 	Write Bootstrap = "/var/spool/bacula/Client1.bsr"
-<% if has_variable?('fileset') -%>
+<% if fileset -%>
 	Fileset = <%= fileset %>
 <% end -%>
 	Storage = <%= storage %>
 	Full Backup Pool = <%= full_pool %>
 	Incremental Backup Pool = <%= incremental_pool %>
-<% if has_variable?('bschedule') -%>
+<% if bschedule -%>
 	Schedule = <%= bschedule %>
 <% end -%>
-<% if has_variable?('client_run_before_job') -%>
+<% if client_run_before_job -%>
     Client Run Before Job = "<%= client_run_before_job %>"
 <% end -%>
-<% if has_variable?('client_run_after_job') -%>
+<% if client_run_after_job -%>
     Client Run After Job = "<%= client_run_after_job %>"
 <% end -%>
-<% if has_variable?('server_run_before_job') -%>
+<% if server_run_before_job -%>
     Run Before Job = "<%= server_run_before_job %>"
 <% end -%>
-<% if has_variable?('server_run_after_job') -%>
+<% if server_run_after_job -%>
     Run After Job = "<%= server_run_after_job %>"
 <% end -%>
 }
