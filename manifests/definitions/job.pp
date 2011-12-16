@@ -1,17 +1,17 @@
 define bacula::job (
   $client,
   $hostname = "${::hostname}",
-  $fileset = '',
+  $fileset = false,
   $storage = "${hostname}-storage",
   $full_pool = "${hostname}FullPool",
   $incremental_pool = "${hostname}IncPool",
 # do not rename this to schedule, it'll conflict with the schedule param
 # for the file resource in the concat module ;)
-  $bschedule = '',
-  $client_run_before_job = '',
-  $client_run_after_job = '',
-  $server_run_before_job = '',
-  $server_run_after_job = '',
+  $bschedule = false,
+  $client_run_before_job = false,
+  $client_run_after_job = false,
+  $server_run_before_job = false,
+  $server_run_after_job = false,
   $jobdefs = 'DefaultJob'
 ){
   concat::fragment {
