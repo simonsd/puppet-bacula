@@ -64,4 +64,5 @@ class bacula::director {
   }
 
   Bacula::Client <<| |>>
+  Bacula::Fileset <<| |>>
 }
