@@ -9,11 +9,11 @@ define bacula::jobdef (
 ){
   file {
     "/etc/bacula/jobdefs.d/${name}.conf":
-      ensure => present,
-      owner => 'root',
-      group => 'root',
-      mode => '0640',
-      notify => Service['bacula-dir'],
+      ensure  => 'present',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0640',
+      notify  => Service['bacula-dir'],
       content => template('bacula/jobdefs.erb');
   }
 }

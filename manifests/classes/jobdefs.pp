@@ -1,10 +1,10 @@
 class bacula::jobdefs {
   file {
     '/etc/bacula/jobdefs.d':
-      ensure => directory,
-      owner => root,
-      group => root,
-      mode => '0640';
+      ensure => 'directory',
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0640';
   }
 
   @bacula::jobdef {
@@ -12,11 +12,11 @@ class bacula::jobdefs {
       name => 'DefaultJob';
 
     'Mysql':
-      name => 'Mysql',
+      name    => 'Mysql',
       fileset => 'MysqlData';
 
     'Config':
-      name => 'Config',
+      name    => 'Config',
       fileset => 'Config';
   }
 

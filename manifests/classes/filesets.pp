@@ -1,19 +1,19 @@
 class bacula::filesets {
   file {
     '/etc/bacula/filesets.d':
-      ensure => directory,
-      owner => root,
-      group => root,
-      mode => 0640;
+      ensure => 'directory',
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0640';
   }
 
   @bacula::fileset {
     'Catalog':
-      name => 'Catalog',
+      name    => 'Catalog',
       include => '/var/spool/bacula/bacula.sql';
 
     'FullSet':
-      name => 'FullSet',
+      name    => 'FullSet',
       include => [
         '/',
         '/boot',
@@ -31,11 +31,11 @@ class bacula::filesets {
       ];
 
     'MysqlData':
-      name => 'MysqlData',
+      name    => 'MysqlData',
       include => '/var/lib/mysql';
 
     'Config':
-      name => 'Config',
+      name    => 'Config',
       include => '/etc';
   }
 

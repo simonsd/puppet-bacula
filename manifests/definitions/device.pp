@@ -6,7 +6,7 @@ define bacula::device (
       ensure => directory;
 
     "/etc/bacula/devices.d/${name}.conf":
-      ensure => present,
+      ensure  => present,
       content => template('bacula/device.conf.erb');
   }
 }
