@@ -10,7 +10,7 @@ class bacula::filesets {
   @bacula::fileset {
     'Catalog':
       name    => 'Catalog',
-      include => '/var/spool/bacula/bacula.sql';
+      include => "${bacula::working_dir}/bacula.sql";
 
     'FullSet':
       name    => 'FullSet',

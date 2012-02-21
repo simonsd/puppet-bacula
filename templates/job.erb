@@ -3,7 +3,7 @@ Job {
 	Name = "<%= name %>"
   	Client = <%= hostname %>-fd
 	JobDefs = "<%= jobdefs %>"
-	Write Bootstrap = "/var/spool/bacula/Client1.bsr"
+	Write Bootstrap = "<%= scope.lookupvar('bacula::working_dir') %>/Client1.bsr"
 <% if fileset -%>
 	Fileset = <%= fileset %>
 <% end -%>

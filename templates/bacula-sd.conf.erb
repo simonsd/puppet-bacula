@@ -9,7 +9,7 @@
 Storage {
   Name = <%= scope.lookupvar('bacula::storage_label') %>
   SDPort = 9103                                                             # Director's port
-  WorkingDirectory = "/var/spool/bacula"
+  WorkingDirectory = "<%= scope.lookupvar('bacula::working_dir') %>"
   Pid Directory = "/var/run"
   Maximum Concurrent Jobs = 20
 }

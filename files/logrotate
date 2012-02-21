@@ -2,7 +2,7 @@
 
 # Bacula logrotate script
 
-/var/log/bacula/*.log /var/spool/bacula/log /var/log/bacula.log {
+/var/log/bacula/*.log <%= scope.lookupvar('bacula::working_dir') %>/log /var/log/bacula.log {
   daily
   rotate 4
   notifempty

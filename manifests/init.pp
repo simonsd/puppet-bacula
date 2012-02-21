@@ -11,6 +11,10 @@ class bacula (
   $default_storage_label = 'bacula-sd',
   $default_storage_password = 'bacula',
   $storage_dir = '/mnt/backup',
+  $working_dir = $::operatingsystem ? {
+    default => '/var/spool/bacula',
+    debian  => '/var/lib/bacula',
+  },
   $dbname = 'bacula',
   $dbuser = 'bacula',
   $dbpassword = 'bacula',
