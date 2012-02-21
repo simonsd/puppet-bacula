@@ -7,7 +7,11 @@
 #
 
 Storage {
-  Name = <%= scope.lookupvar('bacula::storage_label') %>
+  Name = <% if has_variable?('storage_label') -%>
+<%= scope.lookupvar('storage_label') %>
+<% else -%>
+<%= scope.lookupvar('bacula::default_storage_label') %>
+<% end -%>
   SDPort = 9103                                                             # Director's port
   WorkingDirectory = "<%= scope.lookupvar('bacula::working_dir') %>"
   Pid Directory = "/var/run"
