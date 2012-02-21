@@ -35,6 +35,11 @@ class bacula::fd {
       owner   => 'root',
       group   => 'root',
       mode    => '0644';
+
+    '/var/log/bacula.log':
+      owner   => 'bacula',
+      group   => 'bacula',
+      mode    => '0644';
   }
 
   iptables::rule {
