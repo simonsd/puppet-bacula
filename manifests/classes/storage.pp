@@ -51,8 +51,12 @@ class bacula::storage::config {
 
 class bacula::storage::service {
   service { 'bacula-sd':
-    ensure  => running,
-    enable  => true,
-    require => [ Package[bacula-storage-mysql], File['/etc/bacula/bacula-sd.conf'] ];
+    ensure    => running,
+    enable    => true,
+    hasstatus => $::operatingsystem ? {
+      default => undef,
+      debian  => false,
+    },
+    require   => [ Package[bacula-storage-mysql], File['/etc/bacula/bacula-sd.conf'] ];
   }
 }
