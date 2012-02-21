@@ -10,9 +10,17 @@ class bacula::storage {
 class bacula::storage::install {
   package {
     'bacula-storage-mysql':
-      ensure => installed;
+      ensure => installed,
+      name   => $::operatingsystem ? {
+        default => 'bacula-storage-mysql',
+        debian  => 'bacula-sd-mysql',
+    };
     'nfs-utils':
-      ensure => installed;
+      ensure => installed,
+      name   => $::operatingsystem ? {
+        default => 'nfs-utils',
+        debian  => 'nfs-client',
+    };
   }
 }
 

@@ -49,7 +49,10 @@ class bacula::director {
 
   exec {
     'bacula-db-tables':
-      command     => "/usr/libexec/bacula/make_bacula_tables -u$bacula::dbuser -p$bacula::dbpassword",
+      command     => $::operatingsystem ? {
+        centos => "/usr/libexec/bacula/make_bacula_tables -u$bacula::dbuser -p$bacula::dbpassword",
+        debian => "/usr/share/bacula-director/make_mysql_tables -u$bacula::dbuser -p$bacula::dbpassword",
+      },
       environment => "db_name=$bacula::dbname",
       subscribe   => Package['bacula-director-mysql'],
       require     => Mysql_db["${bacula::dbname}"],
@@ -58,6 +61,10 @@ class bacula::director {
   }
 
   service { 'bacula-dir':
+    name    => $::operatingsystem ? {
+      default => 'bacula-dir',
+      debian  => 'bacula-director',
+    },
     ensure  => 'running',
     enable  => 'true',
     require => [ Package[bacula-director-mysql], Service['mysqld'] ];
