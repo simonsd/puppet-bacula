@@ -61,13 +61,17 @@ class bacula::director {
   }
 
   service { 'bacula-dir':
-    name    => $::operatingsystem ? {
+    name      => $::operatingsystem ? {
       default => 'bacula-dir',
       debian  => 'bacula-director',
     },
-    ensure  => 'running',
-    enable  => 'true',
-    require => [ Package[bacula-director-mysql], Service['mysqld'] ];
+    ensure    => 'running',
+    enable    => 'true',
+    hasstatus => $::operatingsystem ? {
+      default => undef,
+      debian  => false,
+    },
+    require   => [ Package[bacula-director-mysql], Service['mysqld'] ];
   }
 
   Bacula::Client <<| |>>
