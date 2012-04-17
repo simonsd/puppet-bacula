@@ -36,7 +36,14 @@ class bacula::fd {
       group   => 'root',
       mode    => '0644';
 
+    '/var/log/bacula':
+      ensure  => present,
+      owner   => 'bacula',
+      group   => 'bacula',
+      mode    => '0644';
+
     '/var/log/bacula.log':
+      ensure  => present,
       owner   => 'bacula',
       group   => 'bacula',
       mode    => '0644';
