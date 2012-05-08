@@ -31,7 +31,7 @@ class bacula::fd {
       mode    => '0700';
 
     '/etc/logrotate.d/bacula':
-      source  => 'puppet:///modules/bacula/logrotate',
+      content => template('bacula/logrotate.erb'),
       owner   => 'root',
       group   => 'root',
       mode    => '0644';
