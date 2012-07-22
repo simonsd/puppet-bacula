@@ -1,7 +1,11 @@
+### File managed with puppet ###
+### Served by:        '<%= scope.lookupvar('::servername') %>'
+### Module:           '<%= scope.to_hash['module_name'] %>'
+### Template source:  '<%= template_source %>'
 
 Job {
 	Name = "<%= name %>"
-  	Client = <%= hostname %>-fd
+  Client = <%= hostname %>-fd
 	JobDefs = "<%= jobdefs %>"
 	Write Bootstrap = "<%= scope.lookupvar('bacula::working_dir') %>/Client1.bsr"
 <% if fileset -%>

@@ -1,6 +1,7 @@
-#
-# Managed by puppet
-#
+### File managed with puppet ###
+### Served by:        '<%= scope.lookupvar('::servername') %>'
+### Module:           '<%= scope.to_hash['module_name'] %>'
+### Template source:  '<%= template_source %>'
 
 Director {
   Name = <%= scope.lookupvar('bacula::director_label') %>
@@ -15,8 +16,8 @@ Director {
 
 Catalog {
   Name = MyCatalog
-  dbname = <%= scope.lookupvar('bacula::dbname') %>; 
-  user = <%= scope.lookupvar('bacula::dbuser') %>; 
+  dbname = <%= scope.lookupvar('bacula::dbname') %>;
+  user = <%= scope.lookupvar('bacula::dbuser') %>;
   password = "<%= scope.lookupvar('bacula::dbpassword') %>";
 }
 
@@ -34,7 +35,7 @@ Messages {
   Name = Standard
   mailcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: %t %e of %c %l\" %r"
   operatorcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: Intervention needed for %j\" %r"
-  mail = <%= scope.lookupvar('bacula::admin_email') %> = all, !skipped            
+  mail = <%= scope.lookupvar('bacula::admin_email') %> = all, !skipped
   operator = <%= scope.lookupvar('bacula::operator_email') %> = mount
   console = all, !skipped, !saved
   append = "/var/log/bacula.log" = all, !skipped

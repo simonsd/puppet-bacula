@@ -1,43 +1,48 @@
+### File managed with puppet ###
+### Served by:        '<%= scope.lookupvar('::servername') %>'
+### Module:           '<%= scope.to_hash['module_name'] %>'
+### Template source:  '<%= template_source %>'
+
 # <%= fqdn %> - Client (File Services) to backup / restore
 
 Client {
-	Name = <%= hostname %>-fd
-	Address = <%= fqdn %>
-	FDPort = 9102
-	Catalog = MyCatalog
-	Password = "<%= storage_password %>"	# password for FileDaemon
-	File Retention = 30 days				# 30 days
-	Job Retention = 6 months				# six months
-	AutoPrune = yes							# Prune expired Jobs/Files
+  Name = <%= hostname %>-fd
+  Address = <%= fqdn %>
+  FDPort = 9102
+  Catalog = MyCatalog
+  Password = "<%= storage_password %>"  # password for FileDaemon
+  File Retention = 30 days        # 30 days
+  Job Retention = 6 months        # six months
+  AutoPrune = yes                 # Prune expired Jobs/Files
 }
 
 Storage {
-	Name = <%= hostname %>-storage
-	Address = <%= storage_server %>
-	SDPort = 9103
-	Password = "<%= storage_password %>"
-	Device = <%= hostname %>-sd
-	Media Type = File
+  Name = <%= hostname %>-storage
+  Address = <%= storage_server %>
+  SDPort = 9103
+  Password = "<%= storage_password %>"
+  Device = <%= hostname %>-sd
+  Media Type = File
 }
 
 Pool {
-	Name = <%= hostname %>FullPool
-	Label Format = <%= hostname %>-Full
-	Pool Type = Backup
-	Recycle = yes
-	Autoprune = yes
-	Purge Oldest Volume = yes
-	Maximum Volume Jobs = 1
-	Maximum Volumes = 4
+  Name = <%= hostname %>FullPool
+  Label Format = <%= hostname %>-Full
+  Pool Type = Backup
+  Recycle = yes
+  Autoprune = yes
+  Purge Oldest Volume = yes
+  Maximum Volume Jobs = 1
+  Maximum Volumes = 4
 }
 
 Pool {
-	Name = <%= hostname %>IncPool
-	Label Format = <%= hostname %>-Inc
-	Pool Type = Backup
-	Recycle = yes
-	Autoprune = yes
-	Purge Oldest Volume = yes
-	Maximum Volume Jobs = 1
-	Maximum Volumes = 7
+  Name = <%= hostname %>IncPool
+  Label Format = <%= hostname %>-Inc
+  Pool Type = Backup
+  Recycle = yes
+  Autoprune = yes
+  Purge Oldest Volume = yes
+  Maximum Volume Jobs = 1
+  Maximum Volumes = 7
 }

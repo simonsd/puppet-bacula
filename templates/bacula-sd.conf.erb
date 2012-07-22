@@ -1,6 +1,7 @@
-#
-# Managed by puppet
-#
+### File managed with puppet ###
+### Served by:        '<%= scope.lookupvar('::servername') %>'
+### Module:           '<%= scope.to_hash['module_name'] %>'
+### Template source:  '<%= template_source %>'
 
 #
 # Storage Daemon configuration
@@ -27,8 +28,8 @@ Director {
   Password = "<%= scope.lookupvar('bacula::director_password') %>"
 }
 
-# 
-# Send all messages to the Director, 
+#
+# Send all messages to the Director,
 # mount messages also are sent to the email address
 #
 
