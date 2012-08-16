@@ -39,9 +39,8 @@ class bacula::storage::config {
       mode    => '0700';
   }
 
-  iptables::rule {
-    'bacula-sd':
-      dport => '9103';
+  firewall{'022 bacula-sd':
+    dport => '9103',
   }
 
   Bacula::Device <<| |>>

@@ -49,9 +49,8 @@ class bacula::fd {
       mode    => '0644';
   }
 
-  iptables::rule {
-    'bacula-fd':
-      dport => '9102';
+  firewall{'021 bacula-fd':
+    dport => '9102',
   }
 
   service { 'bacula-fd':
