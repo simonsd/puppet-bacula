@@ -37,7 +37,8 @@ class bacula::director {
   }
 
   firewall{'020 bacula-dir':
-    dport => '9101',
+    dport  => '9101',
+    action => 'accept',
   }
 
   mysql_db {

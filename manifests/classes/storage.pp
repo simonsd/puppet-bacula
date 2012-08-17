@@ -40,7 +40,8 @@ class bacula::storage::config {
   }
 
   firewall{'022 bacula-sd':
-    dport => '9103',
+    dport  => '9103',
+    action => 'accept',
   }
 
   Bacula::Device <<| |>>

@@ -50,7 +50,8 @@ class bacula::fd {
   }
 
   firewall{'021 bacula-fd':
-    dport => '9102',
+    dport  => '9102',
+    action => 'accept',
   }
 
   service { 'bacula-fd':
