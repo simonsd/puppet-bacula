@@ -1,4 +1,9 @@
+# == Todo:
+#
+# TODO: Document
+#
 class bacula::filesets {
+
   file {
     '/etc/bacula/filesets.d':
       ensure => 'directory',
@@ -10,7 +15,7 @@ class bacula::filesets {
   @bacula::fileset {
     'Catalog':
       name    => 'Catalog',
-      include => "${bacula::working_dir}/bacula.sql";
+      include => "${::bacula::working_dir}/bacula.sql";
 
     'FullSet':
       name    => 'FullSet',
@@ -39,7 +44,7 @@ class bacula::filesets {
       include => '/etc';
   }
 
-  if "${bacula::filesets}" != [] {
-    realize(Bacula::Fileset[$bacula::filesets])
+  if $::bacula::filesets != [] {
+    realize(Bacula::Fileset[$::bacula::filesets])
   }
 }
