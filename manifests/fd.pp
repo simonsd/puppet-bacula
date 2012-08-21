@@ -2,7 +2,7 @@
 
 class bacula::fd {
   package { 'bacula-client':
-    ensure => latest
+    ensure => latest,
   }
 
   file {
@@ -62,8 +62,8 @@ class bacula::fd {
   }
 
   # Export resource for director
-  @@bacula::client { "${::fqdn}":
-    fqdn     => "${::fqdn}",
-    hostname => "${::hostname}",
+  @@bacula::client { $::fqdn:
+    fqdn     => $::fqdn,
+    hostname => $::hostname,
   }
 }
