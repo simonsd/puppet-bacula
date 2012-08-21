@@ -30,7 +30,7 @@ class bacula::storage::config {
       notify  => Service['bacula-sd'],
       require => Package['bacula-storage-mysql'];
 
-    "${storage_dir}":
+    $::bacula::storage_dir:
       ensure  => directory,
       mode    => '0700';
   }
