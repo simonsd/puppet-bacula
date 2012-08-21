@@ -67,12 +67,3 @@ class bacula::fd {
     hostname => "${::hostname}",
   }
 }
-
-class bacula::fd::xtrabackup {
-  include repo::percona
-
-  package { 'xtrabackup':
-    ensure   => 'latest',
-    require  => Exec['percona_repo_rpm'];
-  }
-}

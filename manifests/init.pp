@@ -1,6 +1,3 @@
-import 'classes/*'
-import 'definitions/*'
-
 class bacula (
   $admin_email,
   $operator_email,
