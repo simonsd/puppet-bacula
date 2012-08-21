@@ -1,11 +1,17 @@
 # /etc/puppet/modules/bacula/manifests/director.pp
-
+#
+# TODO: Remove include concat::setup and replace with require.
+# TODO: Change commands to templates.
+# TODO: Put some stuff in params.
+# TODO: Remove firewall rules / put them in a split off class (make it optional)
+# TODO: Update documentation.
+#
 class bacula::director {
   include concat::setup
 
   package { 'bacula-director-mysql':
     ensure   => 'latest',
-    require  => Package['mysql-server'];
+    require  => Package['mysql-server'],
   }
 
   file {
@@ -41,22 +47,21 @@ class bacula::director {
     action => 'accept',
   }
 
-  mysql_db {
-  "$bacula::dbname":
-    user => "$bacula::dbuser",
-    host => "$bacula::dbhost";
+  mysql_db { $::bacula::dbname:
+    user => $::bacula::dbuser,
+    host => $::bacula::dbhost;
   }
 
   exec {
     'bacula-db-tables':
       command     => $::operatingsystem ? {
-        centos => "/usr/libexec/bacula/make_bacula_tables -u$bacula::dbuser -p$bacula::dbpassword",
-        debian => "/usr/share/bacula-director/make_mysql_tables -u$bacula::dbuser -p$bacula::dbpassword",
+        centos => "/usr/libexec/bacula/make_bacula_tables -u${::bacula::dbuser} -p${::bacula::dbpassword}",
+        debian => "/usr/share/bacula-director/make_mysql_tables -u${::bacula::dbuser} -p${::bacula::dbpassword}",
       },
-      environment => "db_name=$bacula::dbname",
+      environment => "db_name=${::bacula::dbname}",
       subscribe   => Package['bacula-director-mysql'],
-      require     => Mysql_db["${bacula::dbname}"],
-      unless      => "/usr/bin/mysqlshow -uroot -p$bacula::dbpassword $bacula::dbname | grep Version",
+      require     => Mysql_db[$::bacula::dbname],
+      unless      => "/usr/bin/mysqlshow -uroot -p${::bacula::dbpassword} ${::bacula::dbname} | grep Version",
       before      => Service['bacula-dir'];
   }
 
@@ -66,12 +71,15 @@ class bacula::director {
       debian  => 'bacula-director',
     },
     ensure    => 'running',
-    enable    => 'true',
+    enable    => true,
     hasstatus => $::operatingsystem ? {
       default => undef,
       debian  => false,
     },
-    require   => [ Package[bacula-director-mysql], Service['mysqld'] ];
+    require   => [
+      Package['bacula-director-mysql'],
+      Service['mysqld']
+    ],
   }
 
   Bacula::Client <<| |>>
