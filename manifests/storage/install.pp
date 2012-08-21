@@ -19,20 +19,29 @@
 # == Todo:
 #
 # TODO: Update documentation
+# TODO: Remove nfs package installation from here.
+#       Depend on whatever nfs module to do this.
+# TODO: Put the packages in a params class.
 #
 class bacula::storage::install {
-  package {
-    'bacula-storage-mysql':
-      ensure => installed,
-      name   => $::operatingsystem ? {
-        default => 'bacula-storage-mysql',
-        debian  => 'bacula-sd-mysql',
-    };
-    'nfs-utils':
-      ensure => installed,
-      name   => $::operatingsystem ? {
-        default => 'nfs-utils',
-        debian  => 'nfs-client',
-    };
+
+  ## Packages we need to install.
+  $bacula_storage_mysql_pkg = $::operatingsystem ? {
+    default => 'bacula-storage-mysql',
+    debian  => 'bacula-sd-mysql',
+  }
+  $nfs_utils_pkg = $::operatingsystem ? {
+    default => 'nfs-utils',
+    debian  => 'nfs-client',
+  }
+
+
+  package {'bacula-storage-mysql':
+    ensure => installed,
+    name   => $bacula_storage_mysql_pkg,
+  }
+  package {'nfs-utils':
+    ensure => installed,
+    name   => $nfs_utils_pkg,
   }
 }
