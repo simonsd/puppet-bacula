@@ -1,10 +1,21 @@
 # /etc/puppet/modules/bacula/manifests/init.pp
-
+#
+# TODO: Remove dependency on yum repositories.
+# TODO: Change include apache to require apache (with maybe some magic arround)
+# TODO: Move commands into templates.
+# TODO: Fix documentation
+#
 class bacula::bweb {
   include apache
   include repo::epel
   include repo::rpmforge
   include devel::make
+
+  $required_packages = [
+    'make', 'httpd',
+    'perl-GD-Graph3d', 'perl-HTML-Template', 'perl-Expect',
+    'perl-Time-modules', 'perl-Date-Calc', 'perl-Test-Base','perl-CGI',
+  ]
 
   file {
     '/usr/tar':
@@ -18,7 +29,7 @@ class bacula::bweb {
       group   => 'git',
       mode    => '0755',
       source  => 'puppet:///modules/bacula/install_bweb',
-      require => Package[make,httpd,perl-GD-Graph3d,perl-HTML-Template,perl-Expect,perl-Time-modules,perl-Date-Calc,perl-Test-Base,perl-CGI];
+      require => Package[$required_packages];
 
     '/etc/bacula/bweb.conf':
       owner   => 'root',
@@ -49,10 +60,10 @@ class bacula::bweb {
       require   => Exec['bweb-tar'];
 
     'bweb-mysql':
-      command   => "/usr/bin/mysql $bacula::dbname < /usr/src/bacula-gui-5.0.2/bweb/script/bweb-mysql.sql",
+      command   => "/usr/bin/mysql ${::bacula::dbname} < /usr/src/bacula-gui-5.0.2/bweb/script/bweb-mysql.sql",
       subscribe => Exec['bweb-src'],
       require   => [ Exec['bweb-tar'], Class['mysql::server::service'] ],
-      unless    => "/usr/bin/mysqlshow $bacula::dbname | grep bweb_user",
+      unless    => "/usr/bin/mysqlshow ${::bacula::dbname} | grep bweb_user",
       before    => Exec['bacula-db-tables'];
 
     'bweb-inst':
@@ -62,8 +73,8 @@ class bacula::bweb {
       subscribe => File['/usr/src/bacula-gui-5.0.2/bweb/install_bweb'];
 
     'bweb_htpasswd':
-      unless  => "/bin/grep $bacula::bweb_user /etc/bacula/htpasswd.users",
-      command => "/usr/bin/htpasswd -bc /etc/bacula/htpasswd.users $bacula::bweb_user $bacula::bweb_passwd",
+      unless  => "/bin/grep ${::bacula::bweb_user} /etc/bacula/htpasswd.users",
+      command => "/usr/bin/htpasswd -bc /etc/bacula/htpasswd.users ${::bacula::bweb_user} ${::bacula::bweb_passwd}",
       require => Class['apache::install'],
       notify  => Class['apache::service'];
   }
