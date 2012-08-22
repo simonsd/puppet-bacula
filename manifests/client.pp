@@ -1,3 +1,8 @@
+# == Todo:
+#
+# TODO: Maybe we need to use other param names for fqdn and hostname.
+#       These are also top scope variables: avoid confusion where possible
+#
 define bacula::client (
   $fqdn,
   $hostname,
@@ -6,7 +11,7 @@ define bacula::client (
   $storage_password = $::bacula::default_storage_password
 ) {
   concat {
-    "/etc/bacula/clients.d/${::hostname}.conf":
+    "/etc/bacula/clients.d/${hostname}.conf":
       owner  => 'root',
       group  => 'root',
       mode   => '0640',
@@ -14,14 +19,14 @@ define bacula::client (
   }
 
   concat::fragment {
-    "/etc/bacula/clients.d/${::hostname}.conf-client":
-      target  => "/etc/bacula/clients.d/${::hostname}.conf",
+    "/etc/bacula/clients.d/${hostname}.conf-client":
+      target  => "/etc/bacula/clients.d/${hostname}.conf",
       content => template('bacula/client.erb'),
       order   => 01;
   }
 
   @@bacula::device {
     $::hostname:
-      path => "/mnt/backup/${::hostname}";
+      path => "/mnt/backup/${hostname}";
   }
 }
