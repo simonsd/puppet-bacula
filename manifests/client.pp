@@ -26,7 +26,7 @@ define bacula::client (
   }
 
   @@bacula::device {
-    $::hostname:
+    $hostname:
       path => "/mnt/backup/${hostname}";
   }
 }
