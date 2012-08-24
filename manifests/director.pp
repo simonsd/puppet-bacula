@@ -47,7 +47,7 @@ class bacula::director {
     action => 'accept',
   }
 
-  mysql_db { $::bacula::dbname:
+  mysql::db { $::bacula::dbname:
     user => $::bacula::dbuser,
     host => $::bacula::dbhost;
   }
