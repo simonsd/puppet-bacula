@@ -42,11 +42,6 @@ class bacula::director {
       content => template('bacula/bacula-dir.conf.erb');
   }
 
-  firewall{'020 bacula-dir':
-    dport  => '9101',
-    action => 'accept',
-  }
-
   mysql::db { $::bacula::dbname:
     user => $::bacula::dbuser,
     host => $::bacula::dbhost;

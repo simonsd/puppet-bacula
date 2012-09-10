@@ -49,11 +49,6 @@ class bacula::fd {
       mode    => '0644';
   }
 
-  #  firewall{'021 bacula-fd':
-  #  dport  => '9102',
-  #  action => 'accept',
-  #}
-
   service { 'bacula-fd':
     ensure      => running,
     enable      => true,
