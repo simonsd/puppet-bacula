@@ -1,7 +1,7 @@
 define bacula::device (
-  $path
-  $owner => $::bacula::default_device_owner,
-  $group => $::bacula::default_device_group,
+  $path  = undef,
+  $owner = $::bacula::default_device_owner,
+  $group = $::bacula::default_device_group,
 ){
 
   file {$path:
