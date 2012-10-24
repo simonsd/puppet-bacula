@@ -4,7 +4,7 @@ class bacula::console {
     ensure => latest,
   }
 
-  file{'/etc/bacula/bconsole.conf':
+  file{"${::bacula::config_root}/bconsole.conf":
     owner   => 'root',
     group   => 'root',
     mode    => '0640',

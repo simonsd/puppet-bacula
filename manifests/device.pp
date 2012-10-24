@@ -10,7 +10,7 @@ define bacula::device (
     group  => $group,
   }
 
-  file{"/etc/bacula/devices.d/${name}.conf":
+  file{"${::bacula::config_root}/devices.d/${name}.conf":
     ensure  => present,
     content => template('bacula/device.conf.erb'),
   }

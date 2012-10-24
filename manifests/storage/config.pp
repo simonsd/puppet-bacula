@@ -22,7 +22,7 @@
 #
 class bacula::storage::config {
 
-  file{'/etc/bacula/bacula-sd.conf':
+  file{"${::bacula::config_root}/bacula-sd.conf":
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
@@ -31,7 +31,7 @@ class bacula::storage::config {
     require => Package['bacula-storage-mysql'],
   }
 
-  file{'/etc/bacula/devices.d':
+  file{"${::bacula::config_root}/devices.d":
     ensure => directory,
   }
 

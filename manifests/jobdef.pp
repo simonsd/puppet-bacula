@@ -13,7 +13,7 @@ define bacula::jobdef (
   $priority = '10'
 ){
 
-  file{"/etc/bacula/jobdefs.d/${name}.conf":
+  file{"${::bacula::config_root}/jobdefs.d/${name}.conf":
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',

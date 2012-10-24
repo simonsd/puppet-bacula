@@ -4,7 +4,7 @@ define bacula::fileset (
   $exclude = [],
 ){
 
-  file{"/etc/bacula/filesets.d/${name}.conf":
+  file{"${::bacula::config_root}/filesets.d/${name}.conf":
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',

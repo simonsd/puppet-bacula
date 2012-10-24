@@ -4,6 +4,7 @@ class bacula::params {
   $storage     = 'no'
   $client      = 'yes'
 
+  $config_root = '/etc/bacula'
   $working_dir = $::osfamily ? {
     /(?i:redhat)/ => '/var/spool/bacula',
     /(?i:debian)/ => '/var/lib/bacula',

@@ -21,6 +21,7 @@ class bacula (
   $schedules                = $::bacula::params::schedules,
   $filesets                 = $::bacula::params::filesets,
   $jobdefs                  = $::bacula::params::jobdefs,
+  $config_root              = $::bacula::params::config_root,
 ) {
 
   if $director == 'yes' {

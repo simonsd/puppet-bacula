@@ -13,14 +13,14 @@ define bacula::client (
   $device_group = $::bacula::default_device_group,
 ) {
 
-  concat{"/etc/bacula/clients.d/${hostname}.conf":
+  concat{"${::bacula::config_root}/clients.d/${hostname}.conf":
     owner  => 'root',
     group  => 'root',
     mode   => '0640',
     notify => Service['bacula-dir'],
   }
 
-  concat::fragment{"/etc/bacula/clients.d/${hostname}.conf-client":
+  concat::fragment{"${::bacula::config_root}/clients.d/${hostname}.conf-client":
     target  => "/etc/bacula/clients.d/${hostname}.conf",
     content => template('bacula/client.erb'),
     order   => 01,

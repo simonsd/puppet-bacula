@@ -4,7 +4,7 @@ class bacula::fd {
     ensure => latest,
   }
 
-  file{'/etc/bacula/bacula-fd.conf':
+  file{"${::bacula::config_root}/bacula-fd.conf":
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
@@ -56,8 +56,8 @@ class bacula::fd {
   service{'bacula-fd':
     ensure    => running,
     enable    => true,
-    subscribe => File['/etc/bacula/bacula-fd.conf'],
-    require   => File['/etc/bacula/bacula-fd.conf', '/var/lib/bacula', '/var/run/bacula'],
+    subscribe => File["${::bacula::config_root}/bacula-fd.conf"],
+    require   => File["${::bacula::config_root}/bacula-fd.conf", '/var/lib/bacula', '/var/run/bacula'],
   }
 
   # Export resource for director
