@@ -6,11 +6,11 @@
 define bacula::client (
   $fqdn,
   $hostname,
-  $storage_server = "${::bacula::default_storage_server}.${::domain}",
-  $storage_label = $::bacula::default_storage_label,
+  $storage_server   = "${::bacula::default_storage_server}.${::domain}",
+  $storage_label    = $::bacula::default_storage_label,
   $storage_password = $::bacula::default_storage_password,
-  $device_owner = $::bacula::default_device_owner,
-  $device_group = $::bacula::default_device_group,
+  $device_owner     = $::bacula::default_device_owner,
+  $device_group     = $::bacula::default_device_group,
 ) {
 
   concat{"${::bacula::config_root}/clients.d/${hostname}.conf":
@@ -27,7 +27,7 @@ define bacula::client (
   }
 
   @@bacula::device{$hostname:
-    path => "/mnt/backup/${hostname}",
+    path  => "/mnt/backup/${hostname}",
     owner => $device_owner,
     group => $device_group,
   }
