@@ -4,14 +4,15 @@ define bacula::device (
   $group = $::bacula::default_device_group,
 ){
 
-  file {$path:
+  file{$path:
     ensure => directory,
     owner  => $owner,
     group  => $group,
   }
 
-  file {"/etc/bacula/devices.d/${name}.conf":
+  file{"/etc/bacula/devices.d/${name}.conf":
     ensure  => present,
     content => template('bacula/device.conf.erb'),
   }
+
 }

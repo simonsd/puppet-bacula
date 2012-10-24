@@ -12,25 +12,24 @@ define bacula::client (
   $device_owner = $::bacula::default_device_owner,
   $device_group = $::bacula::default_device_group,
 ) {
-  concat {
-    "/etc/bacula/clients.d/${hostname}.conf":
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0640',
-      notify => Service['bacula-dir'];
+
+  concat{"/etc/bacula/clients.d/${hostname}.conf":
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
+    notify => Service['bacula-dir'],
   }
 
-  concat::fragment {
-    "/etc/bacula/clients.d/${hostname}.conf-client":
-      target  => "/etc/bacula/clients.d/${hostname}.conf",
-      content => template('bacula/client.erb'),
-      order   => 01;
+  concat::fragment{"/etc/bacula/clients.d/${hostname}.conf-client":
+    target  => "/etc/bacula/clients.d/${hostname}.conf",
+    content => template('bacula/client.erb'),
+    order   => 01,
   }
 
-  @@bacula::device {
-    $hostname:
-      path => "/mnt/backup/${hostname}",
-      owner => $device_owner,
-      group => $device_group,
+  @@bacula::device{$hostname:
+    path => "/mnt/backup/${hostname}",
+    owner => $device_owner,
+    group => $device_group,
   }
+
 }

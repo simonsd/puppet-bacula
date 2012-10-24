@@ -12,12 +12,14 @@ define bacula::jobdef (
   $pool     = 'Default',
   $priority = '10'
 ){
-  file {"/etc/bacula/jobdefs.d/${name}.conf":
+
+  file{"/etc/bacula/jobdefs.d/${name}.conf":
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
     notify  => Service['bacula-dir'],
-    content => template('bacula/jobdefs.erb');
+    content => template('bacula/jobdefs.erb'),
   }
+
 }

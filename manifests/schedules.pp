@@ -1,51 +1,59 @@
 class bacula::schedules {
-  file {
-    '/etc/bacula/schedules.d':
-      ensure => 'directory',
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0640';
+
+  file{'/etc/bacula/schedules.d':
+    ensure => 'directory',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
   }
 
-  @bacula::schedule {
-    'FullDaily':
-      name        => 'FullDaily',
-      description => 'Full Daily at 03:00';
+  @bacula::schedule{'FullDaily':
+    name        => 'FullDaily',
+    description => 'Full Daily at 03:00',
+  }
 
-    'FullWeekly':
-      name        => 'FullWeekly',
-      description => 'Full sun at 04:00';
+  @bacula::schedule{'FullWeekly':
+    name        => 'FullWeekly',
+    description => 'Full sun at 04:00',
+  }
 
-    'IncDaily':
-      name        => 'IncDaily',
-      description => 'Incremental Daily at 01:00';
+  @bacula::schedule{'IncDaily':
+    name        => 'IncDaily',
+    description => 'Incremental Daily at 01:00',
+  }
 
-    'IncWeekly':
-      name        => 'IncWeekly',
-      description => 'Incremental sun at 06:00';
+  @bacula::schedule{'IncWeekly':
+    name        => 'IncWeekly',
+    description => 'Incremental sun at 06:00',
+  }
 
-    'DiffDaily':
-      name        => 'DiffDaily',
-      description => 'Differential Daily at 02:00';
+  @bacula::schedule{'DiffDaily':
+    name        => 'DiffDaily',
+    description => 'Differential Daily at 02:00',
+  }
 
-    'DiffWeekly':
-      name        => 'DiffWeekly',
-      description => 'Differential sun at 05:00';
+  @bacula::schedule{'DiffWeekly':
+    name        => 'DiffWeekly',
+    description => 'Differential sun at 05:00',
+  }
 
-    'FullMonthlyDiffWeeklyIncDaily':
-      name        => 'FullMonthlyDiffWeeklyIncDaily',
-      description => ['Full 1st sun at 04:00', 'Differential 2nd-5th sun at 04:00', 'Incremental Daily at 04:00'];
+  @bacula::schedule{'FullMonthlyDiffWeeklyIncDaily':
+    name        => 'FullMonthlyDiffWeeklyIncDaily',
+    description => ['Full 1st sun at 04:00', 'Differential 2nd-5th sun at 04:00', 'Incremental Daily at 04:00'],
+  }
 
-    'FullWeeklyDiffDailyIncHourly':
-      name        => 'FullWeeklyDiffDailyIncHourly',
-      description => ['Full sun at 04:00', 'Differential mon-sat at 04:00', 'Incremental Hourly'];
+  @bacula::schedule{'FullWeeklyDiffDailyIncHourly':
+    name        => 'FullWeeklyDiffDailyIncHourly',
+    description => ['Full sun at 04:00', 'Differential mon-sat at 04:00', 'Incremental Hourly'],
+  }
 
-    'FullWeeklyIncDaily':
-      name        => 'FullWeeklyIncDaily',
-      description => ['Full sun at 04:00', 'Incremental Daily at 04:00'];
+  @bacula::schedule{'FullWeeklyIncDaily':
+    name        => 'FullWeeklyIncDaily',
+    description => ['Full sun at 04:00', 'Incremental Daily at 04:00'],
   }
 
   if $::bacula::schedules != [] {
     realize(Bacula::Schedule[$::bacula::schedules])
   }
+
 }

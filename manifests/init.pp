@@ -31,21 +31,22 @@ class bacula (
 ) {
 
   if $director == 'yes' {
-    include bacula::director
-    include bacula::filesets
-    include bacula::schedules
-    include bacula::clients
-    include bacula::jobdefs
+    include ::bacula::director
+    include ::bacula::filesets
+    include ::bacula::schedules
+    include ::bacula::clients
+    include ::bacula::jobdefs
   }
 
   if $storage == 'yes' {
-    include bacula::storage
-    include bacula::devices
+    include ::bacula::storage
+    include ::bacula::devices
   }
 
   if $client == 'yes' {
-    include bacula::fd
+    include ::bacula::fd
   }
 
-  include bacula::console
+  include ::bacula::console
+
 }

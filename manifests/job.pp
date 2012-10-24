@@ -20,12 +20,13 @@ define bacula::job (
   $client_run_after_job  = false,
   $server_run_before_job = false,
   $server_run_after_job  = false,
-  $jobdefs               = 'DefaultJob'
-){
-  concat::fragment {
-    "/etc/bacula/clients.d/${client}.conf-${name}":
-      target  => "/etc/bacula/clients.d/${client}.conf",
-      content => template('bacula/job.erb'),
-      order   => '100';
+  $jobdefs               = 'DefaultJob',
+) {
+
+  concat::fragment{"/etc/bacula/clients.d/${client}.conf-${name}":
+    target  => "/etc/bacula/clients.d/${client}.conf",
+    content => template('bacula/job.erb'),
+    order   => '100',
   }
+
 }
