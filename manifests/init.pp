@@ -24,7 +24,7 @@ class bacula (
   $config_root              = $::bacula::params::config_root,
 ) {
 
-  if $director == 'yes' {
+  if $director {
     include ::bacula::director
     include ::bacula::filesets
     include ::bacula::schedules
@@ -32,12 +32,12 @@ class bacula (
     include ::bacula::jobdefs
   }
 
-  if $storage == 'yes' {
+  if $storage {
     include ::bacula::storage
     include ::bacula::devices
   }
 
-  if $client == 'yes' {
+  if $client {
     include ::bacula::fd
   }
 

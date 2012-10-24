@@ -1,8 +1,8 @@
 class bacula::params {
 
-  $director    = 'no'
-  $storage     = 'no'
-  $client      = 'yes'
+  $director    = false
+  $storage     = false
+  $client      = true
 
   $config_root = '/etc/bacula'
   $working_dir = $::osfamily ? {
