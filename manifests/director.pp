@@ -19,21 +19,6 @@ class bacula::director {
     mode  => '0755',
   }
 
-  file{'/root/bin':
-      ensure  => 'directory',
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0700',
-  }
-
-  file{'/root/bin/label_storage.sh':
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    source  => 'puppet:///modules/bacula/label_storage.sh',
-    require => File['/root/bin'],
-  }
-
   file{'/etc/bacula/bacula-dir.conf':
     owner   => 'root',
     group   => 'root',
