@@ -1,12 +1,5 @@
 class bacula::filesets {
 
-  file{'/etc/bacula/filesets.d':
-    ensure => 'directory',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0640',
-  }
-
   @bacula::fileset{'Catalog':
      name    => 'Catalog',
      include => "${::bacula::working_dir}/bacula.sql",

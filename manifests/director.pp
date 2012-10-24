@@ -19,6 +19,34 @@ class bacula::director {
     mode  => '0755',
   }
 
+  file{'/etc/bacula/clients.d':
+    ensure => 'directory',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
+  }
+
+  file{'/etc/bacula/filesets.d':
+    ensure => 'directory',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
+  }
+
+  file{'/etc/bacula/schedules.d':
+    ensure => 'directory',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
+  }
+
+  file{'/etc/bacula/jobdefs.d':
+    ensure => 'directory',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
+  }
+
   file{'/etc/bacula/bacula-dir.conf':
     owner   => 'root',
     group   => 'root',

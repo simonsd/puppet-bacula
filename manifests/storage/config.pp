@@ -31,6 +31,10 @@ class bacula::storage::config {
     require => Package['bacula-storage-mysql'],
   }
 
+  file{'/etc/bacula/devices.d':
+    ensure => directory,
+  }
+
   file{$::bacula::storage_dir:
     ensure  => directory,
     mode    => '0700',

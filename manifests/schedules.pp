@@ -1,12 +1,5 @@
 class bacula::schedules {
 
-  file{'/etc/bacula/schedules.d':
-    ensure => 'directory',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0640',
-  }
-
   @bacula::schedule{'FullDaily':
     name        => 'FullDaily',
     description => 'Full Daily at 03:00',
