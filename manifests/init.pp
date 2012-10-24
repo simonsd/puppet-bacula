@@ -18,8 +18,6 @@ class bacula (
   $dbuser                   = 'bacula',
   $dbpassword               = 'bacula',
   $dbhost                   = 'localhost',
-  $bweb_user                = 'bacula',
-  $bweb_passwd              = 'bacula',
   $director                 = 'no',
   $storage                  = 'no',
   $client                   = 'yes',
