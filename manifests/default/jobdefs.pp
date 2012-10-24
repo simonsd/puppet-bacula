@@ -1,4 +1,4 @@
-class bacula::jobdefs {
+class bacula::default::jobdefs {
 
   @bacula::jobdef{'DefaultJob':
     name => 'DefaultJob',

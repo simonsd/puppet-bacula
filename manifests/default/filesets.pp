@@ -1,4 +1,4 @@
-class bacula::filesets {
+class bacula::default::filesets {
 
   @bacula::fileset{'Catalog':
      name    => 'Catalog',

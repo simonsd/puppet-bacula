@@ -1,4 +1,4 @@
-class bacula::schedules {
+class bacula::default::schedules {
 
   @bacula::schedule{'FullDaily':
     name        => 'FullDaily',
