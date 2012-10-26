@@ -50,9 +50,6 @@ class bacula::fd::config {
   }
 
   # Export resource for director
-  @@bacula::client{$::fqdn:
-    fqdn     => $::fqdn,
-    hostname => $::hostname,
-  }
+  @@bacula::client{$::fqdn:;}
 
 }
