@@ -28,6 +28,13 @@ class bacula::director::config {
     mode   => '0640',
   }
 
+  file{"${::bacula::config_root}/pools.d":
+    ensure => 'directory',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
+  }
+
   file{"${::bacula::config_root}/bacula-dir.conf":
     owner   => 'root',
     group   => 'root',

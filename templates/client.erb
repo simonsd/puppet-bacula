@@ -24,25 +24,3 @@ Storage {
   Device = <%= hostname %>-sd
   Media Type = File
 }
-
-Pool {
-  Name = <%= hostname %>FullPool
-  Label Format = <%= hostname %>-Full
-  Pool Type = Backup
-  Recycle = yes
-  Autoprune = yes
-  Purge Oldest Volume = yes
-  Maximum Volume Jobs = 1
-  Maximum Volumes = 4
-}
-
-Pool {
-  Name = <%= hostname %>IncPool
-  Label Format = <%= hostname %>-Inc
-  Pool Type = Backup
-  Recycle = yes
-  Autoprune = yes
-  Purge Oldest Volume = yes
-  Maximum Volume Jobs = 1
-  Maximum Volumes = 7
-}
