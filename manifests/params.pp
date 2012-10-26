@@ -14,9 +14,10 @@ class bacula::params {
   ####    Defaults    ####
   ########################
 
-  $default_storage_server   = 'bacula'
+  $default_storage_server   = "bacula.${::domain}"
   $default_storage_label    = 'bacula-sd'
   $default_storage_password = 'bacula'
+  $default_storage_path     = '/mnt/backup'
   $default_storage_owner    = 'bacula'
   $default_storage_group    = 'bacula'
 

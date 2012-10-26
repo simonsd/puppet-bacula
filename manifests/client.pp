@@ -1,33 +1,26 @@
-# == Todo:
-#
-# TODO: Maybe we need to use other param names for fqdn and hostname.
-#       These are also top scope variables: avoid confusion where possible
-#
 define bacula::client (
-  $fqdn,
-  $hostname,
-  $storage_server   = "${::bacula::default_storage_server}.${::domain}",
-  $storage_label    = $::bacula::default_storage_label,
+  $storage_server   = $::bacula::default_storage_server,
+  $storage_path     = $::bacula::default_storage_path,
   $storage_password = $::bacula::default_storage_password,
   $device_owner     = $::bacula::default_device_owner,
   $device_group     = $::bacula::default_device_group,
 ) {
 
-  concat{"${::bacula::config_root}/clients.d/${hostname}.conf":
+  concat{"${::bacula::config_root}/clients.d/${title}.conf":
     owner  => 'root',
     group  => 'root',
     mode   => '0640',
     notify => Service['bacula-dir'],
   }
 
-  concat::fragment{"${::bacula::config_root}/clients.d/${hostname}.conf-client":
-    target  => "/etc/bacula/clients.d/${hostname}.conf",
+  concat::fragment{"${::bacula::config_root}/clients.d/${title}.conf-client":
+    target  => "${::bacula::config_root}/clients.d/${title}.conf",
     content => template('bacula/client.erb'),
     order   => 01,
   }
 
-  @@bacula::device{$hostname:
-    path  => "/mnt/backup/${hostname}",
+  @@bacula::device{$title:
+    path  => "${storage_path}/${title}",
     owner => $device_owner,
     group => $device_group,
   }

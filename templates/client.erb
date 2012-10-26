@@ -6,21 +6,21 @@
 # <%= fqdn %> - Client (File Services) to backup / restore
 
 Client {
-  Name = <%= hostname %>-fd
-  Address = <%= fqdn %>
-  FDPort = 9102
-  Catalog = MyCatalog
-  Password = "<%= storage_password %>"  # password for FileDaemon
-  File Retention = 30 days        # 30 days
-  Job Retention = 6 months        # six months
-  AutoPrune = yes                 # Prune expired Jobs/Files
+  Name           = "<%= title %>-fd"
+  Address        = "<%= title %>"
+  FDPort         = "9102"
+  Catalog        = "MyCatalog"
+  Password       = "<%= storage_password %>"  # password for FileDaemon
+  File Retention = "30 days"
+  Job Retention  = "6 months"
+  AutoPrune      = "yes"
 }
 
 Storage {
-  Name = <%= hostname %>-storage
-  Address = <%= storage_server %>
-  SDPort = 9103
-  Password = "<%= storage_password %>"
-  Device = <%= hostname %>-sd
-  Media Type = File
+  Name       = "<%= title %>-storage"
+  Address    = "<%= storage_server %>"
+  SDPort     = "9103"
+  Password   = "<%= storage_password %>"
+  Device     = "<%= title %>-sd"
+  Media Type = "File"
 }

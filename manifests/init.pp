@@ -7,6 +7,7 @@ class bacula (
   $default_storage_server   = $::bacula::params::director_password,
   $default_storage_label    = $::bacula::params::default_storage_label,
   $default_storage_password = $::bacula::params::default_storage_password,
+  $default_storage_path     = $::bacula::params::default_storage_path,
   $default_storage_owner    = $::bacula::params::default_storage_owner,
   $default_storage_group    = $::bacula::params::default_storage_group,
   $storage_dir              = $::bacula::params::storage_dir,
