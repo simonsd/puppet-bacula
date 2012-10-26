@@ -27,15 +27,16 @@ class bacula (
 
   if $director {
     include ::bacula::director
-    include ::bacula::filesets
-    include ::bacula::schedules
-    include ::bacula::clients
-    include ::bacula::jobdefs
+    include ::bacula::default::filesets
+    include ::bacula::default::schedules
+    include ::bacula::default::jobdefs
+    include ::bacula::default::jobs
+    include ::bacula::default::pools
   }
 
   if $storage {
     include ::bacula::storage
-    include ::bacula::devices
+    include ::bacula::default::devices
   }
 
   if $client {
