@@ -23,7 +23,7 @@ class bacula (
   $filesets                 = $::bacula::params::filesets,
   $jobdefs                  = $::bacula::params::jobdefs,
   $config_root              = $::bacula::params::config_root,
-) {
+) inherits ::bacula::params {
 
   if $director {
     include ::bacula::director
