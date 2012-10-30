@@ -7,7 +7,7 @@ Job {
 <% if name                  %>  Name                    = "<%= name %>"<% end %>
 <% if client                %>  Client                  = "<%= client %>-fd"<% end %>
 <% if type                  %>  type                    = "<%= type %>"<% end %>
-<% if working_dir           %>  Write Bootstrap         = "<%= scope.lookupvar('bacula::working_dir') %>/<%= name %>.bsr"<% end %>
+<% if scope.lookupvar('::bacula::working_dir') %>  Write Bootstrap         = "<%= scope.lookupvar('::bacula::working_dir') %>/<%= name %>.bsr"<% end %>
 <% if messages              %>  Messages                = "<%= messages %>"<% end %>
 <% if jobdefs               %>  JobDefs                 = "<%= jobdefs %>"<% end %>
 
