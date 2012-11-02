@@ -78,5 +78,6 @@ class bacula::params {
 
   $fd_port                = '9102'
   $fd_max_concurrent_jobs = '1'
+  $fd_pkgname             = 'bacula-client'
 
 }
