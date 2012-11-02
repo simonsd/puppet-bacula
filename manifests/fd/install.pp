@@ -1,6 +1,6 @@
 class bacula::fd::install {
 
-  package{$fd_pkgname:
+  package{$pkgname:
     ensure => 'present',
   }
 
