@@ -2,34 +2,33 @@
 ### Served by:        '<%= scope.lookupvar('::servername') %>'
 ### Module:           '<%= scope.to_hash['module_name'] %>'
 ### Template source:  '<%= template_source %>'
-# /etc/bacula/bacula-fd.conf
 
 #
-# Storage Daemon configuration
+# File Daemon configuration
 #
 
 FileDaemon {
-  Name = <%= hostname %>-fd
-  FDport = 9102
-  WorkingDirectory = /var/lib/bacula
-  Pid Directory = /var/run/bacula
-  Maximum Concurrent Jobs = 20
+  Name                    = <%= client %>-fd
+  FDport                  = <%= fd_port %>
+  WorkingDirectory        = <%= working_dir %>
+  Pid Directory           = <%= pid_dir %>
+  Maximum Concurrent Jobs = <%= fd_max_concurrent_jobs %>
 }
 
 #
-# List Directors who are permitted to contact the File Daemon
+# List of directors allowed to connect to this File Daemon
 #
 
 Director {
-  Name = <%= scope.lookupvar('bacula::director_label') %>
-  Password = "<%= scope.lookupvar('bacula::director_password') %>"
+  Name     = "<%= allowed_director_label %>"
+  Password = "<%= allowed_director_password %>"
 }
 
 #
-# Send all messages to the Director,
+# Logging
 #
 
 Messages {
-  Name = Standard
-  director = <%= scope.lookupvar('bacula::director_label') %> = all, !skipped, !restored
+  Name     = <%= log_output %>
+  director = <%= allowed_director_label %> = all, !skipped, !restored
 }

@@ -18,7 +18,6 @@ class bacula (
   $dbhost                   = $::bacula::params::dbhost,
   $director                 = $::bacula::params::director,
   $storage                  = $::bacula::params::storage,
-  $client                   = $::bacula::params::client,
   $schedules                = $::bacula::params::schedules,
   $filesets                 = $::bacula::params::filesets,
   $jobdefs                  = $::bacula::params::jobdefs,
@@ -37,10 +36,6 @@ class bacula (
   if $storage {
     include ::bacula::storage
     include ::bacula::default::devices
-  }
-
-  if $client {
-    include ::bacula::fd
   }
 
   include ::bacula::console

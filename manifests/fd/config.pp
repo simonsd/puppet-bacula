@@ -2,11 +2,11 @@ class bacula::fd::config {
 
   File{
     ensure => 'file',
-    owner  => 'root',
-    group  => 'root',
+    owner  => $user,
+    group  => $group,
   }
 
-  file{"${::bacula::config_root}/bacula-fd.conf":
+  file{"${config_root}/bacula-fd.conf":
     mode    => '0640',
     content => template('bacula/bacula-fd.conf.erb'),
     require => Package['bacula-client'],
@@ -41,6 +41,6 @@ class bacula::fd::config {
   }
 
   # Export client resource for director
-  @@bacula::client{$::fqdn:;}
+  @@bacula::client{$client:;}
 
 }

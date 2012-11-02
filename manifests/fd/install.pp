@@ -1,7 +1,7 @@
 class bacula::fd::install {
 
-  package{'bacula-client':
-    ensure => latest,
+  package{$fd_pkgname:
+    ensure => 'present',
   }
 
 }

@@ -2,13 +2,13 @@ class bacula::params {
 
   $director    = false
   $storage     = false
-  $client      = true
 
   $config_root = '/etc/bacula'
   $working_dir = $::osfamily ? {
     /(?i:redhat)/ => '/var/spool/bacula',
     /(?i:debian)/ => '/var/lib/bacula',
   }
+  $pid_dir     = '/var/run/bacula'
 
   ########################
   ####    Defaults    ####
@@ -20,6 +20,7 @@ class bacula::params {
   $default_storage_path     = '/mnt/backup'
   $default_storage_owner    = 'bacula'
   $default_storage_group    = 'bacula'
+  $default_log_output       = 'Default'
 
   ########################
   ####    Database    ####
@@ -70,5 +71,12 @@ class bacula::params {
   #######################
 
   $storage_dir = '/mnt/backup'
+
+  ###########################
+  ####    File Daemon    ####
+  ###########################
+
+  $fd_port                = '9102'
+  $fd_max_concurrent_jobs = '1'
 
 }
