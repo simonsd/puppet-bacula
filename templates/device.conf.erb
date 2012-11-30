@@ -4,12 +4,12 @@
 ### Template source:  '<%= template_source %>'
 
 Device {
-  Name           = <%= name %>-sd
-  Media Type     = File
-  Archive Device = <%= path %>
-  LabelMedia     = yes;                                                           # lets Bacula label unlabeled media
-  Random Access  = Yes;
-  AutomaticMount = yes;                                                       # when device opened, read it
-  RemovableMedia = no;
-  AlwaysOpen     = no;
+  name           = "<%= name %>-sd"
+  media type     = "File"
+  archive device = "<%= path %>"
+  labelmedia     = "yes";
+  random access  = "Yes";
+  automaticmount = "yes";
+  removablemedia = "no";
+  alwaysopen     = "no";
 }

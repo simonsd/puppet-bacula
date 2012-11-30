@@ -4,20 +4,20 @@
 ### Template source:  '<%= template_source %>'
 
 Director {
-  Name                    = <%= scope.lookupvar('bacula::director_label') %>
-  DIRport                 = "<%= director_port %>"
-  QueryFile               = "/etc/bacula/query.sql"
-  WorkingDirectory        = "<%= scope.lookupvar('bacula::working_dir') %>"
-  PidDirectory            = "/var/run"
-  Maximum Concurrent Jobs = 1
-  Password                = "<%= scope.lookupvar('bacula::director_password') %>"  # console password
-  Messages                = Standard
+  name                    = "<%= scope.lookupvar('bacula::director_label') %>"
+  dirport                 = "<%= director_port %>"
+  queryFile               = "/etc/bacula/query.sql"
+  workingDirectory        = "<%= scope.lookupvar('bacula::working_dir') %>"
+  piddirectory            = "/var/run"
+  maximum concurrent jobs = "1"
+  password                = "<%= scope.lookupvar('bacula::director_password') %>"
+  messages                = "Standard"
 }
 
 Catalog {
-  Name                    = MyCatalog
-  dbname                  = <%= scope.lookupvar('bacula::dbname') %>;
-  user                    = <%= scope.lookupvar('bacula::dbuser') %>;
+  name                    = "MyCatalog"
+  dbname                  = "<%= scope.lookupvar('bacula::dbname') %>";
+  user                    = "<%= scope.lookupvar('bacula::dbuser') %>";
   password                = "<%= scope.lookupvar('bacula::dbpassword') %>";
 }
 
@@ -29,28 +29,28 @@ Messages {
 }
 
 Job {
-  Name                    = "BackupCatalog"
-  Type                    = Backup
-  Storage                 = catalog-storage
-  Client                  = <%= scope.lookupvar('bacula::director_server') %>-fd
-  Messages                = Standard
-  Pool                    = Default
-  Level                   = Full
-  FileSet                 = "Catalog"
-  Schedule                = "FullDaily"
-  RunBeforeJob            = "/usr/libexec/bacula/make_catalog_backup <%= scope.lookupvar('bacula::dbname') %> <%= scope.lookupvar('bacula::dbuser') %> <%= scope.lookupvar('bacula::dbpassword') %> <%= scope.lookupvar('bacula::dbhost') %>"
-  RunAfterJob             = "/usr/libexec/bacula/delete_catalog_backup"
-  Write Bootstrap         = "<%= scope.lookupvar('bacula::working_dir') %>/BackupCatalog.bsr"
-  Priority                = 11                                                               # run after main backup
+  name                    = "BackupCatalog"
+  type                    = "Backup"
+  storage                 = "catalog-storage"
+  client                  = "<%= scope.lookupvar('bacula::director_server') %>-fd"
+  messages                = "Standard"
+  pool                    = "Default"
+  level                   = "Full"
+  fileset                 = "Catalog"
+  schedule                = "FullDaily"
+  runbeforejob            = "/usr/libexec/bacula/make_catalog_backup <%= scope.lookupvar('bacula::dbname') %> <%= scope.lookupvar('bacula::dbuser') %> <%= scope.lookupvar('bacula::dbpassword') %> <%= scope.lookupvar('bacula::dbhost') %>"
+  runafterjob             = "/usr/libexec/bacula/delete_catalog_backup"
+  write bootstrap         = "<%= scope.lookupvar('bacula::working_dir') %>/BackupCatalog.bsr"
+  priority                = "11"
 }
 
 Storage {
-  Name                    = catalog-storage
-  Address                 = <%= scope.lookupvar('bacula::default_storage_server') %>.<%= domain %>
-  SDPort                  = "<%= sd_port %>"
-  Password                = "<%= scope.lookupvar('bacula::default_storage_password') %>"
-  Device                  = catalog-sd
-  Media Type              = File
+  name                    = "catalog-storage"
+  address                 = "<%= scope.lookupvar('bacula::default_storage_server') %>.<%= domain %>"
+  sdport                  = "<%= sd_port %>"
+  password                = "<%= scope.lookupvar('bacula::default_storage_password') %>"
+  device                  = "catalog-sd"
+  media type              = "File"
 }
 
 @|"sh -c 'for f in /etc/bacula/clients.d/*.conf ; do echo @${f} ; done'"

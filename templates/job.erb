@@ -4,24 +4,24 @@
 ### Template source:  '<%= template_source %>'
 
 Job {
-<% if name                  %>  Name                    = "<%= name %>"<% end %>
-<% if client                %>  Client                  = "<%= client %>-fd"<% end %>
+<% if name                  %>  name                    = "<%= name %>"<% end %>
+<% if client                %>  client                  = "<%= client %>-fd"<% end %>
 <% if type                  %>  type                    = "<%= type %>"<% end %>
-<% if scope.lookupvar('::bacula::working_dir') %>  Write Bootstrap         = "<%= scope.lookupvar('::bacula::working_dir') %>/<%= name %>.bsr"<% end %>
-<% if messages              %>  Messages                = "<%= messages %>"<% end %>
-<% if jobdefs               %>  JobDefs                 = "<%= jobdefs %>"<% end %>
+<% if scope.lookupvar('::bacula::working_dir') %>  write bootstrap         = "<%= scope.lookupvar('::bacula::working_dir') %>/<%= name %>.bsr"<% end %>
+<% if messages              %>  messages                = "<%= messages %>"<% end %>
+<% if jobdefs               %>  jobdefs                 = "<%= jobdefs %>"<% end %>
 
-<% if fileset               %>  Fileset                 = "<%= fileset %>"<% end %>
-<% if storage               %>  Storage                 = "<%= storage %>"<% end %>
-<% if bschedule             %>  Schedule                = "<%= bschedule %>"<% end %>
+<% if fileset               %>  fileset                 = "<%= fileset %>"<% end %>
+<% if storage               %>  storage                 = "<%= storage %>"<% end %>
+<% if bschedule             %>  schedule                = "<%= bschedule %>"<% end %>
 
-<% if pool                  %>  Pool                    = "<%= pool %>"<% end %>
-<% if full_pool             %>  Full Backup Pool        = "<%= full_pool %>"<% end %>
-<% if incremental_pool      %>  Incremental Backup Pool = "<%= incremental_pool %>"<% end %>
+<% if pool                  %>  pool                    = "<%= pool %>"<% end %>
+<% if full_pool             %>  full backup pool        = "<%= full_pool %>"<% end %>
+<% if incremental_pool      %>  incremental backup pool = "<%= incremental_pool %>"<% end %>
 
-<% if client_run_before_job %>  Client Run Before Job   = "<%= client_run_before_job %>"<% end %>
-<% if client_run_after_job  %>  Client Run After Job    = "<%= client_run_after_job %>"<% end %>
-<% if server_run_before_job %>  Run Before Job          = "<%= server_run_before_job %>"<% end %>
-<% if server_run_after_job  %>  Run After Job           = "<%= server_run_after_job %>"<% end %>
+<% if client_run_before_job %>  client run before job   = "<%= client_run_before_job %>"<% end %>
+<% if client_run_after_job  %>  client run after job    = "<%= client_run_after_job %>"<% end %>
+<% if server_run_before_job %>  run before job          = "<%= server_run_before_job %>"<% end %>
+<% if server_run_after_job  %>  run after job           = "<%= server_run_after_job %>"<% end %>
 }
 

@@ -4,8 +4,8 @@
 ### Template source:  '<%= template_source %>'
 
 Fileset {
-  Name = "<%= name %>"
-  Include {
+  name = "<%= name %>"
+  include {
     Options {
       signature = MD5
     }
@@ -14,7 +14,7 @@ Fileset {
 <% end -%>
   }
 <% if !exclude.empty? -%>
-  Exclude {
+  exclude {
 <% exclude.each do |excl| -%>
     File = <%= excl %>
 <% end -%>

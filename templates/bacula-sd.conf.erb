@@ -8,20 +8,20 @@
 #
 
 Storage {
-  Name                    = <%= sd_label %>
-  SDPort                  = <%= sd_port %>
-  WorkingDirectory        = <%= working_dir %>
-  Pid Directory           = <%= pid_dir %>
-  Maximum Concurrent Jobs = <%= max_concurrent_jobs %>
+  name                    = "<%= sd_label %>"
+  sdport                  = "<%= sd_port %>"
+  workingdirectory        = "<%= working_dir %>"
+  pid directory           = "<%= pid_dir %>"
+  maximum concurrent jobs = "<%= max_concurrent_jobs %>"
 }
 
 #
-# List Directors who are permitted to contact Storage Daemon
+# List directors that are permitted to contact this Storage Daemon
 #
 
 Director {
-  Name                    = "<%= director_label %>"
-  Password                = "<%= director_password %>"
+  name                    = "<%= director_label %>"
+  password                = "<%= director_password %>"
 }
 
 #
