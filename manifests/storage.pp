@@ -15,5 +15,6 @@ class bacula::storage (
   include ::bacula::storage::install
   include ::bacula::storage::config
   include ::bacula::storage::service
+  include ::bacula::default::devices
 
 }
