@@ -13,6 +13,8 @@ class bacula (
   $default_storage_owner    = $::bacula::params::default_storage_owner,
   $default_storage_group    = $::bacula::params::default_storage_group,
 
+  $bconsole_pkgname         = $::bacula::params::bconsole_pkgname,
+
   $default_user             = $::bacula::params::default_user,
   $default_group            = $::bacula::params::default_group,
   $storage_dir              = $::bacula::params::storage_dir,

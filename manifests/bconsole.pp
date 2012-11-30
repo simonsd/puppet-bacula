@@ -1,4 +1,4 @@
-class bacula::console {
+class bacula::bconsole {
 
   package{$bconsole_pkgname:
     ensure => 'present',

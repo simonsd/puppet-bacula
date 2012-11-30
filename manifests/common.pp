@@ -1,7 +1,7 @@
 class bacula::common {
 
   include ::concat::setup
-  include ::bacula::console
+  include ::bacula::bconsole
 
   File{
     ensure => 'directory',
