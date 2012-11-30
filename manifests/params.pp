@@ -1,8 +1,5 @@
 class bacula::params {
 
-  $director    = false
-  $storage     = false
-
   $config_root = '/etc/bacula'
   $working_dir = $::osfamily ? {
     /(?i:redhat)/ => '/var/spool/bacula',

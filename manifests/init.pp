@@ -25,23 +25,10 @@ class bacula (
   $dbpassword               = $::bacula::params::dbpassword,
   $dbhost                   = $::bacula::params::dbhost,
 
-  $director                 = $::bacula::params::director,
-
   $schedules                = $::bacula::params::schedules,
   $filesets                 = $::bacula::params::filesets,
   $jobdefs                  = $::bacula::params::jobdefs,
 
 ) inherits ::bacula::params {
-
-  if $director {
-    include ::bacula::director
-    include ::bacula::default::filesets
-    include ::bacula::default::schedules
-    include ::bacula::default::jobdefs
-    include ::bacula::default::jobs
-    include ::bacula::default::pools
-  }
-
-  include ::bacula::console
 
 }
