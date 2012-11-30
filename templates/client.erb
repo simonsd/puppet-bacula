@@ -8,7 +8,7 @@
 Client {
   Name           = "<%= title %>-fd"
   Address        = "<%= title %>"
-  FDPort         = "9102"
+  FDPort         = "<%= fd_port %>"
   Catalog        = "MyCatalog"
   Password       = "<%= storage_password %>"  # password for FileDaemon
   File Retention = "30 days"
@@ -19,7 +19,7 @@ Client {
 Storage {
   Name           = "<%= title %>-storage"
   Address        = "<%= storage_server %>"
-  SDPort         = "9103"
+  SDPort         = "<%= sd_port %>"
   Password       = "<%= storage_password %>"
   Device         = "<%= title %>-sd"
   Media Type     = "File"

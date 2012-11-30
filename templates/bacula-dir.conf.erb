@@ -5,7 +5,7 @@
 
 Director {
   Name                    = <%= scope.lookupvar('bacula::director_label') %>
-  DIRport                 = 9101                                                            # where we listen for UA connections
+  DIRport                 = "<%= director_port %>"
   QueryFile               = "/etc/bacula/query.sql"
   WorkingDirectory        = "<%= scope.lookupvar('bacula::working_dir') %>"
   PidDirectory            = "/var/run"
@@ -60,7 +60,7 @@ Job {
 Storage {
   Name                    = catalog-storage
   Address                 = <%= scope.lookupvar('bacula::default_storage_server') %>.<%= domain %>
-  SDPort                  = 9103
+  SDPort                  = "<%= sd_port %>"
   Password                = "<%= scope.lookupvar('bacula::default_storage_password') %>"
   Device                  = catalog-sd
   Media Type              = File
