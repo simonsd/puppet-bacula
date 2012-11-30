@@ -1,0 +1,25 @@
+class bacula::common {
+
+  include ::concat::setup
+  include ::bacula::console
+
+  File{
+    ensure => 'directory',
+    owner  => $user,
+    group  => $group,
+    mode   => '0700',
+  }
+
+  file{'/var/lib/bacula':}
+  file{'/var/run/bacula':}
+  file{'/var/log/bacula':
+    mode   => '0644',
+  }
+
+  file{'/etc/logrotate.d/bacula':
+    ensure  => 'file',
+    mode    => '0644',
+    content => template('bacula/logrotate.erb'),
+  }
+
+}

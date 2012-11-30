@@ -2,8 +2,7 @@ class bacula::director (
   $bconsole_pkgname = $::bacula::params::bconsole_pkgname,
 ) inherits ::bacula::params {
 
-  include concat::setup
-  include ::bacula::console
+  include ::bacula::common
 
   include ::bacula::director::install
   include ::bacula::director::config

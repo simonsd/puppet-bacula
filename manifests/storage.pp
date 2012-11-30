@@ -11,8 +11,7 @@ class bacula::storage (
   $bconsole_pkgname    = $::bacula::params::bconsole_pkgname,
 ) inherits ::bacula::params {
 
-  include ::concat::setup
-  include ::bacula::console
+  include ::bacula::common
 
   include ::bacula::storage::install
   include ::bacula::storage::config
