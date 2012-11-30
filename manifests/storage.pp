@@ -8,6 +8,7 @@ class bacula::storage (
   $director_label      = $::bacula::params::director_label,
   $director_password   = $::bacula::params::director_password,
   $log_output          = $::bacula::params::log_output,
+  $bconsole_pkgname    = $::bacula::params::bconsole_pkgname,
 ) inherits ::bacula::params {
 
   include ::concat::setup

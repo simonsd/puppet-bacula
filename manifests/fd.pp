@@ -10,7 +10,8 @@ class bacula::fd (
   $pkgname                   = $::bacula::params::fd_pkgname,
   $user                      = $::bacula::params::default_user,
   $group                     = $::bacula::params::default_group,
-) {
+  $bconsole_pkgname          = $::bacula::params::bconsole_pkgname,
+) inherits ::bacula::params {
 
   include ::bacula::console
   include ::bacula::fd::install

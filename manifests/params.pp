@@ -94,4 +94,10 @@ class bacula::params {
   $fd_max_concurrent_jobs = '1'
   $fd_pkgname             = 'bacula-client'
 
+  ########################
+  ####    Bconsole    ####
+  ########################
+
+  bconsole_pkgname = 'bacula-console'
+
 }

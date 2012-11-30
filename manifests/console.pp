@@ -1,7 +1,7 @@
 class bacula::console {
 
-  package{'bacula-console':
-    ensure => latest,
+  package{$bconsole_pkgname:
+    ensure => 'present',
   }
 
   file{"${::bacula::config_root}/bconsole.conf":
