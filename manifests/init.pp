@@ -12,7 +12,10 @@ class bacula (
   $default_storage_path     = $::bacula::params::default_storage_path,
   $default_storage_owner    = $::bacula::params::default_storage_owner,
   $default_storage_group    = $::bacula::params::default_storage_group,
+  $default_log_output       = $::bacula::params::default_log_output,
 
+  $default_user             = $::bacula::params::default_user,
+  $default_group            = $::bacula::params::default_group,
   $storage_dir              = $::bacula::params::storage_dir,
   $working_dir              = $::bacula::params::working_dir,
   $config_root              = $::bacula::params::config_root,
