@@ -13,9 +13,11 @@ class bacula::storage (
 
   include ::concat::setup
   include ::bacula::console
+
   include ::bacula::storage::install
   include ::bacula::storage::config
   include ::bacula::storage::service
+
   include ::bacula::default::devices
 
 }

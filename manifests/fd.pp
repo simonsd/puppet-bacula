@@ -13,7 +13,9 @@ class bacula::fd (
   $bconsole_pkgname          = $::bacula::params::bconsole_pkgname,
 ) inherits ::bacula::params {
 
+  include ::concat::setup
   include ::bacula::console
+
   include ::bacula::fd::install
   include ::bacula::fd::config
   include ::bacula::fd::service
