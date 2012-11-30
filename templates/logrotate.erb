@@ -3,7 +3,7 @@
 ### Module:           '<%= scope.to_hash['module_name'] %>'
 ### Template source:  '<%= template_source %>'
 
-/var/log/bacula/*.log <%= scope.lookupvar('bacula::working_dir') %>/log /var/log/bacula.log {
+<%= log_dir %>/*.log {
   daily
   rotate 4
   notifempty

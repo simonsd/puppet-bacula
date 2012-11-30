@@ -19,6 +19,11 @@ class bacula::director::config {
     notify  => Service['bacula-dir'],
   }
 
+  file{"${log_dir}/bacula-dir.log":
+    ensure => 'file',
+    mode   => '0644',
+  }
+
   mysql::db{$::bacula::dbname:
     user => $::bacula::dbuser,
     host => $::bacula::dbhost,

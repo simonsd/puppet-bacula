@@ -16,7 +16,7 @@ class bacula::fd::config {
     mode  => '0755',
   }
 
-  file{'/var/log/bacula.log':
+  file{"${log_dir}/bacula-fd.log":
     mode => '0644',
   }
 

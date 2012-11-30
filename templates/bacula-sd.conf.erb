@@ -29,8 +29,9 @@ Director {
 #
 
 Messages {
-  Name                    = <%= log_output %>
-  director                = <%= director_label %> = all
+  name                    = "bacula-sd on ${::fqdn}"
+  append                  = "<%= log_dir %>/bacula-sd.log"
+  director                = "<%= director_label %> = all"
 }
 
 #

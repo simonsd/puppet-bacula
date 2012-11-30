@@ -12,8 +12,8 @@ class bacula::common {
 
   file{'/var/lib/bacula':}
   file{'/var/run/bacula':}
-  file{'/var/log/bacula':
-    mode   => '0644',
+  file{"${log_dir}":
+    mode => '0644',
   }
 
   file{'/etc/logrotate.d/bacula':

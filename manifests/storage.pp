@@ -7,8 +7,8 @@ class bacula::storage (
   $max_concurrent_jobs = $::bacula::params::sd_max_concurrent_jobs,
   $director_label      = $::bacula::params::director_label,
   $director_password   = $::bacula::params::director_password,
-  $log_output          = $::bacula::params::log_output,
   $bconsole_pkgname    = $::bacula::params::bconsole_pkgname,
+  $log_dir             = $::bacula::params::log_dir,
 ) inherits ::bacula::params {
 
   include ::bacula::common

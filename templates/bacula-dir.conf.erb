@@ -32,13 +32,10 @@ Pool {
 }
 
 Messages {
-  Name                    = Standard
+  name                    = "bacula-dir on ${::fqdn}"
+  append                  = "<%= log_dir %>/bacula-dir.log" = all, !skipped"
   mailcommand             = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: %t %e of %c %l\" %r"
-  operatorcommand         = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: Intervention needed for %j\" %r"
-  mail                    = <%= scope.lookupvar('bacula::admin_email') %> = all, !skipped
-  operator                = <%= scope.lookupvar('bacula::operator_email') %> = mount
-  console                 = all, !skipped, !saved
-  append                  = "/var/log/bacula.log" = all, !skipped
+  mail                    = "<%= scope.lookupvar('bacula::admin_email') %> = all, !skipped"
 }
 
 Job {

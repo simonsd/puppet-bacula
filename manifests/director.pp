@@ -1,5 +1,6 @@
 class bacula::director (
   $bconsole_pkgname = $::bacula::params::bconsole_pkgname,
+  $log_dir          = $::bacula::params::log_dir,
 ) inherits ::bacula::params {
 
   include ::bacula::common

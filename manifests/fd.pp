@@ -6,11 +6,11 @@ class bacula::fd (
   $max_concurrent_jobs       = $::bacula::params::fd_max_concurrent_jobs,
   $allowed_director_label    = $::bacula::params::director_label,
   $allowed_director_password = $::bacula::params::director_password,
-  $log_output                = $::bacula::params::default_log_output,
   $pkgname                   = $::bacula::params::fd_pkgname,
   $user                      = $::bacula::params::default_user,
   $group                     = $::bacula::params::default_group,
   $bconsole_pkgname          = $::bacula::params::bconsole_pkgname,
+  $log_dir                   = $::bacula::params::log_dir,
 ) inherits ::bacula::params {
 
   include ::bacula::common
