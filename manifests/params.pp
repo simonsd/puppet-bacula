@@ -37,6 +37,7 @@ class bacula::params {
   $director_server    = 'bacula'
   $director_label     = 'bacula-dir'
   $director_password  = 'bacula'
+  $director_port      = '9101'
   $director_pkgname   = 'bacula-director-mysql'
   $director_service   = $::operatingsystem ? {
     centos => 'bacula-dir',
@@ -80,6 +81,7 @@ class bacula::params {
   ####    Storage    ####
   #######################
 
+  $sd_port         = '9103'
   $storage_dir     = '/mnt/backup'
   $storage_pkgname = $::operatingsystem ? {
     default => 'bacula-storage-mysql',

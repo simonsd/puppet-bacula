@@ -1,7 +1,7 @@
 class bacula::firewall::sd {
 
-  firewall{'022 bacula-sd':
-    dport  => '9103',
+  firewall{'020 bacula-sd':
+    dport  => $sd_port,
     action => 'accept',
   }
 

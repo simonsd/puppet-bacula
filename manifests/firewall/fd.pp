@@ -1,7 +1,7 @@
 class bacula::firewall::fd {
 
-  firewall{'021 bacula-fd':
-    dport  => '9102',
+  firewall{'020 bacula-fd':
+    dport  => $fd_port,
     action => 'accept',
   }
 
