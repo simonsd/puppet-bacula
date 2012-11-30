@@ -21,16 +21,6 @@ Catalog {
   password                = "<%= scope.lookupvar('bacula::dbpassword') %>";
 }
 
-Pool {
-  Name                    = Default
-  Label Format            = "Default"
-  Pool Type               = Backup
-  Recycle                 = yes                       # Bacula can automatically recycle Volumes
-  AutoPrune               = yes                     # Prune expired volumes
-  Volume Retention        = 365 days         # one year
-  Maximum Volume jobs     = 1
-}
-
 Messages {
   name                    = "bacula-dir on ${::fqdn}"
   append                  = "<%= log_dir %>/bacula-dir.log" = all, !skipped"
