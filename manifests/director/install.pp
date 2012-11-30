@@ -1,6 +1,6 @@
 class bacula::director::install {
 
-  package{'bacula-director-mysql':
+  package{$director_pkgname:
     ensure   => 'latest',
     require  => Package['mysql-server'],
   }

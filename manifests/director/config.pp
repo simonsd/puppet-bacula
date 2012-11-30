@@ -1,47 +1,22 @@
 class bacula::director::config {
 
-  file{"${::bacula::config_root}/clients.d":
+  File{
     ensure => 'directory',
     owner  => 'root',
     group  => 'root',
     mode   => '0640',
   }
 
-  file{"${::bacula::config_root}/filesets.d":
-    ensure => 'directory',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0640',
-  }
-
-  file{"${::bacula::config_root}/schedules.d":
-    ensure => 'directory',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0640',
-  }
-
-  file{"${::bacula::config_root}/jobdefs.d":
-    ensure => 'directory',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0640',
-  }
-
-  file{"${::bacula::config_root}/pools.d":
-    ensure => 'directory',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0640',
-  }
+  file{"${::bacula::config_root}/clients.d":}
+  file{"${::bacula::config_root}/filesets.d":}
+  file{"${::bacula::config_root}/schedules.d":}
+  file{"${::bacula::config_root}/jobdefs.d":}
+  file{"${::bacula::config_root}/pools.d":}
 
   file{"${::bacula::config_root}/bacula-dir.conf":
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0640',
-    require => Package['bacula-director-mysql'],
-    notify  => Service['bacula-dir'],
+    ensure  => 'file',
     content => template('bacula/bacula-dir.conf.erb'),
+    notify  => Service['bacula-dir'],
   }
 
   mysql::db{$::bacula::dbname:
@@ -49,16 +24,10 @@ class bacula::director::config {
     host => $::bacula::dbhost,
   }
 
-  exec{'bacula-db-tables':
-    command     => $::operatingsystem ? {
-      centos => "/usr/libexec/bacula/make_bacula_tables -u${::bacula::dbuser} -p${::bacula::dbpassword}",
-      debian => "/usr/share/bacula-director/make_mysql_tables -u${::bacula::dbuser} -p${::bacula::dbpassword}",
-    },
+  exec{'initialize database':
+    command     => "${::bacula::params::db_init_command} -u${::bacula::dbuser -p${::bacula::dbpassword}",
     environment => "db_name=${::bacula::dbname}",
-    subscribe   => Package['bacula-director-mysql'],
-    require     => Mysql::Db[$::bacula::dbname],
     unless      => "/usr/bin/mysqlshow -uroot -p${::bacula::dbpassword} ${::bacula::dbname} | grep Version",
-    before      => Service['bacula-dir'],
   }
 
 }
