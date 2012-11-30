@@ -70,7 +70,11 @@ class bacula::params {
   ####    Storage    ####
   #######################
 
-  $storage_dir = '/mnt/backup'
+  $storage_dir     = '/mnt/backup'
+  $storage_pkgname = $::operatingsystem ? {
+    default => 'bacula-storage-mysql',
+    debian  => 'bacula-sd-mysql',
+  }
 
   ###########################
   ####    File Daemon    ####

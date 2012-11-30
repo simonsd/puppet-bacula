@@ -19,19 +19,11 @@
 # == Todo:
 #
 # TODO: Update documentation
-# TODO: Put the packages in a params class.
 #
 class bacula::storage::install {
 
-  ## Packages we need to install.
-  $bacula_storage_mysql_pkg = $::operatingsystem ? {
-    default => 'bacula-storage-mysql',
-    debian  => 'bacula-sd-mysql',
-  }
-
-  package{'bacula-storage-mysql':
+  package{$::bacula::params::storage_pkgname:
     ensure => installed,
-    name   => $bacula_storage_mysql_pkg,
   }
 
 }
