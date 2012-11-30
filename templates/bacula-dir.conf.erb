@@ -4,66 +4,66 @@
 ### Template source:  '<%= template_source %>'
 
 Director {
-  Name = <%= scope.lookupvar('bacula::director_label') %>
-  DIRport = 9101                                                            # where we listen for UA connections
-  QueryFile = "/etc/bacula/query.sql"
-  WorkingDirectory = "<%= scope.lookupvar('bacula::working_dir') %>"
-  PidDirectory = "/var/run"
+  Name                    = <%= scope.lookupvar('bacula::director_label') %>
+  DIRport                 = 9101                                                            # where we listen for UA connections
+  QueryFile               = "/etc/bacula/query.sql"
+  WorkingDirectory        = "<%= scope.lookupvar('bacula::working_dir') %>"
+  PidDirectory            = "/var/run"
   Maximum Concurrent Jobs = 1
-  Password = "<%= scope.lookupvar('bacula::director_password') %>"  # console password
-  Messages = Standard
+  Password                = "<%= scope.lookupvar('bacula::director_password') %>"  # console password
+  Messages                = Standard
 }
 
 Catalog {
-  Name = MyCatalog
-  dbname = <%= scope.lookupvar('bacula::dbname') %>;
-  user = <%= scope.lookupvar('bacula::dbuser') %>;
-  password = "<%= scope.lookupvar('bacula::dbpassword') %>";
+  Name                    = MyCatalog
+  dbname                  = <%= scope.lookupvar('bacula::dbname') %>;
+  user                    = <%= scope.lookupvar('bacula::dbuser') %>;
+  password                = "<%= scope.lookupvar('bacula::dbpassword') %>";
 }
 
 Pool {
-  Name = Default
-  Label Format = "Default"
-  Pool Type = Backup
-  Recycle = yes                       # Bacula can automatically recycle Volumes
-  AutoPrune = yes                     # Prune expired volumes
-  Volume Retention = 365 days         # one year
-  Maximum Volume jobs = 1
+  Name                    = Default
+  Label Format            = "Default"
+  Pool Type               = Backup
+  Recycle                 = yes                       # Bacula can automatically recycle Volumes
+  AutoPrune               = yes                     # Prune expired volumes
+  Volume Retention        = 365 days         # one year
+  Maximum Volume jobs     = 1
 }
 
 Messages {
-  Name = Standard
-  mailcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: %t %e of %c %l\" %r"
-  operatorcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: Intervention needed for %j\" %r"
-  mail = <%= scope.lookupvar('bacula::admin_email') %> = all, !skipped
-  operator = <%= scope.lookupvar('bacula::operator_email') %> = mount
-  console = all, !skipped, !saved
-  append = "/var/log/bacula.log" = all, !skipped
+  Name                    = Standard
+  mailcommand             = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: %t %e of %c %l\" %r"
+  operatorcommand         = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: Intervention needed for %j\" %r"
+  mail                    = <%= scope.lookupvar('bacula::admin_email') %> = all, !skipped
+  operator                = <%= scope.lookupvar('bacula::operator_email') %> = mount
+  console                 = all, !skipped, !saved
+  append                  = "/var/log/bacula.log" = all, !skipped
 }
 
 Job {
-  Name = "BackupCatalog"
-  Type = Backup
-  Storage = catalog-storage
-  Client = <%= scope.lookupvar('bacula::director_server') %>-fd
-  Messages = Standard
-  Pool = Default
-  Level = Full
-  FileSet = "Catalog"
-  Schedule = "FullDaily"
-  RunBeforeJob = "/usr/libexec/bacula/make_catalog_backup <%= scope.lookupvar('bacula::dbname') %> <%= scope.lookupvar('bacula::dbuser') %> <%= scope.lookupvar('bacula::dbpassword') %> <%= scope.lookupvar('bacula::dbhost') %>"
-  RunAfterJob  = "/usr/libexec/bacula/delete_catalog_backup"
-  Write Bootstrap = "<%= scope.lookupvar('bacula::working_dir') %>/BackupCatalog.bsr"
-  Priority = 11                                                               # run after main backup
+  Name                    = "BackupCatalog"
+  Type                    = Backup
+  Storage                 = catalog-storage
+  Client                  = <%= scope.lookupvar('bacula::director_server') %>-fd
+  Messages                = Standard
+  Pool                    = Default
+  Level                   = Full
+  FileSet                 = "Catalog"
+  Schedule                = "FullDaily"
+  RunBeforeJob            = "/usr/libexec/bacula/make_catalog_backup <%= scope.lookupvar('bacula::dbname') %> <%= scope.lookupvar('bacula::dbuser') %> <%= scope.lookupvar('bacula::dbpassword') %> <%= scope.lookupvar('bacula::dbhost') %>"
+  RunAfterJob             = "/usr/libexec/bacula/delete_catalog_backup"
+  Write Bootstrap         = "<%= scope.lookupvar('bacula::working_dir') %>/BackupCatalog.bsr"
+  Priority                = 11                                                               # run after main backup
 }
 
 Storage {
-  Name = catalog-storage
-  Address = <%= scope.lookupvar('bacula::default_storage_server') %>.<%= domain %>
-  SDPort = 9103
-  Password = "<%= scope.lookupvar('bacula::default_storage_password') %>"
-  Device = catalog-sd
-  Media Type = File
+  Name                    = catalog-storage
+  Address                 = <%= scope.lookupvar('bacula::default_storage_server') %>.<%= domain %>
+  SDPort                  = 9103
+  Password                = "<%= scope.lookupvar('bacula::default_storage_password') %>"
+  Device                  = catalog-sd
+  Media Type              = File
 }
 
 @|"sh -c 'for f in /etc/bacula/clients.d/*.conf ; do echo @${f} ; done'"

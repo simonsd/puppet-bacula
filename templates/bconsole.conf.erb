@@ -4,16 +4,12 @@
 ### Template source:  '<%= template_source %>'
 
 #
-# Bacula Console Configuration File
-#
-
-#
 # List Directors we connect to
 #
 
 Director {
-  Name = <%= scope.lookupvar('bacula::director_label') %>
-  DIRport = 9101
-  address = <%= scope.lookupvar('bacula::director_server') %>.<%= domain %>
+  Name     = <%= scope.lookupvar('bacula::director_label') %>
+  DIRport  = 9101
+  address  = <%= scope.lookupvar('bacula::director_server') %>.<%= domain %>
   Password = "<%= scope.lookupvar('bacula::director_password') %>"
 }

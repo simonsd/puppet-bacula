@@ -20,8 +20,8 @@ FileDaemon {
 #
 
 Director {
-  Name     = "<%= allowed_director_label %>"
-  Password = "<%= allowed_director_password %>"
+  Name                    = "<%= allowed_director_label %>"
+  Password                = "<%= allowed_director_password %>"
 }
 
 #
@@ -29,6 +29,6 @@ Director {
 #
 
 Messages {
-  Name     = <%= log_output %>
-  director = <%= allowed_director_label %> = all, !skipped, !restored
+  Name                    = <%= log_output %>
+  director                = <%= allowed_director_label %> = all, !skipped, !restored
 }
