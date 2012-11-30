@@ -8,15 +8,11 @@
 #
 
 Storage {
-  Name = <% if has_variable?('storage_label') -%>
-<%= scope.lookupvar('storage_label') %>
-<% else -%>
-<%= scope.lookupvar('bacula::default_storage_label') %>
-<% end -%>
-  SDPort = 9103                                                             # Director's port
-  WorkingDirectory = "<%= scope.lookupvar('bacula::working_dir') %>"
-  Pid Directory = "/var/run"
-  Maximum Concurrent Jobs = 20
+  Name                    = <%= sd_label %>
+  SDPort                  = <%= sd_port %>
+  WorkingDirectory        = <%= working_dir %>
+  Pid Directory           = <%= pid_dir %>
+  Maximum Concurrent Jobs = <%= max_concurrent_jobs %>
 }
 
 #
@@ -24,18 +20,20 @@ Storage {
 #
 
 Director {
-  Name = <%= scope.lookupvar('bacula::director_label') %>
-  Password = "<%= scope.lookupvar('bacula::director_password') %>"
+  Name     = "<%= director_label %>"
+  Password = "<%= director_password %>"
 }
 
 #
-# Send all messages to the Director,
-# mount messages also are sent to the email address
+# Logging
 #
 
 Messages {
-  Name = Standard
-  director = <%= scope.lookupvar('bacula::director_label') %> = all
+  Name     = <%= log_output %>
+  director = <%= director_label %> = all
 }
 
-@|"sh -c 'for f in /etc/bacula/devices.d/*.conf; do echo @${f}; done'"
+#
+# Load files in <%= config_dir %>/devices.d
+#
+@|"sh -c 'for f in <%= config_dir %>/devices.d/*.conf; do echo @${f}; done'"
