@@ -1,6 +1,6 @@
 define bacula::schedule (
-  $name,
-  $description,
+  $name        = undef,
+  $description = undef,
 ) {
 
   file{"${::bacula::config_root}/schedules.d/${name}.conf":
