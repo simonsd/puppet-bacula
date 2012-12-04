@@ -1,21 +1,21 @@
 class bacula::default::jobdefs {
 
-  @bacula::jobdef{'DefaultJob':
+  @bacula::jobdefs{'DefaultJob':
     name => 'DefaultJob',
   }
 
-  @bacula::jobdef{'Mysql':
+  @bacula::jobdefs{'Mysql':
     name    => 'Mysql',
     fileset => 'MysqlData',
   }
 
-  @bacula::jobdef{'Config':
+  @bacula::jobdefs{'Config':
     name    => 'Config',
     fileset => 'Config',
   }
 
   if $bacula::jobdefs != [] {
-    realize(Bacula::Jobdef[$bacula::jobdefs])
+    realize(Bacula::Jobdefs[$bacula::jobdefs])
   }
 
 }

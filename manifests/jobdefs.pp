@@ -3,7 +3,7 @@
 # TODO: warning: schedule is a metaparam; this value will inherit to all
 #       contained resources
 #
-define bacula::jobdef (
+define bacula::jobdefs (
   $name,
   $level    = 'Incremental',
   $fileset  = 'FullSet',
