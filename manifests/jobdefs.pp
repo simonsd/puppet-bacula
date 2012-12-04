@@ -10,7 +10,8 @@ define bacula::jobdefs (
   $schedule = 'FullWeekly',
   $messages = 'Standard',
   $pool     = 'Default',
-  $priority = '10'
+  $priority = '10',
+  $type     = 'Backup',
 ){
 
   file{"${::bacula::config_root}/jobdefs.d/${name}.conf":
