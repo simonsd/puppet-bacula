@@ -104,6 +104,6 @@ class bacula::params {
   ####    Bconsole    ####
   ########################
 
-  bconsole_pkgname = 'bacula-console'
+  $bconsole_pkgname = 'bacula-console'
 
 }
