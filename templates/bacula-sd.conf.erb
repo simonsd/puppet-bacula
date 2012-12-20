@@ -29,12 +29,12 @@ Director {
 #
 
 Messages {
-  name                    = "bacula-sd on ${::fqdn}"
+  name                    = "bacula-sd on <%= fqdn %>"
   append                  = "<%= log_dir %>/bacula-sd.log"
   director                = "<%= director_label %> = all"
 }
 
 #
-# Load files in <%= config_dir %>/devices.d
+# Load files in <%= config_root %>/devices.d
 #
-@|"sh -c 'for f in <%= config_dir %>/devices.d/*.conf; do echo @${f}; done'"
+@|"sh -c 'for f in <%= config_root %>/devices.d/*.conf; do echo @${f}; done'"

@@ -20,17 +20,10 @@
 #
 class bacula::storage::service {
 
-  service{'bacula-sd':
-    ensure    => running,
-    enable    => true,
-    hasstatus => $::operatingsystem ? {
-      default   => undef,
-      debian    => false,
-    },
-    require   => [
-      Package[bacula-storage-mysql],
-      File['/etc/bacula/bacula-sd.conf'],
-    ],
+  service{$storage_service_name:
+    ensure    => $storage_service_ensure,
+    enable    => $storage_service_enable,
+    hasstatus => $storage_service_hasstatus,
   }
 
 }

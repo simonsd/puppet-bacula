@@ -22,28 +22,27 @@
 #
 class bacula::storage::config {
 
-  file{"${::bacula::config_root}/bacula-sd.conf":
+  file{"${config_root}/bacula-sd.conf":
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
     content => template('bacula/bacula-sd.conf.erb'),
-    notify  => Service['bacula-sd'],
-    require => Package['bacula-storage-mysql'],
+    notify  => Service[$storage_service_name],
   }
 
   file{"${log_dir}/bacula-sd.log":
     mode => '0644',
   }
 
-  file{"${::bacula::config_root}/devices.d":
-    ensure => directory,
-  }
-
-  file{$::bacula::storage_dir:
+  file{$storage_dir:
     ensure  => directory,
     mode    => '0700',
   }
 
-  Bacula::Device <<| |>>
+  file{"${config_root}/devices.d":
+    ensure => directory,
+  }
+
+  Bacula::Device <<| $device_collect_filter |>> { notify => Service[$storage_service_name] }
 
 }

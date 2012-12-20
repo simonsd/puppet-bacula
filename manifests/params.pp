@@ -87,11 +87,18 @@ class bacula::params {
   ####    Storage    ####
   #######################
 
-  $sd_port         = '9103'
-  $storage_dir     = '/mnt/backup'
-  $storage_pkgname = $::operatingsystem ? {
+  $sd_port                   = '9103'
+  $storage_dir               = '/mnt/backup'
+  $storage_pkgname           = $::operatingsystem ? {
     default => 'bacula-storage-mysql',
     debian  => 'bacula-sd-mysql',
+  }
+  $storage_service_name      = 'bacula-sd'
+  $storage_service_ensure    = 'running'
+  $storage_service_enable    = true
+  $storage_service_hasstatus = $::operatingsystem ? {
+    default => undef,
+    debian  => false,
   }
 
   ###########################
