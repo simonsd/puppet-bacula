@@ -10,9 +10,10 @@ class bacula::common {
     mode   => '0700',
   }
 
-  file{'/var/lib/bacula':}
-  file{'/var/run/bacula':}
-  file{"${log_dir}":
+  file{$config_root:}
+  file{$working_dir:}
+  file{$pid_dir:}
+  file{$log_dir:
     mode => '0644',
   }
 
