@@ -19,4 +19,8 @@ class bacula::fd (
   include ::bacula::fd::config
   include ::bacula::fd::service
 
+  Class['::bacula::fd::install'] ->
+  Class['::bacula::fd::config'] ->
+  Class['::bacula::fd::service']
+
 }
