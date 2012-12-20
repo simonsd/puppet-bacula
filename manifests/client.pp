@@ -1,19 +1,22 @@
 define bacula::client (
-  $storage_server   = $::bacula::default_storage_server,
-  $storage_path     = $::bacula::default_storage_path,
-  $storage_password = $::bacula::default_storage_password,
-  $device_owner     = $::bacula::default_device_owner,
-  $device_group     = $::bacula::default_device_group,
+  $storage_server   = $::bacula::params::default_storage_server,
+  $storage_path     = $::bacula::params::default_storage_path,
+  $storage_password = $::bacula::params::default_storage_password,
+  $device_owner     = $::bacula::params::default_device_owner,
+  $device_group     = $::bacula::params::default_device_group,
+  $fd_port          = $::bacula::params::fd_port,
+  $sd_port          = $::bacula::params::sd_port,
+  $config_root      = $::bacula::params::config_root,
 ) {
 
-  concat{"${::bacula::config_root}/clients.d/${title}.conf":
+  concat{"${config_root}/clients.d/${title}.conf":
     owner  => 'root',
     group  => 'root',
     mode   => '0640',
   }
 
-  concat::fragment{"${::bacula::config_root}/clients.d/${title}.conf-client":
-    target  => "${::bacula::config_root}/clients.d/${title}.conf",
+  concat::fragment{"${config_root}/clients.d/${title}.conf-client":
+    target  => "${config_root}/clients.d/${title}.conf",
     content => template('bacula/client.erb'),
     order   => 01,
   }
