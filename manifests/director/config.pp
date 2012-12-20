@@ -24,11 +24,6 @@ class bacula::director::config {
     mode   => '0644',
   }
 
-  mysql::db{$::bacula::dbname:
-    user => $::bacula::dbuser,
-    host => $::bacula::dbhost,
-  }
-
   exec{'initialize database':
     command     => "${::bacula::params::db_init_command} -u${::bacula::dbuser -p${::bacula::dbpassword}",
     environment => "db_name=${::bacula::dbname}",
