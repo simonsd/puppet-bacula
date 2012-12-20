@@ -1,7 +1,8 @@
 define bacula::device (
-  $path  = "${::bacula::default_storage_path}/${::fqdn}",
-  $owner = $::bacula::default_device_owner,
-  $group = $::bacula::default_device_group,
+  $path        = "${::bacula::params::default_storage_path}/${::fqdn}",
+  $owner       = $::bacula::params::default_device_owner,
+  $group       = $::bacula::params::default_device_group,
+  $config_root = $::bacula::params::config_root,
 ){
 
   file{$path:
@@ -10,7 +11,7 @@ define bacula::device (
     group  => $group,
   }
 
-  file{"${::bacula::config_root}/devices.d/${title}.conf":
+  file{"${config_root}/devices.d/${title}.conf":
     ensure  => present,
     content => template('bacula/device.conf.erb'),
   }
