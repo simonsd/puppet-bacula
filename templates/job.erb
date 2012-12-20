@@ -1,13 +1,9 @@
-### File managed with puppet ###
-### Served by:        '<%= scope.lookupvar('::servername') %>'
-### Module:           '<%= scope.to_hash['module_name'] %>'
-### Template source:  '<%= template_source %>'
 
 Job {
 <% if name                  %>  name                    = "<%= name %>"<% end %>
 <% if client                %>  client                  = "<%= client %>-fd"<% end %>
 <% if type                  %>  type                    = "<%= type %>"<% end %>
-<% if scope.lookupvar('::bacula::working_dir') %>  write bootstrap         = "<%= scope.lookupvar('::bacula::working_dir') %>/<%= name %>.bsr"<% end %>
+<% if working_dir           %>  write bootstrap         = "<%= working_dir %>/<%= name %>.bsr"<% end %>
 <% if messages              %>  messages                = "<%= messages %>"<% end %>
 <% if jobdefs               %>  jobdefs                 = "<%= jobdefs %>"<% end %>
 
@@ -24,4 +20,3 @@ Job {
 <% if server_run_before_job %>  run before job          = "<%= server_run_before_job %>"<% end %>
 <% if server_run_after_job  %>  run after job           = "<%= server_run_after_job %>"<% end %>
 }
-

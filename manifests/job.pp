@@ -18,10 +18,12 @@ define bacula::job (
   $server_run_after_job  = undef,
   $jobdefs               = 'DefaultJob',
   $messages              = 'Default',
+  $config_root           = $::bacula::params::config_root,
+  $working_dir           = $::bacula::params::working_dir,
 ) {
 
-  concat::fragment{"${::bacula::config_root}/clients.d/${client}.conf-${name}":
-    target  => "${::bacula::config_root}/clients.d/${client}.conf",
+  concat::fragment{"${config_root}/clients.d/${client}.conf-${name}":
+    target  => "${config_root}/clients.d/${client}.conf",
     content => template('bacula/job.erb'),
     order   => '100',
   }
