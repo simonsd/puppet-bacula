@@ -16,7 +16,7 @@ class bacula::director::config {
   file{"${::bacula::config_root}/bacula-dir.conf":
     ensure  => 'file',
     content => template('bacula/bacula-dir.conf.erb'),
-    notify  => Service['bacula-dir'],
+    notify  => Service[$director_service],
   }
 
   file{"${log_dir}/bacula-dir.log":

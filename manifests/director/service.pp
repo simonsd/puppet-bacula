@@ -1,9 +1,9 @@
 class bacula::director::service {
 
-  service{$::bacula::director_service:
-    ensure    => 'running',
-    enable    => true,
-    hasstatus => $::bacula::params::director_hasstatus,
+  service{$director_service_name:
+    ensure    => $director_service_ensure,
+    enable    => $director_service_enable,
+    hasstatus => $director_service_hasstatus,
   }
 
 }

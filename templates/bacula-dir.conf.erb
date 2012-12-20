@@ -4,56 +4,57 @@
 ### Template source:  '<%= template_source %>'
 
 Director {
-  name                    = "<%= scope.lookupvar('bacula::director_label') %>"
+  name                    = "<%= director_label %>"
   dirport                 = "<%= director_port %>"
   queryFile               = "/etc/bacula/query.sql"
-  workingDirectory        = "<%= scope.lookupvar('bacula::working_dir') %>"
+  workingDirectory        = "<%= working_dir %>"
   piddirectory            = "/var/run"
   maximum concurrent jobs = "1"
-  password                = "<%= scope.lookupvar('bacula::director_password') %>"
+  password                = "<%= director_password %>"
   messages                = "Standard"
 }
 
 Catalog {
   name                    = "MyCatalog"
-  dbname                  = "<%= scope.lookupvar('bacula::dbname') %>";
-  user                    = "<%= scope.lookupvar('bacula::dbuser') %>";
-  password                = "<%= scope.lookupvar('bacula::dbpassword') %>";
+  dbname                  = "<%= dbname %>";
+  user                    = "<%= dbuser %>";
+  password                = "<%= dbpassword %>";
+  dbaddress               = "<%= dbhost %>";
 }
 
 Messages {
-  name                    = "bacula-dir on ${::fqdn}"
+  name                    = "bacula-dir on <%= @fqdn %>"
   append                  = "<%= log_dir %>/bacula-dir.log" = all, !skipped"
-  mailcommand             = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= scope.lookupvar('bacula::admin_email') %>\" -s \"Bacula: %t %e of %c %l\" %r"
-  mail                    = "<%= scope.lookupvar('bacula::admin_email') %> = all, !skipped"
+  mailcommand             = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= admin_email %>\" -s \"Bacula: %t %e of %c %l\" %r"
+  mail                    = "<%= admin_email %> = all, !skipped"
 }
 
 Job {
   name                    = "BackupCatalog"
   type                    = "Backup"
   storage                 = "catalog-storage"
-  client                  = "<%= scope.lookupvar('bacula::director_server') %>-fd"
+  client                  = "<%= director_server %>-fd"
   messages                = "Standard"
   pool                    = "Default"
   level                   = "Full"
   fileset                 = "Catalog"
   schedule                = "FullDaily"
-  runbeforejob            = "/usr/libexec/bacula/make_catalog_backup <%= scope.lookupvar('bacula::dbname') %> <%= scope.lookupvar('bacula::dbuser') %> <%= scope.lookupvar('bacula::dbpassword') %> <%= scope.lookupvar('bacula::dbhost') %>"
+  runbeforejob            = "/usr/libexec/bacula/make_catalog_backup <%= dbname %> <%= dbuser %> <%= dbpassword %> <%= dbhost %>"
   runafterjob             = "/usr/libexec/bacula/delete_catalog_backup"
-  write bootstrap         = "<%= scope.lookupvar('bacula::working_dir') %>/BackupCatalog.bsr"
+  write bootstrap         = "<%= working_dir %>/BackupCatalog.bsr"
   priority                = "11"
 }
 
 Storage {
   name                    = "catalog-storage"
-  address                 = "<%= scope.lookupvar('bacula::default_storage_server') %>.<%= domain %>"
+  address                 = "<%= default_storage_server %>.<%= @domain %>"
   sdport                  = "<%= sd_port %>"
-  password                = "<%= scope.lookupvar('bacula::default_storage_password') %>"
+  password                = "<%= default_storage_password %>"
   device                  = "catalog-sd"
   media type              = "File"
 }
 
-@|"sh -c 'for f in /etc/bacula/clients.d/*.conf ; do echo @${f} ; done'"
-@|"sh -c 'for f in /etc/bacula/filesets.d/*.conf ; do echo @${f} ; done'"
-@|"sh -c 'for f in /etc/bacula/jobdefs.d/*.conf ; do echo @${f} ; done'"
-@|"sh -c 'for f in /etc/bacula/schedules.d/*.conf ; do echo @${f} ; done'"
+@|"sh -c 'for f in <%= config_root %>/clients.d/*.conf   ; do echo @${f} ; done'"
+@|"sh -c 'for f in <%= config_root %>/filesets.d/*.conf  ; do echo @${f} ; done'"
+@|"sh -c 'for f in <%= config_root %>/jobdefs.d/*.conf   ; do echo @${f} ; done'"
+@|"sh -c 'for f in <%= config_root %>/schedules.d/*.conf ; do echo @${f} ; done'"

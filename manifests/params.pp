@@ -36,22 +36,24 @@ class bacula::params {
   ####    Director    ####
   ########################
 
-  $admin_email        = undef
-  $operator_email     = undef
-  $director_server    = 'bacula'
-  $director_label     = 'bacula-dir'
-  $director_password  = 'bacula'
-  $director_port      = '9101'
-  $director_pkgname   = 'bacula-director-mysql'
-  $director_service   = $::operatingsystem ? {
+  $admin_email                = undef
+  $operator_email             = undef
+  $director_server            = 'bacula'
+  $director_label             = 'bacula-dir'
+  $director_password          = 'bacula'
+  $director_port              = '9101'
+  $director_pkgname           = 'bacula-director-mysql'
+  $director_service_name      = $::operatingsystem ? {
     centos => 'bacula-dir',
     debian => 'bacula-director',
   }
-  $director_hasstatus = $::operatingsystem ? {
+  $director_service_hasstatus = $::operatingsystem ? {
     default => undef,
     debian  => false,
   }
-  $db_init_command    = $::operatingsystem ? {
+  $director_service_ensure    = 'running'
+  $director_service_enable    = true
+  $db_init_command            = $::operatingsystem ? {
     centos => '/usr/libexec/bacula/make_bacula_tables',
     debian => '/usr/share/bacula-director/make_mysql_tables',
   }
