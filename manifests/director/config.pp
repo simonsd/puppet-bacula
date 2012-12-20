@@ -7,13 +7,13 @@ class bacula::director::config {
     mode   => '0640',
   }
 
-  file{"${::bacula::config_root}/clients.d":}
-  file{"${::bacula::config_root}/filesets.d":}
-  file{"${::bacula::config_root}/schedules.d":}
-  file{"${::bacula::config_root}/jobdefs.d":}
-  file{"${::bacula::config_root}/pools.d":}
+  file{"${config_root}/clients.d":}
+  file{"${config_root}/filesets.d":}
+  file{"${config_root}/schedules.d":}
+  file{"${config_root}/jobdefs.d":}
+  file{"${config_root}/pools.d":}
 
-  file{"${::bacula::config_root}/bacula-dir.conf":
+  file{"${config_root}/bacula-dir.conf":
     ensure  => 'file',
     content => template('bacula/bacula-dir.conf.erb'),
     notify  => Service[$director_service],
@@ -25,9 +25,9 @@ class bacula::director::config {
   }
 
   exec{'initialize database':
-    command     => "${::bacula::params::db_init_command} -u${::bacula::dbuser -p${::bacula::dbpassword}",
-    environment => "db_name=${::bacula::dbname}",
-    unless      => "/usr/bin/mysqlshow -uroot -p${::bacula::dbpassword} ${::bacula::dbname} | grep Version",
+    command     => "${db_init_command} -u${dbuser} -p${dbpassword} -h${dbhost}",
+    environment => "db_name=${dbname}",
+    unless      => "/usr/bin/mysqlshow -u${dbuser} -p${dbpassword} -h${dbhost} ${dbname} | grep Version",
   }
 
 }

@@ -8,13 +8,19 @@ class bacula::director (
   $director_port              = $::bacula::params::director_port,
   $director_password          = $::bacula::params::director_password,
   $bconsole_pkgname           = $::bacula::params::bconsole_pkgname,
+  $config_root                = $::bacula::params::config_root,
   $working_dir                = $::bacula::params::working_dir,
   $log_dir                    = $::bacula::params::log_dir,
   $dbname                     = $::bacula::params::dbname,
   $dbhost                     = $::bacula::params::dbhost,
   $dbuser                     = $::bacula::params::dbuser,
   $dbpassword                 = $::bacula::params::dbpassword,
+  $db_init_command            = $::bacula::params::db_init_command,
   $admin_email                = $::bacula::params::admin_email,
+  $client_collect_filter      = $::bacula::params::client_collect_filter,
+  $fileset_collect_filter     = $::bacula::params::client_collect_filter,
+  $job_collect_filter         = $::bacula::params::client_collect_filter,
+  $pool_collect_filter        = $::bacula::params::client_collect_filter,
 ) inherits ::bacula::params {
 
   include ::bacula::common
