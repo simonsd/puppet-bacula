@@ -1,15 +1,14 @@
 define bacula::fileset (
-  $name,
   $include,
-  $exclude = [],
+  $exclude     = [],
+  $config_root = $::bacula::params::config_root,
 ){
 
-  file{"${::bacula::config_root}/filesets.d/${name}.conf":
+  file{"${config_root}/filesets.d/${name}.conf":
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
-    notify  => Service['bacula-dir'],
     content => template('bacula/fileset.erb'),
   }
 

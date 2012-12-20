@@ -10,7 +10,6 @@ define bacula::client (
     owner  => 'root',
     group  => 'root',
     mode   => '0640',
-    notify => Service['bacula-dir'],
   }
 
   concat::fragment{"${::bacula::config_root}/clients.d/${title}.conf-client":
