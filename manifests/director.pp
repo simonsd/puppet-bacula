@@ -17,28 +17,30 @@ class bacula::director (
   $dbpassword                 = $::bacula::params::dbpassword,
   $db_init_command            = $::bacula::params::db_init_command,
   $admin_email                = $::bacula::params::admin_email,
+  $catalog_collect_filter     = $::bacula::params::catalog_collect_filter,
   $client_collect_filter      = $::bacula::params::client_collect_filter,
-  $fileset_collect_filter     = $::bacula::params::client_collect_filter,
-  $job_collect_filter         = $::bacula::params::client_collect_filter,
-  $pool_collect_filter        = $::bacula::params::client_collect_filter,
+  $fileset_collect_filter     = $::bacula::params::fileset_collect_filter,
+  $job_collect_filter         = $::bacula::params::job_collect_filter,
+  $jobdef_collect_filter      = $::bacula::params::jobdef_collect_filter,
+  $pool_collect_filter        = $::bacula::params::pool_collect_filter,
+  $schedule_collect_filter    = $::bacula::params::schedule_collect_filter,
+  $storage_collect_filter     = $::bacula::params::storage_collect_filter,
 ) inherits ::bacula::params {
 
   include ::bacula::common
 
   include ::bacula::director::install
   include ::bacula::director::config
-  include ::bacula::director::collect
   include ::bacula::director::service
 
   include ::bacula::default::filesets
-  include ::bacula::default::schedules
   include ::bacula::default::jobs
   include ::bacula::default::jobdefs
   include ::bacula::default::pools
+  include ::bacula::default::schedules
 
   Class['::bacula::director::install'] ->
   Class['::bacula::director::config'] ->
-  Class['::bacula::director::collect'] ->
   Class['::bacula::director::service']
 
 }

@@ -70,6 +70,15 @@ class bacula::params {
     'Config',
   ]
 
+  $catalog_collect_filter  = ''
+  $client_collect_filter   = ''
+  $fileset_collect_filter  = ''
+  $job_collect_filter      = ''
+  $jobdef_collect_filter   = ''
+  $pool_collect_filter     = ''
+  $schedule_collect_filter = ''
+  $storage_collect_filter  = ''
+
   #######################
   ####    Storage    ####
   #######################
