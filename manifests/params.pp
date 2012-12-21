@@ -25,7 +25,6 @@ class bacula::params {
   ########################
 
   $admin_email                = undef
-  $operator_email             = undef
   $director_server            = 'bacula'
   $director_label             = 'bacula-dir'
   $director_password          = 'bacula'
