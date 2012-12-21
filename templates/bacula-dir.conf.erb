@@ -14,44 +14,11 @@ Director {
   messages                = "Standard"
 }
 
-Catalog {
-  name                    = "MyCatalog"
-  dbname                  = "<%= dbname %>";
-  user                    = "<%= dbuser %>";
-  password                = "<%= dbpassword %>";
-  dbaddress               = "<%= dbhost %>";
-}
-
 Messages {
   name                    = "bacula-dir on <%= @fqdn %>"
   append                  = "<%= log_dir %>/bacula-dir.log" = all, !skipped"
   mailcommand             = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= admin_email %>\" -s \"Bacula: %t %e of %c %l\" %r"
   mail                    = "<%= admin_email %> = all, !skipped"
-}
-
-Job {
-  name                    = "BackupCatalog"
-  type                    = "Backup"
-  storage                 = "catalog-storage"
-  client                  = "<%= director_server %>-fd"
-  messages                = "Standard"
-  pool                    = "Default"
-  level                   = "Full"
-  fileset                 = "Catalog"
-  schedule                = "FullDaily"
-  runbeforejob            = "/usr/libexec/bacula/make_catalog_backup <%= dbname %> <%= dbuser %> <%= dbpassword %> <%= dbhost %>"
-  runafterjob             = "/usr/libexec/bacula/delete_catalog_backup"
-  write bootstrap         = "<%= working_dir %>/BackupCatalog.bsr"
-  priority                = "11"
-}
-
-Storage {
-  name                    = "catalog-storage"
-  address                 = "<%= default_storage_server %>.<%= @domain %>"
-  sdport                  = "<%= sd_port %>"
-  password                = "<%= default_storage_password %>"
-  device                  = "catalog-dev"
-  media type              = "File"
 }
 
 @|"sh -c 'for f in <%= config_root %>/catalog.d/*.conf   ; do echo @${f} ; done'"
