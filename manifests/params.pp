@@ -116,4 +116,10 @@ class bacula::params {
 
   $bconsole_pkgname = 'bacula-console'
 
+  ######################
+  ####    Client    ####
+  ######################
+
+  $catalog = 'DefaultCatalog'
+
 }

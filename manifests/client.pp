@@ -9,6 +9,7 @@ define bacula::client (
   $sd_port          = $::bacula::params::sd_port,
   $sd_password      = $::bacula::params::sd_password,
   $config_root      = $::bacula::params::config_root,
+  $catalog          = $::bacula::params::catalog,
 ) {
 
   concat{"${config_root}/clients.d/${title}.conf":
