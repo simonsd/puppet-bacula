@@ -20,7 +20,7 @@ define bacula::jobdefs (
     group   => 'root',
     mode    => '0640',
     notify  => Service['bacula-dir'],
-    content => template('bacula/jobdefs.erb'),
+    content => template('bacula/jobdefs.conf.erb'),
   }
 
 }

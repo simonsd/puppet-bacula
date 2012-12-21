@@ -9,7 +9,7 @@ define bacula::fileset (
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
-    content => template('bacula/fileset.erb'),
+    content => template('bacula/fileset.conf.erb'),
   }
 
 }

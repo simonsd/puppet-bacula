@@ -24,7 +24,7 @@ define bacula::job (
 
   concat::fragment{"${config_root}/clients.d/${client}.conf-${name}":
     target  => "${config_root}/clients.d/${client}.conf",
-    content => template('bacula/job.erb'),
+    content => template('bacula/job.conf.erb'),
     order   => '100',
   }
 

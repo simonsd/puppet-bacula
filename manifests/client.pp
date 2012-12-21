@@ -20,7 +20,7 @@ define bacula::client (
 
   concat::fragment{"${config_root}/clients.d/${title}.conf-client":
     target  => "${config_root}/clients.d/${title}.conf",
-    content => template('bacula/client.erb'),
+    content => template('bacula/client.conf.erb'),
     order   => 01,
   }
 

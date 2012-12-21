@@ -9,7 +9,7 @@ define bacula::schedule (
     group   => 'root',
     mode    => '0640',
     notify  => Service['bacula-dir'],
-    content => template('bacula/schedule.erb'),
+    content => template('bacula/schedule.conf.erb'),
   }
 
 }
