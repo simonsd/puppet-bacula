@@ -13,17 +13,6 @@ class bacula::params {
   $log_dir     = '/var/log/bacula'
 
   ########################
-  ####    Defaults    ####
-  ########################
-
-  $default_storage_server   = "bacula.${::domain}"
-  $default_storage_label    = 'bacula-sd'
-  $default_storage_password = 'bacula'
-  $default_storage_path     = '/mnt/backup'
-  $default_storage_owner    = 'bacula'
-  $default_storage_group    = 'bacula'
-
-  ########################
   ####    Database    ####
   ########################
 
@@ -87,19 +76,25 @@ class bacula::params {
   ####    Storage    ####
   #######################
 
-  $sd_port                   = '9103'
-  $storage_dir               = '/mnt/backup'
-  $storage_pkgname           = $::operatingsystem ? {
+  $sd_port              = '9103'
+  $storage_dir          = '/mnt/backup'
+  $sd_pkgname           = $::operatingsystem ? {
     default => 'bacula-storage-mysql',
     debian  => 'bacula-sd-mysql',
   }
-  $storage_service_name      = 'bacula-sd'
-  $storage_service_ensure    = 'running'
-  $storage_service_enable    = true
-  $storage_service_hasstatus = $::operatingsystem ? {
+  $sd_service_name      = 'bacula-sd'
+  $sd_service_ensure    = 'running'
+  $sd_service_enable    = true
+  $sd_service_hasstatus = $::operatingsystem ? {
     default => undef,
     debian  => false,
   }
+
+  $sd_server            = "bacula.${::domain}"
+  $sd_label             = 'bacula-sd'
+  $sd_password          = 'bacula'
+  $sd_owner             = 'bacula'
+  $sd_group             = 'bacula'
 
   ###########################
   ####    File Daemon    ####

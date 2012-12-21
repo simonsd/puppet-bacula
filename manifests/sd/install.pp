@@ -1,6 +1,6 @@
-# = Class: bacula::storage::install
+# = Class: bacula::sd::install
 #
-# Description of bacula::storage::install
+# Description of bacula::sd::install
 #
 # == Parameters:
 #
@@ -20,9 +20,9 @@
 #
 # TODO: Update documentation
 #
-class bacula::storage::install {
+class bacula::sd::install {
 
-  package{$::bacula::params::storage_pkgname:
+  package{$::bacula::params::sd_pkgname:
     ensure => installed,
   }
 

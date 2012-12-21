@@ -1,4 +1,4 @@
-# = Class: bacula::storage::service
+# = Class: bacula::sd::service
 #
 # Installs packages for bacula
 #
@@ -12,18 +12,18 @@
 #
 # == Sample Usage:
 #
-#   include bacula::storage::service
+#   include bacula::sd::service
 #
 # == Todo:
 #
 # * Update documentation
 #
-class bacula::storage::service {
+class bacula::sd::service {
 
-  service{$storage_service_name:
-    ensure    => $storage_service_ensure,
-    enable    => $storage_service_enable,
-    hasstatus => $storage_service_hasstatus,
+  service{$sd_service_name:
+    ensure    => $sd_service_ensure,
+    enable    => $sd_service_enable,
+    hasstatus => $sd_service_hasstatus,
   }
 
 }

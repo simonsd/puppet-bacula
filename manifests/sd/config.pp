@@ -1,6 +1,6 @@
-# = Class: bacula::storage::config
+# = Class: bacula::sd::config
 #
-# Description of bacula::storage::config
+# Description of bacula::sd::config
 #
 # == Parameters:
 #
@@ -20,14 +20,14 @@
 #
 # TODO: Update documentation
 #
-class bacula::storage::config {
+class bacula::sd::config {
 
   file{"${config_root}/bacula-sd.conf":
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
     content => template('bacula/bacula-sd.conf.erb'),
-    notify  => Service[$storage_service_name],
+    notify  => Service[$sd_service_name],
   }
 
   file{"${log_dir}/bacula-sd.log":
@@ -43,6 +43,6 @@ class bacula::storage::config {
     ensure => directory,
   }
 
-  Bacula::Device <<| $device_collect_filter |>> { notify => Service[$storage_service_name] }
+  Bacula::Device <<| $device_collect_filter |>> { notify => Service[$sd_service_name] }
 
 }

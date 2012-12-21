@@ -6,12 +6,11 @@ class bacula (
   $director_label           = $::bacula::params::director_label,
   $director_password        = $::bacula::params::director_password,
 
-  $default_storage_server   = $::bacula::params::director_password,
-  $default_storage_label    = $::bacula::params::default_storage_label,
-  $default_storage_password = $::bacula::params::default_storage_password,
-  $default_storage_path     = $::bacula::params::default_storage_path,
-  $default_storage_owner    = $::bacula::params::default_storage_owner,
-  $default_storage_group    = $::bacula::params::default_storage_group,
+  $sd_server                = $::bacula::params::sd_server,
+  $sd_label                 = $::bacula::params::sd_label,
+  $sd_password              = $::bacula::params::sd_password,
+  $sd_owner                 = $::bacula::params::sd_owner,
+  $sd_group                 = $::bacula::params::sd_group,
 
   $bconsole_pkgname         = $::bacula::params::bconsole_pkgname,
 

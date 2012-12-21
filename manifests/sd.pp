@@ -1,4 +1,4 @@
-class bacula::storage (
+class bacula::sd (
   $sd_label                   = $::bacula::params::sd_label,
   $sd_port                    = $::bacula::params::sd_port,
   $config_root                = $::bacula::params::config_root,
@@ -11,20 +11,20 @@ class bacula::storage (
   $log_dir                    = $::bacula::params::log_dir,
   $storage_dir                = $::bacula::params::storage_dir,
   $device_collect_filter      = $::bacula::params::device_collect_filter,
-  $storage_service_name       = $::bacula::params::storage_service_name,
-  $storage_service_ensure     = $::bacula::params::storage_service_ensure,
-  $storage_service_enable     = $::bacula::params::storage_service_enable,
-  $storage_service_hasstatus  = $::bacula::params::storage_service_hasstatus,
+  $sd_service_name            = $::bacula::params::sd_service_name,
+  $sd_service_ensure          = $::bacula::params::sd_service_ensure,
+  $sd_service_enable          = $::bacula::params::sd_service_enable,
+  $sd_service_hasstatus       = $::bacula::params::sd_service_hasstatus,
 ) inherits ::bacula::params {
 
   include ::bacula::common
 
-  include ::bacula::storage::install
-  include ::bacula::storage::config
-  include ::bacula::storage::service
+  include ::bacula::sd::install
+  include ::bacula::sd::config
+  include ::bacula::sd::service
 
   include ::bacula::default::devices
 
-  Class[::bacula::storage::install] -> Class[::bacula::storage::config] -> Class[::bacula::storage::service]
+  Class[::bacula::sd::install] -> Class[::bacula::sd::config] -> Class[::bacula::sd::service]
 
 }
