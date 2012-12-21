@@ -16,7 +16,7 @@ class bacula::director (
   $dbuser                     = $::bacula::params::dbuser,
   $dbpassword                 = $::bacula::params::dbpassword,
   $db_init_command            = $::bacula::params::db_init_command,
-  $admin_email                = $::bacula::params::admin_email,
+  $log_email                  = $::bacula::params::log_email,
   $catalog_collect_filter     = $::bacula::params::catalog_collect_filter,
   $client_collect_filter      = $::bacula::params::client_collect_filter,
   $fileset_collect_filter     = $::bacula::params::fileset_collect_filter,
