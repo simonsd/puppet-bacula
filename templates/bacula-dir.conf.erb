@@ -54,6 +54,7 @@ Storage {
   media type              = "File"
 }
 
+@|"sh -c 'for f in <%= config_root %>/catalog.d/*.conf   ; do echo @${f} ; done'"
 @|"sh -c 'for f in <%= config_root %>/clients.d/*.conf   ; do echo @${f} ; done'"
 @|"sh -c 'for f in <%= config_root %>/filesets.d/*.conf  ; do echo @${f} ; done'"
 @|"sh -c 'for f in <%= config_root %>/jobdefs.d/*.conf   ; do echo @${f} ; done'"

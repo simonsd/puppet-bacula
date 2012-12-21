@@ -16,7 +16,6 @@ class bacula::params {
   ####    Database    ####
   ########################
 
-  $dbname     = 'bacula'
   $dbuser     = 'bacula'
   $dbpassword = 'bacula'
   $dbhost     = 'localhost'

@@ -7,6 +7,7 @@ class bacula::director::config {
     mode   => '0640',
   }
 
+  file{"${config_root}/catalog.d":}
   file{"${config_root}/clients.d":}
   file{"${config_root}/filesets.d":}
   file{"${config_root}/schedules.d":}
@@ -23,12 +24,6 @@ class bacula::director::config {
   file{"${log_dir}/bacula-dir.log":
     ensure => 'file',
     mode   => '0644',
-  }
-
-  exec{'initialize database':
-    command     => "${db_init_command} -u${dbuser} -p${dbpassword} -h${dbhost}",
-    environment => "db_name=${dbname}",
-    unless      => "/usr/bin/mysqlshow -u${dbuser} -p${dbpassword} -h${dbhost} ${dbname} | grep Version",
   }
 
 }
