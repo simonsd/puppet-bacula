@@ -96,11 +96,14 @@ class bacula::params {
   $sd_owner             = 'bacula'
   $sd_group             = 'bacula'
 
+  $media_type           = 'File'
+
   ###########################
   ####    File Daemon    ####
   ###########################
 
   $fd_port                = '9102'
+  $fd_password            = 'bacula'
   $fd_max_concurrent_jobs = '1'
   $fd_pkgname             = 'bacula-client'
   $fd_service_name        = 'bacula-fd'

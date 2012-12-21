@@ -1,0 +1,13 @@
+### File managed with puppet ###
+### Served by:        '<%= scope.lookupvar('::servername') %>'
+### Module:           '<%= scope.to_hash['module_name'] %>'
+### Template source:  '<%= template_source %>'
+
+Storage {
+  name           = "<%= title %>-storage"
+  address        = "<%= sd_server %>"
+  sdport         = "<%= sd_port %>"
+  password       = "<%= sd_password %>"
+  device         = "<%= device %>"
+  media type     = "<%= media_type %>"
+}

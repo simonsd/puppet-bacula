@@ -12,6 +12,7 @@ class bacula::director::config {
   file{"${config_root}/schedules.d":}
   file{"${config_root}/jobdefs.d":}
   file{"${config_root}/pools.d":}
+  file{"${config_root}/storage.d":}
 
   file{"${config_root}/bacula-dir.conf":
     ensure  => 'file',
