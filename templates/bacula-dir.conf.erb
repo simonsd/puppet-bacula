@@ -6,7 +6,7 @@
 Director {
   name                    = "<%= director_label %>"
   dirport                 = "<%= director_port %>"
-  queryFile               = "/etc/bacula/query.sql"
+  queryFile               = "<%= config_root %>/query.sql"
   workingDirectory        = "<%= working_dir %>"
   piddirectory            = "<%= pid_dir %>"
   maximum concurrent jobs = "<%= max_concurrent_jobs %>"
