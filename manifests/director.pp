@@ -11,6 +11,7 @@ class bacula::director (
   $config_root                = $::bacula::params::config_root,
   $working_dir                = $::bacula::params::working_dir,
   $log_dir                    = $::bacula::params::log_dir,
+  $pid_dir                    = $::bacula::params::pid_dir,
   $dbname                     = $::bacula::params::dbname,
   $dbhost                     = $::bacula::params::dbhost,
   $dbuser                     = $::bacula::params::dbuser,

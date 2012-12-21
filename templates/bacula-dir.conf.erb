@@ -8,7 +8,7 @@ Director {
   dirport                 = "<%= director_port %>"
   queryFile               = "/etc/bacula/query.sql"
   workingDirectory        = "<%= working_dir %>"
-  piddirectory            = "/var/run"
+  piddirectory            = "<%= pid_dir %>"
   maximum concurrent jobs = "1"
   password                = "<%= director_password %>"
   messages                = "Standard"
