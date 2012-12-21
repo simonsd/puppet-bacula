@@ -9,7 +9,7 @@
 
 FileDaemon {
   name                    = "<%= client %>-fd"
-  fdport                  = "<%= port %>"
+  fdport                  = "<%= fd_port %>"
   workingdirectory        = "<%= working_dir %>"
   pid directory           = "<%= pid_dir %>"
   maximum concurrent jobs = "<%= max_concurrent_jobs %>"
@@ -29,7 +29,7 @@ Director {
 #
 
 Messages {
-  name                    = "bacula-fd on ${::fqdn}"
+  name                    = "bacula-fd on <%= fqdn %>"
   append                  = "<%= log_dir %>/bacula-fd.log"
   director                = "<%= allowed_director_label %> = all, !skipped, !restored"
 }

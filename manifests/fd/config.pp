@@ -9,7 +9,8 @@ class bacula::fd::config {
   file{"${config_root}/bacula-fd.conf":
     mode    => '0640',
     content => template('bacula/bacula-fd.conf.erb'),
-    require => Package[$pkgname],
+    require => Package[$fd_pkgname],
+    notify  => Service[$fd_service_name],
   }
 
   file{'/usr/sbin/bacula-fd':

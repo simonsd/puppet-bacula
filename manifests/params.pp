@@ -103,6 +103,10 @@ class bacula::params {
   $fd_port                = '9102'
   $fd_max_concurrent_jobs = '1'
   $fd_pkgname             = 'bacula-client'
+  $fd_service_name        = 'bacula-fd'
+  $fd_service_ensure      = 'running'
+  $fd_service_enable      = true
+  $fd_service_hasstatus   = true
 
   ########################
   ####    Bconsole    ####
