@@ -44,6 +44,7 @@ class bacula::params {
     centos => '/usr/libexec/bacula/make_bacula_tables',
     debian => '/usr/share/bacula-director/make_mysql_tables',
   }
+  $dir_max_concurrent_jobs    = '1'
 
   $schedules  = [
     'FullDaily',
@@ -83,27 +84,28 @@ class bacula::params {
   ####    Storage    ####
   #######################
 
-  $sd_port              = '9103'
-  $storage_dir          = '/mnt/backup'
-  $sd_pkgname           = $::operatingsystem ? {
+  $sd_port                = '9103'
+  $storage_dir            = '/mnt/backup'
+  $sd_pkgname             = $::operatingsystem ? {
     default => 'bacula-storage-mysql',
     debian  => 'bacula-sd-mysql',
   }
-  $sd_service_name      = 'bacula-sd'
-  $sd_service_ensure    = 'running'
-  $sd_service_enable    = true
-  $sd_service_hasstatus = $::operatingsystem ? {
+  $sd_service_name        = 'bacula-sd'
+  $sd_service_ensure      = 'running'
+  $sd_service_enable      = true
+  $sd_service_hasstatus   = $::operatingsystem ? {
     default => undef,
     debian  => false,
   }
 
-  $sd_server            = "bacula.${::domain}"
-  $sd_label             = 'bacula-sd'
-  $sd_password          = 'bacula'
-  $sd_owner             = 'bacula'
-  $sd_group             = 'bacula'
+  $sd_server              = "bacula.${::domain}"
+  $sd_label               = 'bacula-sd'
+  $sd_password            = 'bacula'
+  $sd_owner               = 'bacula'
+  $sd_group               = 'bacula'
+  $sd_max_concurrent_jobs = '1'
 
-  $media_type           = 'File'
+  $media_type             = 'File'
 
   ###########################
   ####    File Daemon    ####
