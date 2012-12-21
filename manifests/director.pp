@@ -1,9 +1,9 @@
 class bacula::director (
   $director_pkgname           = $::bacula::params::director_pkgname,
-  $director_service_name      = $::bacula::params::director_service,
-  $director_service_ensure    = $::bacula::params::director_service,
-  $director_service_enable    = $::bacula::params::director_service,
-  $director_service_hasstatus = $::bacula::params::director_service,
+  $director_service_name      = $::bacula::params::director_service_name,
+  $director_service_ensure    = $::bacula::params::director_service_ensure,
+  $director_service_enable    = $::bacula::params::director_service_enable,
+  $director_service_hasstatus = $::bacula::params::director_service_hasstatus,
   $director_label             = $::bacula::params::director_label,
   $director_port              = $::bacula::params::director_port,
   $director_password          = $::bacula::params::director_password,
