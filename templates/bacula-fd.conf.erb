@@ -29,7 +29,7 @@ Director {
 #
 
 Messages {
-  name                    = "bacula-fd on <%= fqdn %>"
+  name                    = "bacula-fd on <%= @fqdn %>"
   append                  = "<%= log_dir %>/bacula-fd.log"
   director                = "<%= allowed_director_label %> = all, !skipped, !restored"
 }
