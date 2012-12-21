@@ -5,7 +5,7 @@ class bacula::fd (
   $working_dir               = $::bacula::params::working_dir,
   $pid_dir                   = $::bacula::params::pid_dir,
   $max_concurrent_jobs       = $::bacula::params::fd_max_concurrent_jobs,
-  $allowed_director_label    = $::bacula::params::director_label,
+  $director_server           = $::bacula::params::director_server,
   $fd_pkgname                = $::bacula::params::fd_pkgname,
   $user                      = $::bacula::params::default_user,
   $group                     = $::bacula::params::default_group,

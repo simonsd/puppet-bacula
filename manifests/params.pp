@@ -26,7 +26,6 @@ class bacula::params {
 
   $log_email                  = undef
   $director_server            = 'bacula'
-  $director_label             = 'bacula-dir'
   $director_password          = 'bacula'
   $director_port              = '9101'
   $director_pkgname           = 'bacula-director-mysql'

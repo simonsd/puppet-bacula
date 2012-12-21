@@ -20,7 +20,7 @@ Storage {
 #
 
 Director {
-  name                    = "<%= director_label %>"
+  name                    = "<%= director_server %>"
   password                = "<%= director_password %>"
 }
 
@@ -31,7 +31,7 @@ Director {
 Messages {
   name                    = "bacula-sd on <%= @fqdn %>"
   append                  = "<%= log_dir %>/bacula-sd.log"
-  director                = "<%= director_label %> = all"
+  director                = "<%= director_server %> = all"
 }
 
 #

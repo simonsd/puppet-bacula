@@ -2,7 +2,6 @@ class bacula (
   $log_email                = $::bacula::params::log_email,
 
   $director_server          = $::bacula::params::director_server,
-  $director_label           = $::bacula::params::director_label,
   $director_password        = $::bacula::params::director_password,
 
   $sd_server                = $::bacula::params::sd_server,
