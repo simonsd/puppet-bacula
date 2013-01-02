@@ -17,7 +17,7 @@ define bacula::job (
   $server_run_before_job = undef,
   $server_run_after_job  = undef,
   $jobdefs               = 'DefaultJob',
-  $messages              = 'Default',
+  $messages              = undef,
   $config_root           = $::bacula::params::config_root,
   $working_dir           = $::bacula::params::working_dir,
 ) {

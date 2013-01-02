@@ -9,7 +9,7 @@ JobDefs {
   level    = "<%= level %>"
   fileset  = "<%= fileset %>"
   schedule = "<%= schedule %>"
-  messages = "<%= messages %>"
+<% if messages %>  messages = "<%= messages %>"<% end %>
   pool     = "<%= pool %>"
   priority = "<%= priority %>"
 }
