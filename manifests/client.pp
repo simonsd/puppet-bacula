@@ -5,6 +5,7 @@ define bacula::client (
   $device_owner     = $::bacula::params::default_device_owner,
   $device_group     = $::bacula::params::default_device_group,
   $fd_port          = $::bacula::params::fd_port,
+  $fd_password      = $::bacula::params::fd_password,
   $sd_server        = $::bacula::params::sd_server,
   $sd_port          = $::bacula::params::sd_port,
   $sd_password      = $::bacula::params::sd_password,
