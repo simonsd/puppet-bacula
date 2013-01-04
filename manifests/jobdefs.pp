@@ -6,12 +6,12 @@
 define bacula::jobdefs (
   $name,
   $level                 = 'Incremental',
-  $fileset               = 'FullSet',
-  $schedule              = 'FullWeekly',
+  $fileset               = $::bacula::params::default_fileset,
+  $schedule              = $::bacula::params::default_schedule,
   $messages              = false,
-  $pool                  = 'Default',
+  $pool                  = $::bacula::params::default_pool,
   $priority              = '10',
-  $jobtype               = 'Backup',
+  $jobtype               = $::bacula::params::default_jobtype,
   $config_root           = $::bacula::params::config_root,
   $director_service_name = $::bacula::params::director_service_name,
 ){

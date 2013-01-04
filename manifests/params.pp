@@ -141,5 +141,7 @@ class bacula::params {
   $default_storage         = "${fqdn}-storage"
   $default_fullpool        = 'FullPool'
   $default_incrementalpool = 'IncrementalPool'
+  $default_fileset         = 'FullSet'
+  $default_schedule        = 'FullWeekly'
 
 }
