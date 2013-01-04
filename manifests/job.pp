@@ -5,7 +5,7 @@
 #
 define bacula::job (
   $client                = $::fqdn,
-  $type                  = 'Backup',
+  $jobtype               = 'Backup',
   $fileset               = undef,
   $storage               = "${::fqdn}-storage",
   $pool                  = $bacula::default_pool,

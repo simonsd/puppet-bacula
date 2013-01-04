@@ -2,7 +2,7 @@
 Job {
 <% if name                  %>  name                    = "<%= name %>"<% end %>
 <% if client                %>  client                  = "<%= client %>-fd"<% end %>
-<% if type                  %>  type                    = "<%= type %>"<% end %>
+<% if jobtype               %>  type                    = "<%= jobtype %>"<% end %>
 <% if working_dir           %>  write bootstrap         = "<%= working_dir %>/<%= name %>.bsr"<% end %>
 <% if messages              %>  messages                = "<%= messages %>"<% end %>
 <% if jobdefs               %>  jobdefs                 = "<%= jobdefs %>"<% end %>
