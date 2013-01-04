@@ -5,21 +5,21 @@
 #
 define bacula::job (
   $client                = $::fqdn,
-  $jobtype               = 'Backup',
+  $config_root           = $::bacula::params::config_root,
+  $working_dir           = $::bacula::params::working_dir,
+  $jobtype               = $::bacula::params::default_jobtype
+  $storage               = $::bacula::params::default_storage,
+  $pool                  = $::bacula::params::default_pool,
+  $full_pool             = $::bacula::params::default_fullpool,
+  $incremental_pool      = $::bacula::params::default_incrementalpool,
+  $jobdefs               = $::bacula::params::default_jobdefs,
   $fileset               = undef,
-  $storage               = "${::fqdn}-storage",
-  $pool                  = $bacula::default_pool,
-  $full_pool             = "FullPool",
-  $incremental_pool      = "IncrementalPool",
   $bschedule             = undef,
   $client_run_before_job = undef,
   $client_run_after_job  = undef,
   $server_run_before_job = undef,
   $server_run_after_job  = undef,
-  $jobdefs               = 'DefaultJob',
   $messages              = undef,
-  $config_root           = $::bacula::params::config_root,
-  $working_dir           = $::bacula::params::working_dir,
 ) {
 
   concat::fragment{"${config_root}/clients.d/${client}.conf-${name}":
