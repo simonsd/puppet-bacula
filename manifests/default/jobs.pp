@@ -1,7 +1,7 @@
 class bacula::default::jobs {
 
   @@bacula::job{'restore':
-    type     => 'Restore',
+    jobtype  => 'Restore',
     fileset  => 'FullSet',
     storage  => $::bacula::default_storage_server,
     pool     => 'Full',
