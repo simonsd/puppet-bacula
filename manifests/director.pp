@@ -22,6 +22,9 @@ class bacula::director (
   $schedule_collect_filter    = $::bacula::params::schedule_collect_filter,
   $storage_collect_filter     = $::bacula::params::storage_collect_filter,
   $max_concurrent_jobs        = $::bacula::params::dir_max_concurrent_jobs,
+  $filesets                   = $::bacula::params::filesets,
+  $jobdefs                    = $::bacula::params::jobdefs,
+  $schedules                  = $::bacula::params::schedules,
 ) inherits ::bacula::params {
 
   include ::bacula::common
