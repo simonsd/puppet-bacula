@@ -5,7 +5,7 @@
 
 Director {
   name                    = "<%= director_server %>"
-  dirport                 = "<%= director_port %>"
+  dirport                 = <%= director_port %>
   queryFile               = "<%= config_root %>/query.sql"
   workingDirectory        = "<%= working_dir %>"
   piddirectory            = "<%= pid_dir %>"
@@ -16,9 +16,9 @@ Director {
 
 Messages {
   name                    = "bacula-dir on <%= @fqdn %>"
-  append                  = "<%= log_dir %>/bacula-dir.log" = all, !skipped"
+  append                  = <%= log_dir %>/bacula-dir.log = all, !skipped
   mailcommand             = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= log_email %>\" -s \"Bacula: %t %e of %c %l\" %r"
-  mail                    = "<%= log_email %> = all, !skipped"
+  mail                    = <%= log_email %> = all, !skipped
 }
 
 @|"sh -c 'for f in <%= config_root %>/catalog.d/*.conf   ; do echo @${f} ; done'"
