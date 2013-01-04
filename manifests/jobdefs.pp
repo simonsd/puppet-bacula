@@ -11,7 +11,7 @@ define bacula::jobdefs (
   $messages              = undef,
   $pool                  = 'Default',
   $priority              = '10',
-  $type                  = 'Backup',
+  $jobtype               = 'Backup',
   $config_root           = $::bacula::params::config_root,
   $director_service_name = $::bacula::params::director_service_name,
 ){
