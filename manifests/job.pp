@@ -7,7 +7,7 @@ define bacula::job (
   $client                = $::fqdn,
   $config_root           = $::bacula::params::config_root,
   $working_dir           = $::bacula::params::working_dir,
-  $jobtype               = $::bacula::params::default_jobtype
+  $jobtype               = $::bacula::params::default_jobtype,
   $storage               = $::bacula::params::default_storage,
   $pool                  = $::bacula::params::default_pool,
   $full_pool             = $::bacula::params::default_fullpool,
