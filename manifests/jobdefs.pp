@@ -5,16 +5,17 @@
 #
 define bacula::jobdefs (
   $name,
-  $level    = 'Incremental',
-  $fileset  = 'FullSet',
-  $schedule = 'FullWeekly',
-  $messages = undef,
-  $pool     = 'Default',
-  $priority = '10',
-  $type     = 'Backup',
+  $level       = 'Incremental',
+  $fileset     = 'FullSet',
+  $schedule    = 'FullWeekly',
+  $messages    = undef,
+  $pool        = 'Default',
+  $priority    = '10',
+  $type        = 'Backup',
+  $config_root = $::bacula::params::config_root,
 ){
 
-  file{"${::bacula::config_root}/jobdefs.d/${name}.conf":
+  file{"${config_root}/jobdefs.d/${name}.conf":
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
