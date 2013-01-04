@@ -5,6 +5,7 @@ class bacula::bconsole {
   }
 
   file{"${config_root}/bconsole.conf":
+    ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
