@@ -1,7 +1,15 @@
-class bacula::common {
+class bacula::common (
+  $director_server   = $::bacula::params::director_server,
+  $director_port     = $::bacula::params::director_port,
+  $director_password = $::bacula::params::director_password,
+){
 
   include ::concat::setup
-  include ::bacula::bconsole
+  class{'::bacula::bconsole':
+    director_server   => $director_server,
+    director_port     => $director_port,
+    director_password => $director_password,
+  }
 
   File{
     ensure => 'directory',

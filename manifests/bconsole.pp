@@ -1,4 +1,8 @@
-class bacula::bconsole {
+class bacula::bconsole (
+  $director_server   = $::bacula::params::director_server,
+  $director_port     = $::bacula::params::director_port,
+  $director_password = $::bacula::params::director_password,
+){
 
   package{$bconsole_pkgname:
     ensure => 'present',
