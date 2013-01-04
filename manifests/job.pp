@@ -13,13 +13,13 @@ define bacula::job (
   $full_pool             = $::bacula::params::default_fullpool,
   $incremental_pool      = $::bacula::params::default_incrementalpool,
   $jobdefs               = $::bacula::params::default_jobdefs,
-  $fileset               = undef,
-  $bschedule             = undef,
-  $client_run_before_job = undef,
-  $client_run_after_job  = undef,
-  $server_run_before_job = undef,
-  $server_run_after_job  = undef,
-  $messages              = undef,
+  $fileset               = false,
+  $bschedule             = false,
+  $client_run_before_job = false,
+  $client_run_after_job  = false,
+  $server_run_before_job = false,
+  $server_run_after_job  = false,
+  $messages              = false,
 ) {
 
   concat::fragment{"${config_root}/clients.d/${client}.conf-${name}":

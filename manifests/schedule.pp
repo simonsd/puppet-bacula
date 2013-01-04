@@ -1,6 +1,6 @@
 define bacula::schedule (
-  $name                  = undef,
-  $description           = undef,
+  $name,
+  $description           = false,
   $config_root           = $::bacula::params::config_root,
   $director_service_name = $::bacula::params::director_service_name,
 ) {

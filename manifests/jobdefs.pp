@@ -8,7 +8,7 @@ define bacula::jobdefs (
   $level                 = 'Incremental',
   $fileset               = 'FullSet',
   $schedule              = 'FullWeekly',
-  $messages              = undef,
+  $messages              = false,
   $pool                  = 'Default',
   $priority              = '10',
   $jobtype               = 'Backup',
