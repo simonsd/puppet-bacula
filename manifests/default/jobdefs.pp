@@ -14,8 +14,8 @@ class bacula::default::jobdefs {
     fileset => 'Config',
   }
 
-  if $bacula::jobdefs != [] {
-    realize(Bacula::Jobdefs[$bacula::jobdefs])
+  if $jobdefs != [] {
+    realize(Bacula::Jobdefs[$jobdefs])
   }
 
 }

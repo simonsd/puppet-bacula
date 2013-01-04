@@ -34,8 +34,8 @@ class bacula::default::filesets {
     include => '/etc',
   }
 
-  if $::bacula::filesets != [] {
-    realize(Bacula::Fileset[$::bacula::filesets])
+  if $filesets != [] {
+    realize(Bacula::Fileset[$filesets])
   }
 
 }

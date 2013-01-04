@@ -45,8 +45,8 @@ class bacula::default::schedules {
     description => ['Full sun at 04:00', 'Incremental Daily at 04:00'],
   }
 
-  if $::bacula::schedules != [] {
-    realize(Bacula::Schedule[$::bacula::schedules])
+  if $schedules != [] {
+    realize(Bacula::Schedule[$schedules])
   }
 
 }
