@@ -7,15 +7,15 @@ class bacula::default::pools {
     maximum_volume_jobs => '1',
   }
 
-  @@bacula::pool{'Full':
+  @@bacula::pool{'FullPool':
     maximum_volumes     => '4',
   }
 
-  @@bacula::pool{'Differential':
+  @@bacula::pool{'DifferentialPool':
     maximum_volumes     => '7',
   }
 
-  @@bacula::pool{'Incremental':
+  @@bacula::pool{'IncrementalPool':
     maximum_volumes     => '7',
   }
 
