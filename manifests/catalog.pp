@@ -1,9 +1,10 @@
 define bacula::catalog (
-  $config_root = $::bacula::params::config_root,
-  $dbname      = $title,
-  $dbuser      = $::bacula::params::dbuser,
-  $dbpassword  = $::bacula::params::dbpassword,
-  $dbhost      = $::bacula::params::dbhost,
+  $config_root     = $::bacula::params::config_root,
+  $dbname          = $title,
+  $dbuser          = $::bacula::params::dbuser,
+  $dbpassword      = $::bacula::params::dbpassword,
+  $dbhost          = $::bacula::params::dbhost,
+  $db_init_command = $::bacula::params::db_init_command,
 ) {
 
   file{"${config_root}/catalog.d/${title}.conf":
