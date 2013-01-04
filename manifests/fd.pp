@@ -2,6 +2,7 @@ class bacula::fd (
   $client                    = $::fqdn,
   $fd_port                   = $::bacula::params::fd_port,
   $fd_password               = $::bacula::params::fd_password,
+  $config_root               = $::bacula::params::config_root,
   $working_dir               = $::bacula::params::working_dir,
   $pid_dir                   = $::bacula::params::pid_dir,
   $max_concurrent_jobs       = $::bacula::params::fd_max_concurrent_jobs,
@@ -15,6 +16,15 @@ class bacula::fd (
   $fd_servive_ensure         = $::bacula::params::fd_service_ensure,
   $fd_servive_enable         = $::bacula::params::fd_service_enable,
   $fd_servive_hasstatus      = $::bacula::params::fd_service_hasstatus,
+  $catalog                   = $::bacula::params::default_catalog,
+  $sd_server                 = $::bacula::params::sd_server,
+  $sd_port                   = $::bacula::params::sd_port,
+  $sd_password               = $::bacula::params::sd_password,
+  $storage_server            = $::bacula::params::default_storage_server,
+  $storage_path              = $::bacula::params::default_storage_path,
+  $storage_password          = $::bacula::params::default_storage_password,
+  $device_owner              = $::bacula::params::default_device_owner,
+  $device_group              = $::bacula::params::default_device_group,
 ) inherits ::bacula::params {
 
   include ::bacula::common
