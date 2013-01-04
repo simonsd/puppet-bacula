@@ -30,7 +30,7 @@ class bacula::director::config {
   Bacula::Client   <<| $client_collect_filter   |>> { notify => Service[$director_service_name] }
   Bacula::Fileset  <<| $fileset_collect_filter  |>> { notify => Service[$director_service_name] }
   Bacula::Job      <<| $job_collect_filter      |>> { notify => Service[$director_service_name] }
-  Bacula::Jobdef   <<| $jobdef_collect_filter   |>> { notify => Service[$director_service_name] }
+  Bacula::Jobdefs  <<| $jobdef_collect_filter   |>> { notify => Service[$director_service_name] }
   Bacula::Pool     <<| $pool_collect_filter     |>> { notify => Service[$director_service_name] }
   Bacula::Schedule <<| $schedule_collect_filter |>> { notify => Service[$director_service_name] }
   Bacula::Storage  <<| $storage_collect_filter  |>> { notify => Service[$director_service_name] }
