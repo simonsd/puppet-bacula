@@ -9,7 +9,7 @@
 
 Storage {
   name                    = "<%= sd_label %>"
-  sdport                  = "<%= sd_port %>"
+  sdport                  = <%= sd_port %>
   workingdirectory        = "<%= working_dir %>"
   pid directory           = "<%= pid_dir %>"
   maximum concurrent jobs = "<%= max_concurrent_jobs %>"
@@ -30,7 +30,7 @@ Director {
 
 Messages {
   name                    = "bacula-sd on <%= @fqdn %>"
-  append                  = "<%= log_dir %>/bacula-sd.log"
+  append                  = <%= log_dir %>/bacula-sd.log = all
   director                = "<%= director_server %> = all"
 }
 
