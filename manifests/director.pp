@@ -34,7 +34,6 @@ class bacula::director (
   include ::bacula::director::service
 
   include ::bacula::default::filesets
-  include ::bacula::default::jobs
   include ::bacula::default::jobdefs
   include ::bacula::default::pools
   include ::bacula::default::schedules
