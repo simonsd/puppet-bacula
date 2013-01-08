@@ -31,7 +31,7 @@ Director {
 Messages {
   name                    = "bacula-sd on <%= @fqdn %>"
   append                  = <%= log_dir %>/bacula-sd.log = all
-  director                = "<%= director_server %> = all"
+  director                = <%= director_server %> = all
 }
 
 #
