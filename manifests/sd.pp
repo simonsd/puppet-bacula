@@ -23,8 +23,6 @@ class bacula::sd (
   include ::bacula::sd::config
   include ::bacula::sd::service
 
-  include ::bacula::default::devices
-
   Class[::bacula::sd::install] -> Class[::bacula::sd::config] -> Class[::bacula::sd::service]
 
 }
