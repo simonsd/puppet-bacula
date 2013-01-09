@@ -10,7 +10,6 @@ class bacula::sd (
   $bconsole_pkgname           = $::bacula::params::bconsole_pkgname,
   $log_dir                    = $::bacula::params::log_dir,
   $storage_dir                = $::bacula::params::storage_dir,
-  $device_collect_filter      = $::bacula::params::device_collect_filter,
   $sd_service_name            = $::bacula::params::sd_service_name,
   $sd_service_ensure          = $::bacula::params::sd_service_ensure,
   $sd_service_enable          = $::bacula::params::sd_service_enable,

@@ -26,13 +26,13 @@ class bacula::director::config {
   file{"${config_root}/schedules.d":}
   file{"${config_root}/storage.d":}
 
-  Bacula::Catalog  <<| $catalog_collect_filter  |>> { notify => Service[$director_service_name] }
-  Bacula::Client   <<| $client_collect_filter   |>> { notify => Service[$director_service_name] }
-  Bacula::Fileset  <<| $fileset_collect_filter  |>> { notify => Service[$director_service_name] }
-  Bacula::Job      <<| $job_collect_filter      |>> { notify => Service[$director_service_name] }
-  Bacula::Jobdefs  <<| $jobdef_collect_filter   |>> { notify => Service[$director_service_name] }
-  Bacula::Pool     <<| $pool_collect_filter     |>> { notify => Service[$director_service_name] }
-  Bacula::Schedule <<| $schedule_collect_filter |>> { notify => Service[$director_service_name] }
-  Bacula::Storage  <<| $storage_collect_filter  |>> { notify => Service[$director_service_name] }
+  Bacula::Catalog  <<| |>> { notify => Service[$director_service_name] }
+  Bacula::Client   <<| |>> { notify => Service[$director_service_name] }
+  Bacula::Fileset  <<| |>> { notify => Service[$director_service_name] }
+  Bacula::Job      <<| |>> { notify => Service[$director_service_name] }
+  Bacula::Jobdefs  <<| |>> { notify => Service[$director_service_name] }
+  Bacula::Pool     <<| |>> { notify => Service[$director_service_name] }
+  Bacula::Schedule <<| |>> { notify => Service[$director_service_name] }
+  Bacula::Storage  <<| |>> { notify => Service[$director_service_name] }
 
 }

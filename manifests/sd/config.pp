@@ -43,6 +43,6 @@ class bacula::sd::config {
     ensure => directory,
   }
 
-  Bacula::Device <<| $device_collect_filter |>> { notify => Service[$sd_service_name] }
+  Bacula::Device <<| |>> { notify => Service[$sd_service_name] }
 
 }
