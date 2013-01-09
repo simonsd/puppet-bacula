@@ -18,7 +18,10 @@ class bacula::common (
     mode   => '0700',
   }
 
-  file{$config_root:}
+  file{$config_root:
+    recurse => true,
+    purge   => true,
+  }
   file{$working_dir:}
   file{$pid_dir:}
   file{$log_dir:
