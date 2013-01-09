@@ -6,7 +6,7 @@ define bacula::schedule (
 ) {
 
   file{"${config_root}/schedules.d/${name}.conf":
-    ensure  => 'present',
+    ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     mode    => '0640',

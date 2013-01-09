@@ -25,7 +25,7 @@ define bacula::pool (
   }
 
   file{"${config_root}/pools.d/${title}.conf":
-    ensure  => present,
+    ensure  => 'file',
     mode    => '0640',
     notify  => Service[$director_service_name],
     content => template('bacula/pool.conf.erb'),

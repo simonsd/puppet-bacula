@@ -12,7 +12,7 @@ define bacula::device (
   }
 
   file{"${config_root}/devices.d/${title}.conf":
-    ensure  => present,
+    ensure  => 'file',
     content => template('bacula/device.conf.erb'),
   }
 

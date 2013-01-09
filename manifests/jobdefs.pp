@@ -17,7 +17,7 @@ define bacula::jobdefs (
 ){
 
   file{"${config_root}/jobdefs.d/${name}.conf":
-    ensure  => 'present',
+    ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
