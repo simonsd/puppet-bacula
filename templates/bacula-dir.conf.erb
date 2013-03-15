@@ -17,7 +17,7 @@ Director {
 Messages {
   name                    = "bacula-dir on <%= @fqdn %>"
   append                  = <%= log_dir %>/bacula-dir.log = all, !skipped
-  mailcommand             = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= log_email %>\" -s \"Bacula: %t %e of %c %l\" %r"
+  mailcommand             = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) <%= from_email %>\" -s \"Bacula: %t %e of %c %l\" %r"
   mail                    = <%= log_email %> = all, !skipped
 }
 

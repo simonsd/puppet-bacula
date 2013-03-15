@@ -12,6 +12,7 @@ class bacula::director (
   $working_dir                = $::bacula::params::working_dir,
   $log_dir                    = $::bacula::params::log_dir,
   $pid_dir                    = $::bacula::params::pid_dir,
+  $from_email                 = $::bacula::params::from_email,
   $log_email                  = $::bacula::params::log_email,
   $max_concurrent_jobs        = $::bacula::params::dir_max_concurrent_jobs,
   $filesets                   = $::bacula::params::filesets,

@@ -1,4 +1,5 @@
 class bacula (
+  $from_email               = $::bacula::params::from_email,
   $log_email                = $::bacula::params::log_email,
 
   $director_server          = $::bacula::params::director_server,
