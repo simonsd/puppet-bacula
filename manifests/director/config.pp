@@ -1,4 +1,4 @@
-class bacula::director::config {
+class bacula::director::config inherits ::bacula::director {
 
   File{
     ensure => 'directory',

@@ -1,4 +1,4 @@
-class bacula::fd::config {
+class bacula::fd::config inherits ::bacula::fd {
 
   File{
     ensure => 'file',

@@ -20,7 +20,7 @@
 #
 # TODO: Update documentation
 #
-class bacula::sd::config {
+class bacula::sd::config inherits ::bacula::sd {
 
   file{"${config_root}/bacula-sd.conf":
     owner   => 'root',
