@@ -7,7 +7,7 @@ define bacula::jobdefs (
   $name,
   $level                 = 'Incremental',
   $fileset               = $::bacula::params::default_fileset,
-  $schedule              = $::bacula::params::default_schedule,
+  $bschedule             = $::bacula::params::default_schedule,
   $messages              = false,
   $pool                  = $::bacula::params::default_pool,
   $priority              = '10',
