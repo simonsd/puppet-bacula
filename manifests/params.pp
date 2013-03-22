@@ -82,6 +82,8 @@ class bacula::params (
   $fd_service_hasstatus       = true,
   $bconsole_pkgname           = 'bacula-console',
   $catalog                    = 'DefaultCatalog',
+  $messages_mailcommand       = '',
+  $messages_operatorcommand   = '',
   $default_pool               = 'FullPool',
   $default_jobtype            = 'Backup',
   $default_jobdefs            = 'DefaultJob',

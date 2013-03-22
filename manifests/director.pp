@@ -18,6 +18,8 @@ class bacula::director (
   $filesets                   = $::bacula::params::filesets,
   $jobdefs                    = $::bacula::params::jobdefs,
   $schedules                  = $::bacula::params::schedules,
+  $messages_mailcommand       = $::bacula::params::messages_mailcommand,
+  $messages_operatorcommand   = $::bacula::params::messages_operatorcommand,
 ) inherits ::bacula::params {
 
   include ::bacula::common

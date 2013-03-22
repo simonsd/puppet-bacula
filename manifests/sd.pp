@@ -14,6 +14,8 @@ class bacula::sd (
   $sd_service_ensure          = $::bacula::params::sd_service_ensure,
   $sd_service_enable          = $::bacula::params::sd_service_enable,
   $sd_service_hasstatus       = $::bacula::params::sd_service_hasstatus,
+  $messages_mailcommand       = $::bacula::params::messages_mailcommand,
+  $messages_operatorcommand   = $::bacula::params::messages_operatorcommand,
 ) inherits ::bacula::params {
 
   include ::bacula::common

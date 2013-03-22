@@ -48,6 +48,8 @@ class bacula (
   $fd_service_hasstatus       = $::bacula::params::fd_service_hasstatus,
   $bconsole_pkgname           = $::bacula::params::bconsole_pkgname,
   $catalog                    = $::bacula::params::catalog,
+  $messages_mailcommand       = $::bacula::params::messages_mailcommand,
+  $messages_operatorcommand   = $::bacula::params::messages_operatorcommand,
   $default_pool               = $::bacula::params::default_pool,
   $default_jobtype            = $::bacula::params::default_jobtype,
   $default_jobdefs            = $::bacula::params::default_jobdefs,
@@ -79,26 +81,30 @@ class bacula (
       filesets                   => $filesets,
       jobdefs                    => $jobdefs,
       schedules                  => $schedules,
+      messages_mailcommand       => $messages_mailcommand,
+      messages_operatorcommand   => $messages_operatorcommand,
     }
   }
 
   if $sd {
     class{'bacula::sd':
-      sd_label             => $sd_label,
-      sd_port              => $sd_port,
-      config_root          => $config_root,
-      working_dir          => $working_dir,
-      pid_dir              => $pid_dir,
-      max_concurrent_jobs  => $sd_max_concurrent_jobs,
-      director_server      => $director_server,
-      director_password    => $director_password,
-      bconsole_pkgname     => $bconsole_pkgname,
-      log_dir              => $log_dir,
-      storage_dir          => $storage_dir,
-      sd_service_name      => $sd_service_name,
-      sd_service_ensure    => $sd_service_ensure,
-      sd_service_enable    => $sd_service_enable,
-      sd_service_hasstatus => $sd_service_hasstatus,
+      sd_label                 => $sd_label,
+      sd_port                  => $sd_port,
+      config_root              => $config_root,
+      working_dir              => $working_dir,
+      pid_dir                  => $pid_dir,
+      max_concurrent_jobs      => $sd_max_concurrent_jobs,
+      director_server          => $director_server,
+      director_password        => $director_password,
+      bconsole_pkgname         => $bconsole_pkgname,
+      log_dir                  => $log_dir,
+      storage_dir              => $storage_dir,
+      sd_service_name          => $sd_service_name,
+      sd_service_ensure        => $sd_service_ensure,
+      sd_service_enable        => $sd_service_enable,
+      sd_service_hasstatus     => $sd_service_hasstatus,
+      messages_mailcommand     => $messages_mailcommand,
+      messages_operatorcommand => $messages_operatorcommand,
     }
   }
 
@@ -130,6 +136,8 @@ class bacula (
       storage_password          => $default_storage_password,
       device_owner              => $default_device_owner,
       device_group              => $default_device_group,
+      messages_mailcommand      => $messages_mailcommand,
+      messages_operatorcommand  => $messages_operatorcommand,
     }
   }
 

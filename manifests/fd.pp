@@ -25,6 +25,8 @@ class bacula::fd (
   $storage_password          = $::bacula::params::default_storage_password,
   $device_owner              = $::bacula::params::default_device_owner,
   $device_group              = $::bacula::params::default_device_group,
+  $messages_mailcommand      = $::bacula::params::messages_mailcommand,
+  $messages_operatorcommand  = $::bacula::params::messages_operatorcommand,
 ) inherits ::bacula::params {
 
   include ::bacula::common
