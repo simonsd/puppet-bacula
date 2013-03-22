@@ -22,6 +22,7 @@ class bacula::common (
     recurse => true,
     purge   => true,
   }
+  file{"${config_root}/messages.d":}
   file{$working_dir:}
   file{$pid_dir:}
   file{$log_dir:
