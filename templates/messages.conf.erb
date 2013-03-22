@@ -1,0 +1,13 @@
+
+Messages {
+  name                    = "<%= title %>"
+<% if !mailcommand.empty? -%>
+  mailcommand             = "<%= mailcommand %>"
+<% end -%>
+<% if !operatorcommand.empty? -%>
+  operatorcommand         = "<%= operatorcommand %>"
+<% end -%>
+<% messages.each do | dest, message | -%>
+  <%= dest %>             = "<%= _log_file %>" = "<%= message %>"
+<% end -%>
+}
