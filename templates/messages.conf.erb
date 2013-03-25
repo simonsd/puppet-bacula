@@ -7,7 +7,7 @@ Messages {
 <% if !operatorcommand.empty? -%>
   operatorcommand         = "<%= operatorcommand %>"
 <% end -%>
-<% messages.each do | dest, message | -%>
-  <%= dest %>             = "<%= _log_file %>" = "<%= message %>"
+<% _messages.each do | type, dest, message | -%>
+  <%= type %>             = "<%= dest %>" = "<%= message %>"
 <% end -%>
 }
