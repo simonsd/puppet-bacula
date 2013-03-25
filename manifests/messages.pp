@@ -3,6 +3,7 @@ define bacula::messages (
   $log_dir         = $::bacula::params::log_dir,
   $log_file        = '',
   $messages        = '',
+  $mail            = '',
   $mailcommand     = $::bacula::params::messages_mailcommand,
   $operatorcommand = $::bacula::params::messages_operatorcommand,
 ) {
