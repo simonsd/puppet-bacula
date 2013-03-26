@@ -13,9 +13,9 @@ class bacula::director::config inherits ::bacula::director {
     notify  => Service[$director_service_name],
   }
 
-  file{"${log_dir}/bacula-dir.log":
-    ensure => 'file',
-    mode   => '0644',
+  ::bacula::messages{'bacula-dir':
+    mail        => [ [$log_email, 'all, !skipped'], ],
+    mailcommand => "/usr/sbin/bsmtp -h localhost -f \\\"\(Bacula\) ${from_email}\\\" -s \\\"Bacula: %t %e of %c %l\\\" %r",
   }
 
   file{"${config_root}/catalog.d":}

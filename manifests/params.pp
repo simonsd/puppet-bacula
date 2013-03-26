@@ -30,6 +30,7 @@ class bacula::params (
     debian => '/usr/share/bacula-director/make_mysql_tables',
   },
   $dir_max_concurrent_jobs    = '1',
+  $dir_messages               = 'bacula-dir',
   $schedules                  = [
     'FullDaily',
     'FullWeekly',

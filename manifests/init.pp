@@ -21,6 +21,7 @@ class bacula (
   $director_service_enable    = $::bacula::params::director_service_enable,
   $db_init_command            = $::bacula::params::db_init_command,
   $dir_max_concurrent_jobs    = $::bacula::params::dir_max_concurrent_jobs,
+  $dir_messages               = $::bacula::params::dir_messages,
   $schedules                  = $::bacula::params::schedules,
   $filesets                   = $::bacula::params::filesets,
   $jobdefs                    = $::bacula::params::jobdefs,
