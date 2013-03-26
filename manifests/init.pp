@@ -43,6 +43,7 @@ class bacula (
   $fd_port                    = $::bacula::params::fd_port,
   $fd_password                = $::bacula::params::fd_password,
   $fd_max_concurrent_jobs     = $::bacula::params::fd_max_concurrent_jobs,
+  $fd_messages                = $::bacula::params::fd_messages,
   $fd_pkgname                 = $::bacula::params::fd_pkgname,
   $fd_service_name            = $::bacula::params::fd_service_name,
   $fd_service_ensure          = $::bacula::params::fd_service_ensure,

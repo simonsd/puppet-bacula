@@ -17,9 +17,7 @@ class bacula::fd::config inherits ::bacula::fd {
     mode  => '0755',
   }
 
-  file{"${log_dir}/bacula-fd.log":
-    mode => '0644',
-  }
+  ::bacula::messages{'bacula-fd':}
 
   # Export client resource for director
   @@bacula::client{$client:

@@ -6,6 +6,7 @@ class bacula::fd (
   $working_dir               = $::bacula::params::working_dir,
   $pid_dir                   = $::bacula::params::pid_dir,
   $max_concurrent_jobs       = $::bacula::params::fd_max_concurrent_jobs,
+  $messages                  = $::bacula::params::fd_messages,
   $director_server           = $::bacula::params::director_server,
   $fd_pkgname                = $::bacula::params::fd_pkgname,
   $user                      = $::bacula::params::default_user,

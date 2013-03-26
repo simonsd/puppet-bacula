@@ -25,11 +25,7 @@ Director {
 }
 
 #
-# Logging
+# Include messages.d files
 #
 
-Messages {
-  name                    = "bacula-fd on <%= @fqdn %>"
-  append                  = <%= log_dir %>/bacula-fd.log = all
-  director                = <%= director_server %> = all, !skipped, !restored
-}
+@|"sh -c 'for f in <%= config_root %>/messages.d/*.conf ; do echo @${f} ; done'"

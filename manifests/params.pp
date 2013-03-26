@@ -77,6 +77,7 @@ class bacula::params (
   $fd_port                    = '9102',
   $fd_password                = 'bacula',
   $fd_max_concurrent_jobs     = '1',
+  $fd_messages                = 'bacula-fd',
   $fd_pkgname                 = 'bacula-client',
   $fd_service_name            = 'bacula-fd',
   $fd_service_ensure          = 'running',
