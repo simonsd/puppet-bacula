@@ -12,9 +12,9 @@ Messages {
   operatorcommand         = "<%= operatorcommand %>"
 <% end -%>
 <% _messages.each do | type, dest, message | -%>
-  <%= type %>             = "<%= dest %>" = "<%= message %>"
+  <%= type %>             = "<%= dest %>" = <%= message %>
 <% end -%>
 <% if !mail.empty? %><% mail.each do | dest, message | -%>
-  mail                    = "<%= dest %>" = "<%= message %>"
+  mail                    = "<%= dest %>" = <%= message %>
 <% end %><% end -%>
 }
