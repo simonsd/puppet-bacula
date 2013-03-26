@@ -72,6 +72,7 @@ class bacula::params (
   $sd_owner                   = 'bacula',
   $sd_group                   = 'bacula',
   $sd_max_concurrent_jobs     = '1',
+  $sd_messages                = 'bacula-sd',
   $media_type                 = 'File',
   $fd_port                    = '9102',
   $fd_password                = 'bacula',

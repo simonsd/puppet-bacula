@@ -30,9 +30,7 @@ class bacula::sd::config inherits ::bacula::sd {
     notify  => Service[$sd_service_name],
   }
 
-  file{"${log_dir}/bacula-sd.log":
-    mode => '0644',
-  }
+  ::bacula::messages{'bacula-sd':}
 
   file{$storage_dir:
     ensure  => directory,

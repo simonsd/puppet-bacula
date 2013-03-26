@@ -38,6 +38,7 @@ class bacula (
   $sd_owner                   = $::bacula::params::sd_owner,
   $sd_group                   = $::bacula::params::sd_group,
   $sd_max_concurrent_jobs     = $::bacula::params::sd_max_concurrent_jobs,
+  $sd_messages                = $::bacula::params::sd_messages,
   $media_type                 = $::bacula::params::media_type,
   $fd_port                    = $::bacula::params::fd_port,
   $fd_password                = $::bacula::params::fd_password,
