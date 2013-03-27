@@ -1,8 +1,8 @@
 class bacula::default::filesets {
 
   @bacula::fileset{'Catalog':
-     name    => 'Catalog',
-     include => "${::bacula::working_dir}/bacula.sql",
+    name    => 'Catalog',
+    include => "${::bacula::working_dir}/bacula.sql",
   }
 
   @bacula::fileset{'FullSet':
