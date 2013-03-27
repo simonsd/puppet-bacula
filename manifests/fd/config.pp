@@ -35,4 +35,6 @@ class bacula::fd::config inherits ::bacula::fd {
     catalog          => $catalog,
   }
 
+  Bacula::Messages <<| |>> { notify => Service[$fd_service_name] }
+
 }

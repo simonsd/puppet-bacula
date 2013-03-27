@@ -31,6 +31,7 @@ class bacula::director::config inherits ::bacula::director {
   Bacula::Fileset  <<| |>> { notify => Service[$director_service_name] }
   Bacula::Job      <<| |>> { notify => Service[$director_service_name] }
   Bacula::Jobdefs  <<| |>> { notify => Service[$director_service_name] }
+  Bacula::Messages <<| |>> { notify => Service[$director_service_name] }
   Bacula::Pool     <<| |>> { notify => Service[$director_service_name] }
   Bacula::Schedule <<| |>> { notify => Service[$director_service_name] }
   Bacula::Storage  <<| |>> { notify => Service[$director_service_name] }

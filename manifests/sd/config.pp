@@ -41,6 +41,7 @@ class bacula::sd::config inherits ::bacula::sd {
     ensure => directory,
   }
 
-  Bacula::Device <<| |>> { notify => Service[$sd_service_name] }
+  Bacula::Device   <<| |>> { notify => Service[$sd_service_name] }
+  Bacula::Messages <<| |>> { notify => Service[$sd_service_name] }
 
 }
