@@ -35,4 +35,8 @@ class bacula::common (
     content => template('bacula/logrotate.erb'),
   }
 
+  file{'/var/log/bacula.log':
+    ensure => 'absent',
+  }
+
 }
