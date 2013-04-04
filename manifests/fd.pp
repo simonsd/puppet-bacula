@@ -22,7 +22,7 @@ class bacula::fd (
   $sd_port                   = $::bacula::params::sd_port,
   $sd_password               = $::bacula::params::sd_password,
   $storage_server            = $::bacula::params::default_storage_server,
-  $storage_path              = $::bacula::params::default_storage_path,
+  $storage_dir               = $::bacula::params::storage_dir,
   $storage_password          = $::bacula::params::default_storage_password,
   $device_owner              = $::bacula::params::default_device_owner,
   $device_group              = $::bacula::params::default_device_group,

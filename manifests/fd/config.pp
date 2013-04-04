@@ -22,7 +22,7 @@ class bacula::fd::config inherits ::bacula::fd {
   # Export client resource for director
   @@bacula::client{$client:
     storage_server   => $storage_server,
-    storage_path     => $storage_path,
+    storage_dir      => $storage_dir,
     storage_password => $storage_password,
     device_owner     => $device_owner,
     device_group     => $device_group,

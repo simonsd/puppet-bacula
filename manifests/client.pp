@@ -1,6 +1,6 @@
 define bacula::client (
   $storage_server   = $::bacula::params::default_storage_server,
-  $storage_path     = $::bacula::params::default_storage_path,
+  $storage_dir      = $::bacula::params::storage_dir,
   $storage_password = $::bacula::params::default_storage_password,
   $device_owner     = $::bacula::params::default_device_owner,
   $device_group     = $::bacula::params::default_device_group,
@@ -34,7 +34,7 @@ define bacula::client (
 
   @@bacula::device{$title:
     config_root => $config_root,
-    path        => "${storage_path}/${title}",
+    path        => "${storage_dir}/${title}",
     owner       => $device_owner,
     group       => $device_group,
   }
