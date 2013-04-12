@@ -23,14 +23,12 @@ class bacula::fd::config inherits ::bacula::fd {
   @@bacula::client{$client:
     storage_server   => $storage_server,
     storage_dir      => $storage_dir,
+    storage_port     => $storage_port,
     storage_password => $storage_password,
     device_owner     => $device_owner,
     device_group     => $device_group,
     fd_port          => $fd_port,
     fd_password      => $fd_password,
-    sd_server        => $sd_server,
-    sd_port          => $sd_port,
-    sd_password      => $sd_password,
     config_root      => $config_root,
     catalog          => $catalog,
   }
