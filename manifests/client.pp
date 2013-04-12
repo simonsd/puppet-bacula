@@ -1,14 +1,12 @@
 define bacula::client (
   $storage_server   = $::bacula::params::default_storage_server,
   $storage_dir      = $::bacula::params::storage_dir,
+  $storage_port     = $::bacula::params::storage_port,
   $storage_password = $::bacula::params::default_storage_password,
   $device_owner     = $::bacula::params::default_device_owner,
   $device_group     = $::bacula::params::default_device_group,
   $fd_port          = $::bacula::params::fd_port,
   $fd_password      = $::bacula::params::fd_password,
-  $sd_server        = $::bacula::params::sd_server,
-  $sd_port          = $::bacula::params::sd_port,
-  $sd_password      = $::bacula::params::sd_password,
   $config_root      = $::bacula::params::config_root,
   $catalog          = $::bacula::params::catalog,
 ) {
@@ -29,9 +27,9 @@ define bacula::client (
 
   @@bacula::storage{$title:
     config_root => $config_root,
-    sd_server   => $sd_server,
-    sd_port     => $sd_port,
-    sd_password => $sd_password,
+    sd_server   => $storage_server,
+    sd_port     => $storage_port,
+    sd_password => $storage_password,
   }
 
   @@bacula::device{$title:
