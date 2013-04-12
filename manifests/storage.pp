@@ -7,6 +7,8 @@ define bacula::storage (
   $media_type  = $::bacula::params::media_type,
 ) {
 
+  require ::bacula::params
+
   file{"${config_root}/storage.d/${title}.conf":
     ensure  => 'file',
     content => template('bacula/storage.conf.erb'),

@@ -7,6 +7,8 @@ define bacula::catalog (
   $db_init_command = $::bacula::params::db_init_command,
 ) {
 
+  require ::bacula::params
+
   file{"${config_root}/catalog.d/${title}.conf":
     ensure  => 'file',
     content => template('bacula/catalog.conf.erb'),

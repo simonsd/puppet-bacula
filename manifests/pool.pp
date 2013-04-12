@@ -9,6 +9,8 @@ define bacula::pool (
   $director_service_name = $::bacula::params::director_service_name,
 ) {
 
+  require ::bacula::params
+
   $_recycle = $recycle ? {
     true  => 'yes',
     false => 'no',

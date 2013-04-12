@@ -13,6 +13,8 @@ define bacula::client (
   $catalog          = $::bacula::params::catalog,
 ) {
 
+  require ::bacula::params
+
   concat{"${config_root}/clients.d/${title}.conf":
     owner  => 'root',
     group  => 'root',

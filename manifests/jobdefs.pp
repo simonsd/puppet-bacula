@@ -16,6 +16,8 @@ define bacula::jobdefs (
   $director_service_name = $::bacula::params::director_service_name,
 ){
 
+  require ::bacula::params
+
   file{"${config_root}/jobdefs.d/${name}.conf":
     ensure  => 'file',
     owner   => 'root',

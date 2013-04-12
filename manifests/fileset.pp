@@ -4,6 +4,8 @@ define bacula::fileset (
   $config_root = $::bacula::params::config_root,
 ){
 
+  require ::bacula::params
+
   file{"${config_root}/filesets.d/${name}.conf":
     ensure  => 'file',
     owner   => 'root',

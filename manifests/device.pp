@@ -5,6 +5,8 @@ define bacula::device (
   $config_root = $::bacula::params::config_root,
 ){
 
+  require ::bacula::params
+
   file{$path:
     ensure => directory,
     owner  => $owner,
