@@ -1,4 +1,5 @@
 define bacula::client (
+  $address          = '',
   $storage_server   = $::bacula::params::default_storage_server,
   $storage_dir      = $::bacula::params::storage_dir,
   $storage_port     = $::bacula::params::storage_port,
@@ -12,6 +13,11 @@ define bacula::client (
 ) {
 
   require ::bacula::params
+
+  case $address {
+    '':      { $_address = $title }
+    default: { $_address = $address }
+  }
 
   concat{"${config_root}/clients.d/${title}.conf":
     owner  => 'root',
