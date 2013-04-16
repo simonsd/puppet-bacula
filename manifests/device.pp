@@ -1,7 +1,7 @@
 define bacula::device (
   $path        = "${::bacula::params::storage_dir}/${::fqdn}",
-  $owner       = $::bacula::params::default_device_owner,
-  $group       = $::bacula::params::default_device_group,
+  $owner       = $::bacula::params::device_owner,
+  $group       = $::bacula::params::device_group,
   $config_root = $::bacula::params::config_root,
 ){
 

@@ -95,5 +95,7 @@ class bacula::params (
   $default_incrementalpool    = 'IncrementalPool',
   $default_fileset            = 'FullSet',
   $default_schedule           = 'FullWeekly',
+  $device_owner               = 'bacula',
+  $device_group               = 'bacula',
 ) {
 }
