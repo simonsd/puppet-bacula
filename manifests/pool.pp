@@ -7,6 +7,7 @@ define bacula::pool (
   $maximum_volumes       = '4',
   $config_root           = $::bacula::params::config_root,
   $director_service_name = $::bacula::params::director_service_name,
+  $labelformat           = false,
 ) {
 
   require ::bacula::params
@@ -24,6 +25,11 @@ define bacula::pool (
   $_purge_oldest = $purge_oldest ? {
     true  => 'yes',
     false => 'no',
+  }
+
+  $_label_format = $labelformat ? {
+    false   => $title,
+    default => $labelformat,
   }
 
   file{"${config_root}/pools.d/${title}.conf":
