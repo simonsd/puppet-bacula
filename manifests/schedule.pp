@@ -1,5 +1,4 @@
 define bacula::schedule (
-  $name,
   $description           = false,
   $config_root           = $::bacula::params::config_root,
   $director_service_name = $::bacula::params::director_service_name,
@@ -7,7 +6,7 @@ define bacula::schedule (
 
   require ::bacula::params
 
-  file{"${config_root}/schedules.d/${name}.conf":
+  file{"${config_root}/schedules.d/${title}.conf":
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
