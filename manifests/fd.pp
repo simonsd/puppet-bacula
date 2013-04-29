@@ -18,6 +18,7 @@ class bacula::fd (
   $fd_servive_enable         = $::bacula::params::fd_service_enable,
   $fd_servive_hasstatus      = $::bacula::params::fd_service_hasstatus,
   $catalog                   = $::bacula::params::default_catalog,
+  $address                   = undef,
   $storage_server            = $::bacula::params::default_storage_server,
   $storage_dir               = $::bacula::params::storage_dir,
   $storage_port              = $::bacula::params::storage_port,

@@ -21,6 +21,7 @@ class bacula::fd::config inherits ::bacula::fd {
 
   # Export client resource for director
   @@bacula::client{$client:
+    address          => $address,
     storage_server   => $storage_server,
     storage_dir      => $storage_dir,
     storage_port     => $storage_port,
