@@ -1,13 +1,16 @@
 class bacula::director (
-  $director_pkgname           = $::bacula::params::director_pkgname,
-  $director_service_name      = $::bacula::params::director_service_name,
-  $director_service_ensure    = $::bacula::params::director_service_ensure,
-  $director_service_enable    = $::bacula::params::director_service_enable,
-  $director_service_hasstatus = $::bacula::params::director_service_hasstatus,
-  $director_server            = $::bacula::params::director_server,
-  $director_port              = $::bacula::params::director_port,
-  $director_password          = $::bacula::params::director_password,
+  $pkg_name                   = $::bacula::params::director_pkg_name,
+  $pkg_version                = $::bacula::params::director_pkg_version,
+  $service_name               = $::bacula::params::director_service_name,
+  $service_ensure             = $::bacula::params::director_service_ensure,
+  $service_enable             = $::bacula::params::director_service_enable,
+  $service_hasstatus          = $::bacula::params::director_service_hasstatus,
+  $server                     = $::bacula::params::director_server,
+  $port                       = $::bacula::params::director_port,
+  $password                   = $::bacula::params::director_password,
   $bconsole_pkgname           = $::bacula::params::bconsole_pkgname,
+  $user                       = $::bacula::params::default_user,
+  $group                      = $::bacula::params::default_group,
   $config_root                = $::bacula::params::config_root,
   $working_dir                = $::bacula::params::working_dir,
   $log_dir                    = $::bacula::params::log_dir,
@@ -23,19 +26,44 @@ class bacula::director (
   $messages_operatorcommand   = $::bacula::params::messages_operatorcommand,
 ) inherits ::bacula::params {
 
-  include ::bacula::common
+  class{'::bacula::common':
+    director_server   => $server,
+    director_port     => $port,
+    director_password => $password,
+    user              => $user,
+    group             => $group,
+    config_root       => $config_root,
+    working_dir       => $config_dir,
+    pid_dir           => $pid_dir,
+    log_dir           => $log_dir,
+  }
 
-  include ::bacula::director::install
-  include ::bacula::director::config
-  include ::bacula::director::service
+  class{'::bacula::director::install':
+    pkg_name    => $pkg_name,
+    pkg_version => $pkg_version,
+  }
+
+  class{'::bacula::director::config':
+    config_root  => $config_root,
+    service_name => $service_name,
+    log_email    => $log_email,
+    from_email   => $from_email,
+  }
+
+  class{'::bacula::director::service':
+    name      => $service_name,
+    ensure    => $service_ensure,
+    enable    => $service_enable,
+    hasstatus => $service_hasstatus,
+  }
+
+  Class['::bacula::director::install'] ->
+  Class['::bacula::director::config'] ->
+  Class['::bacula::director::service']
 
   include ::bacula::default::filesets
   include ::bacula::default::jobdefs
   include ::bacula::default::pools
   include ::bacula::default::schedules
-
-  Class['::bacula::director::install'] ->
-  Class['::bacula::director::config'] ->
-  Class['::bacula::director::service']
 
 }

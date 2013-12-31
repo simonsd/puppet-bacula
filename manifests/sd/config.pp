@@ -1,33 +1,15 @@
-# = Class: bacula::sd::config
-#
-# Description of bacula::sd::config
-#
-# == Parameters:
-#
-# $param::   description of parameter. default value if any.
-#
-# == Actions:
-#
-# Describe what this class does. What gets configured and how.
-#
-# == Requires:
-#
-# Requirements. This could be packages that should be made available.
-#
-# == Sample Usage:
-#
-# == Todo:
-#
-# TODO: Update documentation
-#
-class bacula::sd::config inherits ::bacula::sd {
+class bacula::sd::config (
+  $config_root  = $::bacula::params::config_root,
+  $service_name = $::bacula::params::sd_service_name,
+  $storage_dir  = $::bacula::params::storage_dir,
+) inherits ::bacula::params {
 
   file{"${config_root}/bacula-sd.conf":
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
     content => template('bacula/bacula-sd.conf.erb'),
-    notify  => Service[$sd_service_name],
+    notify  => Service[$service_name],
   }
 
   ::bacula::messages{'bacula-sd':}
@@ -41,7 +23,7 @@ class bacula::sd::config inherits ::bacula::sd {
     ensure => directory,
   }
 
-  Bacula::Device   <<| |>> { notify => Service[$sd_service_name] }
-  Bacula::Messages <<| |>> { notify => Service[$sd_service_name] }
+  Bacula::Device   <<| |>> { notify => Service[$service_name] }
+  Bacula::Messages <<| |>> { notify => Service[$service_name] }
 
 }

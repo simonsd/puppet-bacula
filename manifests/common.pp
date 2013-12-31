@@ -2,6 +2,12 @@ class bacula::common (
   $director_server   = $::bacula::params::director_server,
   $director_port     = $::bacula::params::director_port,
   $director_password = $::bacula::params::director_password,
+  $user              = $::bacula::params::default_user,
+  $group             = $::bacula::params::default_group,
+  $config_root       = $::bacula::params::config_root,
+  $working_dir       = $::bacula::params::working_dir,
+  $pid_dir           = $::bacula::params::pid_dir,
+  $log_dir           = $::bacula::params::log_dir,
 ) inherits ::bacula::params {
 
   include ::concat::setup

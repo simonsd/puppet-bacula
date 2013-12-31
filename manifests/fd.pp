@@ -1,22 +1,23 @@
 class bacula::fd (
   $client                    = $::fqdn,
-  $fd_port                   = $::bacula::params::fd_port,
-  $fd_password               = $::bacula::params::fd_password,
+  $port                      = $::bacula::params::fd_port,
+  $password                  = $::bacula::params::fd_password,
   $config_root               = $::bacula::params::config_root,
   $working_dir               = $::bacula::params::working_dir,
   $pid_dir                   = $::bacula::params::pid_dir,
   $max_concurrent_jobs       = $::bacula::params::fd_max_concurrent_jobs,
   $messages                  = $::bacula::params::fd_messages,
   $director_server           = $::bacula::params::director_server,
-  $fd_pkgname                = $::bacula::params::fd_pkgname,
+  $pkg_name                  = $::bacula::params::fd_pkg_name,
+  $pkg_version               = $::bacula::params::fd_pkg_version,
   $user                      = $::bacula::params::default_user,
   $group                     = $::bacula::params::default_group,
   $bconsole_pkgname          = $::bacula::params::bconsole_pkgname,
   $log_dir                   = $::bacula::params::log_dir,
-  $fd_servive_name           = $::bacula::params::fd_service_name,
-  $fd_servive_ensure         = $::bacula::params::fd_service_ensure,
-  $fd_servive_enable         = $::bacula::params::fd_service_enable,
-  $fd_servive_hasstatus      = $::bacula::params::fd_service_hasstatus,
+  $servive_name              = $::bacula::params::fd_service_name,
+  $servive_ensure            = $::bacula::params::fd_service_ensure,
+  $servive_enable            = $::bacula::params::fd_service_enable,
+  $servive_hasstatus         = $::bacula::params::fd_service_hasstatus,
   $catalog                   = $::bacula::params::default_catalog,
   $address                   = undef,
   $storage_server            = $::bacula::params::default_storage_server,
@@ -27,13 +28,51 @@ class bacula::fd (
   $device_group              = $::bacula::params::device_group,
   $messages_mailcommand      = $::bacula::params::messages_mailcommand,
   $messages_operatorcommand  = $::bacula::params::messages_operatorcommand,
+  $director_server           = $::bacula::params::director_server,
+  $director_port             = $::bacula::params::director_port,
+  $director_password         = $::bacula::params::director_password,
 ) inherits ::bacula::params {
 
-  include ::bacula::common
+  class{'::bacula::common':
+    director_server   => $director_server,
+    director_port     => $director_port,
+    director_password => $director_password,
+    user              => $user,
+    group             => $group,
+    config_root       => $config_root,
+    working_dir       => $config_dir,
+    pid_dir           => $pid_dir,
+    log_dir           => $log_dir,
+  }
 
-  include ::bacula::fd::install
-  include ::bacula::fd::config
-  include ::bacula::fd::service
+  class{'::bacula::fd::install':
+    pkg_name    => $pkg_name,
+    pkg_version => $pkg_version,
+  }
+
+  class{'::bacula::fd::config':
+    config_root      => $config_root,
+    pkg_name         => $pkg_name,
+    service_name     => $service_name,
+    client           => $client,
+    address          => $address,
+    storage_server   => $storage_server,
+    storage_dir      => $storage_dir,
+    storage_port     => $storage_port,
+    storage_password => $storage_password,
+    device_owner     => $device_owner,
+    device_group     => $device_group,
+    port             => $port,
+    password         => $password,
+    catalog          => $catalog,
+  }
+
+  class{'::bacula::fd::service':
+    name      => $service_name,
+    ensure    => $service_ensure,
+    enable    => $service_enable,
+    hasstatus => $service_hasstatus,
+  }
 
   Class['::bacula::fd::install'] ->
   Class['::bacula::fd::config'] ->
