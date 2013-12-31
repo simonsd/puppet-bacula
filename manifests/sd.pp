@@ -56,10 +56,10 @@ class bacula::sd (
   }
 
   class{'::bacula::sd::service':
-    name      => $service_name,
-    ensure    => $service_ensure,
-    enable    => $service_enable,
-    hasstatus => $service_hasstatus,
+    service_name => $service_name,
+    ensure       => $service_ensure,
+    enable       => $service_enable,
+    hasstatus    => $service_hasstatus,
   }
 
   Class[::bacula::sd::install] -> Class[::bacula::sd::config] -> Class[::bacula::sd::service]

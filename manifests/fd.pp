@@ -72,10 +72,10 @@ class bacula::fd (
   }
 
   class{'::bacula::fd::service':
-    name      => $service_name,
-    ensure    => $service_ensure,
-    enable    => $service_enable,
-    hasstatus => $service_hasstatus,
+    service_name => $service_name,
+    ensure       => $service_ensure,
+    enable       => $service_enable,
+    hasstatus    => $service_hasstatus,
   }
 
   Class['::bacula::fd::install'] ->

@@ -58,10 +58,10 @@ class bacula::director (
   }
 
   class{'::bacula::director::service':
-    name      => $service_name,
-    ensure    => $service_ensure,
-    enable    => $service_enable,
-    hasstatus => $service_hasstatus,
+    service_name => $service_name,
+    ensure       => $service_ensure,
+    enable       => $service_enable,
+    hasstatus    => $service_hasstatus,
   }
 
   Class['::bacula::director::install'] ->
