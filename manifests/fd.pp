@@ -40,7 +40,7 @@ class bacula::fd (
     user              => $user,
     group             => $group,
     config_root       => $config_root,
-    working_dir       => $config_dir,
+    working_dir       => $working_dir,
     pid_dir           => $pid_dir,
     log_dir           => $log_dir,
   }
@@ -51,20 +51,24 @@ class bacula::fd (
   }
 
   class{'::bacula::fd::config':
-    config_root      => $config_root,
-    pkg_name         => $pkg_name,
-    service_name     => $service_name,
-    client           => $client,
-    address          => $address,
-    storage_server   => $storage_server,
-    storage_dir      => $storage_dir,
-    storage_port     => $storage_port,
-    storage_password => $storage_password,
-    device_owner     => $device_owner,
-    device_group     => $device_group,
-    port             => $port,
-    password         => $password,
-    catalog          => $catalog,
+    config_root         => $config_root,
+    pkg_name            => $pkg_name,
+    service_name        => $service_name,
+    client              => $client,
+    address             => $address,
+    storage_server      => $storage_server,
+    storage_dir         => $storage_dir,
+    storage_port        => $storage_port,
+    storage_password    => $storage_password,
+    device_owner        => $device_owner,
+    device_group        => $device_group,
+    port                => $port,
+    password            => $password,
+    catalog             => $catalog,
+    working_dir         => $working_dir,
+    pid_dir             => $pid_dir,
+    max_concurrent_jobs => $max_concurrent_jobs,
+    director_server     => $director_server,
   }
 
   class{'::bacula::fd::service':

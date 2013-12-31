@@ -44,10 +44,17 @@ class bacula::director (
   }
 
   class{'::bacula::director::config':
-    config_root  => $config_root,
-    service_name => $service_name,
-    log_email    => $log_email,
-    from_email   => $from_email,
+    config_root         => $config_root,
+    service_name        => $service_name,
+    log_email           => $log_email,
+    from_email          => $from_email,
+    server              => $server,
+    port                => $port,
+    working_dir         => $working_dir,
+    pid_dir             => $pid_dir,
+    max_concurrent_jobs => $max_concurrent_jobs,
+    password            => $password,
+    messages            => $messages,
   }
 
   class{'::bacula::director::service':

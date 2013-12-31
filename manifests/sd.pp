@@ -42,9 +42,17 @@ class bacula::sd (
   }
 
   class{'::bacula::sd::config':
-    config_root  => $config_root,
-    service_name => $service_name,
-    storage_dir  => $storage_dir,
+    config_root         => $config_root,
+    service_name        => $service_name,
+    storage_dir         => $storage_dir,
+    label               => $label,
+    port                => $port,
+    working_dir         => $working_dir,
+    pid_dir             => $pid_dir,
+    max_concurrent_jobs => $max_concurrent_jobs,
+    messages            => $messages,
+    director_server     => $director_server,
+    director_password   => $director_password,
   }
 
   class{'::bacula::sd::service':

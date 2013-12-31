@@ -9,7 +9,7 @@
 
 FileDaemon {
   name                    = "<%= client %>-fd"
-  fdport                  = <%= fd_port %>
+  fdport                  = <%= port %>
   workingdirectory        = "<%= working_dir %>"
   pid directory           = "<%= pid_dir %>"
   maximum concurrent jobs = "<%= max_concurrent_jobs %>"
@@ -21,7 +21,7 @@ FileDaemon {
 
 Director {
   name                    = "<%= director_server %>"
-  password                = "<%= fd_password %>"
+  password                = "<%= password %>"
 }
 
 #

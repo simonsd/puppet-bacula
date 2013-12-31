@@ -1,8 +1,15 @@
 class bacula::director::config (
-  $config_root  = $::bacula::params::config_root,
-  $service_name = $::bacula::params::director_service_name,
-  $log_email    = $::bacula::params::log_email,
-  $from_email   = $::bacula::params::from_email,
+  $config_root         = $::bacula::params::config_root,
+  $service_name        = $::bacula::params::director_service_name,
+  $log_email           = $::bacula::params::log_email,
+  $from_email          = $::bacula::params::from_email,
+  $server              = $::bacula::params::director_server,
+  $port                = $::bacula::params::director_port,
+  $working_dir         = $::bacula::params::working_dir,
+  $pid_dir             = $::bacula::params::pid_dir,
+  $max_concurrent_jobs = $::bacula::params::dir_max_concurrent_jobs,
+  $password            = $::bacula::params::director_password,
+  $messages            = $::bacula::params::dir_messages,
 ) inherits ::bacula::params {
 
   File{
