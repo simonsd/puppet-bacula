@@ -26,16 +26,18 @@ class bacula::director (
   $messages_operatorcommand   = $::bacula::params::messages_operatorcommand,
 ) inherits ::bacula::params {
 
-  class{'::bacula::common':
-    director_server   => $server,
-    director_port     => $port,
-    director_password => $password,
-    user              => $user,
-    group             => $group,
-    config_root       => $config_root,
-    working_dir       => $config_dir,
-    pid_dir           => $pid_dir,
-    log_dir           => $log_dir,
+  if ! defined(Class['::bacula::common']) {
+    class{'::bacula::common':
+      director_server   => $server,
+      director_port     => $port,
+      director_password => $password,
+      user              => $user,
+      group             => $group,
+      config_root       => $config_root,
+      working_dir       => $config_dir,
+      pid_dir           => $pid_dir,
+      log_dir           => $log_dir,
+    }
   }
 
   class{'::bacula::director::install':
