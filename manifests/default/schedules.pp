@@ -1,4 +1,4 @@
-class bacula::default::schedules {
+class bacula::default::schedules inherits ::bacula::params {
 
   @bacula::schedule{'FullDaily':
     description => 'Full Daily at 03:00',

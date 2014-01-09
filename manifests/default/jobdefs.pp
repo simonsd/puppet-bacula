@@ -1,4 +1,4 @@
-class bacula::default::jobdefs {
+class bacula::default::jobdefs inherits ::bacula::params {
 
   @bacula::jobdefs{'DefaultJob':
     name => 'DefaultJob',

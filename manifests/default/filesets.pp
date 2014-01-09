@@ -1,4 +1,4 @@
-class bacula::default::filesets {
+class bacula::default::filesets inherits ::bacula::params {
 
   @bacula::fileset{'Catalog':
     name    => 'Catalog',
