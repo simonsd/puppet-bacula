@@ -34,6 +34,11 @@ class bacula::default::filesets inherits ::bacula::params {
     include => '/etc',
   }
 
+  @bacula::fileset{'Jenkins':
+    name    => 'Jenkins',
+    include => '/var/lib/jenkins',
+  }
+
   if $filesets != [] {
     realize(Bacula::Fileset[$filesets])
   }
