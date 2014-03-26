@@ -25,10 +25,7 @@ class bacula::director::config (
     notify  => Service[$service_name],
   }
 
-  ::bacula::messages{'bacula-dir':
-    mail        => [ [$log_email, 'all, !skipped'], ],
-    mailcommand => "/usr/sbin/bsmtp -h localhost -f \\\"\(Bacula\) ${from_email}\\\" -s \\\"Bacula: %t %e of %c %l\\\" %r",
-  }
+  ::bacula::messages{'bacula-dir':}
 
   file{"${config_root}/catalog.d":}
   file{"${config_root}/clients.d":}
