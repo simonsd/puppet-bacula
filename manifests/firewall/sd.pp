@@ -4,7 +4,6 @@ class bacula::firewall::sd inherits ::bacula::params {
     dport    => $sd_port,
     source   => $sd_firewall_source,
     iniface  => $sd_firewall_outiface,
-    outiface => $sd_firewall_iniface,
     action   => 'accept',
   }
 
