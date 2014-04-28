@@ -17,6 +17,8 @@ class bacula::director::config (
     owner  => 'root',
     group  => 'root',
     mode   => '0640',
+    recurse => true,
+    purge   => true,
   }
 
   file{"${config_root}/bacula-dir.conf":
