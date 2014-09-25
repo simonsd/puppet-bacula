@@ -62,6 +62,9 @@ class bacula::params (
     'Mysql',
     'Config',
   ],
+  $jobs                       = [
+    'RestoreFiles',
+  ],
   $sd_port                    = '9103',
   $sd_firewall_source         = $::bacula::params::firewall_source,
   $sd_firewall_iniface        = $::bacula::params::firewall_iniface,
