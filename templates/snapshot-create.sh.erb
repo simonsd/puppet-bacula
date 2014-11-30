@@ -1,0 +1,43 @@
+#!/bin/bash
+
+### File managed with puppet ###
+### Served by:        '<%= scope.lookupvar('::servername') %>'
+### Module:           '<%= scope.to_hash['module_name'] %>'
+### Template source:  '<%= template_source %>'
+
+<% LV_MASTER="/dev/#{lvm_vg}/#{lv_master}" -%>
+<% LV_SNAPSHOT="/dev/#{lvm_vg}/#{lv_snapshot}" -%>
+
+# Fail in case of error
+set -e
+
+# Make sure directory is umounted
+if mountpoint -q <%= @mountpoint %>; then
+    umount <%= @mountpoint %>
+fi
+
+# Drop LV if it exists
+if [ -L <%= LV_SNAPSHOT %> ]; then
+    lvremove -f <%= LV_SNAPSHOT %>
+    sleep 5     # Wait for DM update
+fi
+
+<% if @run_before -%>
+# run script before creating snapshot
+<%= @run_before %>
+<% end -%>
+
+# Create snapshot
+lvcreate -s <%= LV_MASTER %> -L <%= @snapshot_size %> -n <%= @lv_snapshot %>
+sleep 5         # Wait for DM update
+
+# Mount the snapshot
+mount <%= LV_SNAPSHOT %> <%= mountpoint %>
+
+
+<% if @run_after -%>
+# run script after creating snapshot
+<%= @run_after %>
+<% end -%>
+
+exit 0
