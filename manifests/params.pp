@@ -107,6 +107,7 @@ class bacula::params (
   $default_pool               = 'FullPool',
   $default_jobtype            = 'Backup',
   $default_jobdefs            = 'DefaultJob',
+  $default_jobpriority        = 10,
   $default_storage            = "${::fqdn}-storage",
   $default_fullpool           = 'FullPool',
   $default_incrementalpool    = 'IncrementalPool',

@@ -13,6 +13,7 @@ define bacula::job (
   $full_pool             = $::bacula::params::default_fullpool,
   $incremental_pool      = $::bacula::params::default_incrementalpool,
   $jobdefs               = $::bacula::params::default_jobdefs,
+  $priority              = $::bacula::params::default_jobpriority,
   $fileset               = false,
   $bschedule             = false,
   $client_run_before_job = false,
