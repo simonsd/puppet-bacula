@@ -31,6 +31,7 @@ define bacula::messages (
 
   file{"${config_root}/messages.d/${name}.conf":
     content => template('bacula/messages.conf.erb'),
+    notify  => Service[$::bacula::params::fd_service_name],
   }
 
 }
