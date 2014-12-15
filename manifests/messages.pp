@@ -16,7 +16,7 @@ define bacula::messages (
   }
 
   $_messages = $messages ? {
-    ""      => [['append', $_log_file, 'all']],
+    ""      => [['append', $_log_file, 'all, !skipped']],
     default => $messages,
   }
 
