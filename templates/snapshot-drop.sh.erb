@@ -6,8 +6,8 @@
 ### Template source:  '<%= template_source %>'
 
 
-<% LV_MASTER="/dev/#{lvm_vg}/#{lv_master}" -%>
-<% LV_SNAPSHOT="/dev/#{lvm_vg}/#{lv_snapshot}" -%>
+<%= LV_MASTER="/dev/#{lvm_vg}/#{lv_master}" %>
+<%= LV_SNAPSHOT="/dev/#{lvm_vg}/#{lv_snapshot}" %>
 
 # Fail in case of error
 set -e
@@ -18,8 +18,8 @@ if mountpoint -q <%= @mountpoint %>; then
 fi
 
 # Drop LV if it exists
-if [ -L <%= LV_SNAPSHOT %> ]; then
-    lvremove -f <%= LV_SNAPSHOT %>
+if [ -L $LV_SNAPSHOT ]; then
+    lvremove -f $LV_SNAPSHOT
     sleep 5     # Wait for DM update
 fi
 
