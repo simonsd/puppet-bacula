@@ -6,21 +6,22 @@
 ### Template source:  '<%= template_source %>'
 
 
-<%= LV_MASTER="/dev/#{lvm_vg}/#{lv_master}" %>
-<%= LV_SNAPSHOT="/dev/#{lvm_vg}/#{lv_snapshot}" %>
+LV_MASTER=<%= "/dev/#{lvm_vg}/#{lv_master}" %>
+LV_SNAPSHOT=<%= "/dev/#{lvm_vg}/#{lv_snapshot}" %>
+LV_MOUNTPOINT=<%= @mountpoint %>
 
 # Fail in case of error
 set -e
 
 # Make sure directory is umounted
-if mountpoint -q <%= @mountpoint %>; then
-    umount <%= @mountpoint %>
+if mountpoint -q $LV_MOUNTPOINT; then
+    umount $LV_MOUNTPOINT
 fi
 
 # Drop LV if it exists
 if [ -L $LV_SNAPSHOT ]; then
     lvremove -f $LV_SNAPSHOT
-    sleep 5     # Wait for DM update
+    sleep 5     # Wait for device-mapper update
 fi
 
 exit 0
