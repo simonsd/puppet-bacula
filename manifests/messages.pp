@@ -4,6 +4,7 @@ define bacula::messages (
   $log_file        = '',
   $messages        = '',
   $mail            = '',
+  $catalog         = 'all, !skipped',
   $mailcommand     = $::bacula::params::messages_mailcommand,
   $operatorcommand = $::bacula::params::messages_operatorcommand,
 ) {
