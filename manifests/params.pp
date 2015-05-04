@@ -104,6 +104,7 @@ class bacula::params (
   $catalog                    = 'DefaultCatalog',
   $messages_mailcommand       = '',
   $messages_operatorcommand   = '',
+  $messages_prune             = '30 day',
   $default_pool               = 'FullPool',
   $default_jobtype            = 'Backup',
   $default_jobdefs            = 'DefaultJob',

@@ -5,6 +5,7 @@ define bacula::catalog (
   $dbpassword      = $::bacula::params::dbpassword,
   $dbhost          = $::bacula::params::dbhost,
   $db_init_command = $::bacula::params::db_init_command,
+  $messages_prune  = $::bacula::params::messages_prune,
 ) {
 
   require ::bacula::params
@@ -20,4 +21,13 @@ define bacula::catalog (
     unless      => "/usr/bin/mysqlshow -u${dbuser} -p${dbpassword} -h${dbhost} ${dbname} | grep Version",
   }
 
+  if $messages_prune {
+    cron{ 'bacula::catalog: Prune old messages from catalog':
+      command =>
+        "mysql --user='${dbuser}' --password='${dbpassword}' --host='${dbhost}' --execute='DELETE FROM Log where Time < (now() - INTERVAL ${messages_prune});' ${dbname}",
+      hour    => [23,07],
+      minute  => 16,
+      user    => bacula,
+    }
+  }
 }
