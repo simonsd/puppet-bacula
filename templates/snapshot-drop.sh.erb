@@ -6,8 +6,8 @@
 ### Template source:  '<%= template_source %>'
 
 
-LV_MASTER=<%= "/dev/#{lvm_vg}/#{lv_master}" %>
-LV_SNAPSHOT=<%= "/dev/#{lvm_vg}/#{lv_snapshot}" %>
+LV_MASTER=<%= "/dev/#{@lvm_vg}/#{@lv_master}" %>
+LV_SNAPSHOT=<%= "/dev/#{@lvm_vg}/#{@lv_snapshot}" %>
 LV_MOUNTPOINT=<%= @mountpoint %>
 
 # Fail in case of error
