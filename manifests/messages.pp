@@ -4,6 +4,7 @@ define bacula::messages (
   $log_file        = '',
   $messages        = '',
   $mail            = '',
+  $catalog         = 'all, !skipped',
   $mailcommand     = $::bacula::params::messages_mailcommand,
   $operatorcommand = $::bacula::params::messages_operatorcommand,
 ) {
@@ -16,7 +17,7 @@ define bacula::messages (
   }
 
   $_messages = $messages ? {
-    ""      => [['append', $_log_file, 'all']],
+    ""      => [['append', $_log_file, 'all, !skipped']],
     default => $messages,
   }
 
@@ -31,6 +32,7 @@ define bacula::messages (
 
   file{"${config_root}/messages.d/${name}.conf":
     content => template('bacula/messages.conf.erb'),
+    notify  => Service[$::bacula::params::fd_service_name],
   }
 
 }

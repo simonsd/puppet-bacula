@@ -17,4 +17,7 @@ Messages {
 <% if !mail.empty? %><% mail.each do | dest, message | -%>
   mail                    = "<%= dest %>" = <%= message %>
 <% end %><% end -%>
+<% if @catalog -%>
+  catalog                 = <%= @catalog %>
+<% end -%>
 }
