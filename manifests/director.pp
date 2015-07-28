@@ -21,6 +21,7 @@ class bacula::director (
   $messages                   = $::bacula::params::dir_messages,
   $filesets                   = $::bacula::params::filesets,
   $jobdefs                    = $::bacula::params::jobdefs,
+  $jobs                       = $::bacula::params::jobs,
   $schedules                  = $::bacula::params::schedules,
   $messages_mailcommand       = $::bacula::params::messages_mailcommand,
   $messages_operatorcommand   = $::bacula::params::messages_operatorcommand,
@@ -72,6 +73,7 @@ class bacula::director (
 
   include ::bacula::default::filesets
   include ::bacula::default::jobdefs
+  include ::bacula::default::jobs
   include ::bacula::default::pools
   include ::bacula::default::schedules
 

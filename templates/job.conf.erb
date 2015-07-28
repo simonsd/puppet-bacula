@@ -9,6 +9,9 @@ Job {
 <% if jobtype -%>
   type                    = "<%= jobtype %>"
 <% end -%>
+<% if @priority  -%>
+  priority                = "<%= @priority %>"
+<% end -%>
 <% if working_dir -%>
   write bootstrap         = "<%= working_dir %>/<%= name %>.bsr"
 <% end -%>
