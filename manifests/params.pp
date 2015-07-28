@@ -62,7 +62,7 @@ class bacula::params (
     'Mysql',
     'Config',
   ],
-  $jobs                       = [
+  $default_jobs               = [
     'RestoreFiles',
   ],
   $sd_port                    = '9103',
