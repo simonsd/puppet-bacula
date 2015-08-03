@@ -10,7 +10,7 @@ class bacula::default::jobs inherits ::bacula::params {
   }
 
   if $jobs != [] {
-    realize(Bacula::Job[$jobs])
+    realize(Bacula::Job[$default_jobs])
   }
 
 }
