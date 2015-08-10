@@ -84,7 +84,7 @@ class bacula (
       max_concurrent_jobs      => $dir_max_concurrent_jobs,
       filesets                 => $filesets,
       jobdefs                  => $jobdefs,
-      jobs                     => $default_jobs,
+      default_jobs             => $default_jobs,
       schedules                => $schedules,
       messages_mailcommand     => $messages_mailcommand,
       messages_operatorcommand => $messages_operatorcommand,

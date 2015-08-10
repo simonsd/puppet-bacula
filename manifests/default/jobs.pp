@@ -9,7 +9,7 @@ class bacula::default::jobs inherits ::bacula::params {
     storage  => $default_storage,
   }
 
-  if $jobs != [] {
+  if $default_jobs != [] {
     realize(Bacula::Job[$default_jobs])
   }
 
