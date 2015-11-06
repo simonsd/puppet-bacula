@@ -9,14 +9,22 @@ Fileset {
     Options {
       signature = MD5
     }
-<% @include.each do |incl| -%>
+<% if @include.kind_of?(String) -%>
+    File = <%= @include %>
+<% else -%>
+  <% @include.each do |incl| -%>
     File = <%= incl %>
+  <% end -%>
 <% end -%>
   }
 <% if !@exclude.empty? -%>
   exclude {
-<% @exclude.each do |excl| -%>
+  <% if @exclude.kind_of?(String) -%>
+    File = <%= @exclude %>
+  <% else -%>
+    <% @exclude.each do |excl| -%>
     File = <%= excl %>
+    <% end -%>
 <% end -%>
   }
 <% end -%>
