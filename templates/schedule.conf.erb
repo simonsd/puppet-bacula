@@ -5,7 +5,12 @@
 
 Schedule {
   name = "<%= @title %>"
-<% @description.each do |desc| -%>
+
+<% if @description.kind_of?(String) -%>
+  run  = <%= @description %>
+<% else -%>
+<%   @description.each do |desc| -%>
   run  = <%= desc %>
+<%   end -%>
 <% end -%>
 }
