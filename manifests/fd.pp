@@ -28,7 +28,6 @@ class bacula::fd (
   $device_group              = $::bacula::params::device_group,
   $messages_mailcommand      = $::bacula::params::messages_mailcommand,
   $messages_operatorcommand  = $::bacula::params::messages_operatorcommand,
-  $director_server           = $::bacula::params::director_server,
   $director_port             = $::bacula::params::director_port,
   $director_password         = $::bacula::params::director_password,
 ) inherits ::bacula::params {

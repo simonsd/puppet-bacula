@@ -4,7 +4,6 @@
 #       contained resources
 #
 define bacula::jobdefs (
-  $name,
   $level                 = 'Incremental',
   $fileset               = $::bacula::params::default_fileset,
   $bschedule             = $::bacula::params::default_schedule,
